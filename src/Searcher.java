@@ -24,6 +24,8 @@ public class Searcher {
             }
 
             ArrayList<Integer> arrayList = wordHashmap.get(words[0]);
+            if (arrayList == null)
+                arrayList = new ArrayList<>();
             for (int i = 1; i < words.length; i++) {
                 StringBuilder word = new StringBuilder(words[i]);
                 if (word.charAt(0) == '+')
