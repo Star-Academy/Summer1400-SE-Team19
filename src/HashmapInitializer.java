@@ -1,10 +1,11 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class HashmapInitializer {
-    private HashMap<String, ArrayList<Integer>> wordHashmap = new HashMap<>();
+    private final HashMap<String, ArrayList<Integer>> wordHashmap = new HashMap<>();
     private final File fileDirectory = new File("resources/SampleEnglishData");
 
     public HashMap<String, ArrayList<Integer>> getWordHashmap() {
@@ -12,7 +13,7 @@ public class HashmapInitializer {
     }
 
     public void initialize() throws Exception {
-        for (File file : fileDirectory.listFiles()) {
+        for (File file : Objects.requireNonNull(fileDirectory.listFiles())) {
             processInfo(file);
         }
     }
@@ -22,6 +23,7 @@ public class HashmapInitializer {
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {
             String word = scanner.next().toLowerCase();
+            word = word.replaceAll("[^a-zA-Z0-9]", "");
             if (!wordHashmap.containsKey(word)) {
                 wordHashmap.put(word, new ArrayList<>());
             }
