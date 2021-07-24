@@ -21,11 +21,13 @@ public class HashmapInitializer {
         int fileName = Integer.parseInt(file.getName());
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {
-            String word = scanner.next();
+            String word = scanner.next().toLowerCase();
             if (!wordHashmap.containsKey(word)) {
                 wordHashmap.put(word, new ArrayList<>());
             }
             wordHashmap.get(word).add(fileName);
         }
     }
+
+
 }

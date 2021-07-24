@@ -14,8 +14,14 @@ public class Searcher {
     public void run() {
         String input;
         while (true) {
-            input = scanner.nextLine();
-            System.out.println(wordHashmap.get(input));
+            input = scanner.nextLine().toLowerCase();
+            String[] words = input.split("[ ]+");
+            ArrayList<Integer> arrayList = wordHashmap.get(words[0]);
+            for (int i = 1; i < words.length; i++) {
+                ArrayList<Integer> otherArrayList = wordHashmap.get(words[i]);
+                arrayList.retainAll(otherArrayList);
+            }
+            System.out.println(arrayList);
         }
     }
 }
