@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class Searcher {
     private final Scanner scanner;
@@ -19,6 +16,13 @@ public class Searcher {
             input = input.replaceAll("\\+", " +");
             input = input.replaceAll("-", " -");
             String[] words = input.split("[ ]+");
+            // Making "words" an arraylist to sort it
+            ArrayList<String> wordAsAnArrayList = new ArrayList<>(Arrays.asList(words));
+            wordAsAnArrayList.sort(this.queryComparator);
+            for (int i = 0; i < words.length; i++) {
+                words[i] = wordAsAnArrayList.get(i);
+            }
+
             ArrayList<Integer> arrayList = wordHashmap.get(words[0]);
             for (int i = 1; i < words.length; i++) {
                 StringBuilder word = new StringBuilder(words[i]);
@@ -32,4 +36,16 @@ public class Searcher {
             System.out.println(arrayList);
         }
     }
+
+    private Comparator<String> queryComparator = (word1, word2) -> {
+        if (word1.startsWith("+"))
+            return -1;
+        if (word2.startsWith("+"))
+            return 1;
+        if (word1.startsWith("-"))
+            return -1;
+        if (word2.startsWith("-"))
+            return 1;
+        return 0;
+    };
 }

@@ -27,7 +27,9 @@ public class HashmapInitializer {
             if (!wordHashmap.containsKey(word)) {
                 wordHashmap.put(word, new ArrayList<>());
             }
-            wordHashmap.get(word).add(fileName);
+            if (!wordHashmap.get(word).contains(fileName)) {
+                wordHashmap.get(word).add(fileName);
+            }
         }
     }
 
