@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class Searcher {
+    private static Searcher INSTANCE = new Searcher();
     private final Comparator<String> queryComparator = (word1, word2) -> {
         if (word1.startsWith("+"))
             return -1;
@@ -16,6 +17,12 @@ public class Searcher {
         return 0;
     };
     private final DataContainer dataContainer = DataContainer.getInstance();
+
+    private Searcher() {}
+
+    public static Searcher getInstance() {
+        return INSTANCE;
+    }
 
     public void run() {
         String input;
