@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Searcher {
     private final Scanner scanner;
-    private final HashMap<String, ArrayList<Integer>> wordHashmap;
+    private DataController dataController = DataController.getInstance();
     private final Comparator<String> queryComparator = (word1, word2) -> {
         if (word1.startsWith("+"))
             return -1;
@@ -15,9 +15,8 @@ public class Searcher {
         return 0;
     };
 
-    public Searcher(HashmapInitializer hashmapInitializer) {
+    public Searcher() {
         scanner = new Scanner(System.in);
-        wordHashmap = hashmapInitializer.getWordHashmap();
     }
 
     public void run() {
@@ -27,12 +26,10 @@ public class Searcher {
             input = input.replaceAll("\\+", " +");
             input = input.replaceAll("-", " -");
             String[] words = input.split("[ ]+");
-            // Making "words" an arraylist to sort it
+
             sortWordsQuery(words);
 
-            ArrayList<Integer> arrayList = wordHashmap.get(words[0]);
-            if (arrayList == null)
-                arrayList = new ArrayList<>();
+            ArrayList<Integer> arrayList = dataController.getAddress(words[0]);
             applyingSearchOperation(words, arrayList);
             System.out.println(arrayList);
         }
@@ -42,15 +39,16 @@ public class Searcher {
         for (int i = 1; i < words.length; i++) {
             StringBuilder word = new StringBuilder(words[i]);
             if (word.charAt(0) == '+')
-                arrayList.addAll(wordHashmap.get(word.deleteCharAt(0).toString()));
+                arrayList.addAll(dataController.getAddress(word.deleteCharAt(0).toString()));
             else if (word.charAt(0) == '-')
-                arrayList.removeAll(wordHashmap.get(word.deleteCharAt(0).toString()));
+                arrayList.removeAll(dataController.getAddress(word.deleteCharAt(0).toString()));
             else
-                arrayList.retainAll(wordHashmap.get(words[i]));
+                arrayList.retainAll(dataController.getAddress(words[i]));
         }
     }
 
     private void sortWordsQuery(String[] words) {
+        // Making "words" an arraylist to sort it
         ArrayList<String> wordAsAnArrayList = new ArrayList<>(Arrays.asList(words));
         wordAsAnArrayList.sort(this.queryComparator);
         for (int i = 0; i < words.length; i++) {

@@ -3,7 +3,7 @@ public class Main {
         try {
             HashmapInitializer hashmapInitializer = new HashmapInitializer();
             hashmapInitializer.initialize();
-            new Searcher(hashmapInitializer).run();
+            new Searcher().run();
         } catch (Exception e) {
             e.printStackTrace();
         }
