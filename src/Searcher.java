@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Searcher {
-    private final Scanner scanner;
     private final HashMap<String, ArrayList<Integer>> wordHashmap;
     private final Comparator<String> queryComparator = (word1, word2) -> {
         if (word1.startsWith("+"))
@@ -16,26 +15,34 @@ public class Searcher {
     };
 
     public Searcher(HashmapInitializer hashmapInitializer) {
-        scanner = new Scanner(System.in);
         wordHashmap = hashmapInitializer.getWordHashmap();
     }
 
     public void run() {
         String input;
         while (true) {
-            input = scanner.nextLine().toLowerCase();
-            input = input.replaceAll("\\+", " +");
-            input = input.replaceAll("-", " -");
+            input = getInput();
+            input = processInput(input);
             String[] words = input.split("[ ]+");
             // Making "words" an arraylist to sort it
             sortWordsQuery(words);
-
             ArrayList<Integer> arrayList = wordHashmap.get(words[0]);
             if (arrayList == null)
                 arrayList = new ArrayList<>();
             applyingSearchOperation(words, arrayList);
             System.out.println(arrayList);
         }
+    }
+
+    private String getInput() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine().toLowerCase();
+    }
+
+    private String processInput(String input) {
+        input = input.replaceAll("\\+", " +");
+        input = input.replaceAll("-", " -");
+        return input;
     }
 
     private void applyingSearchOperation(String[] words, ArrayList<Integer> arrayList) {
