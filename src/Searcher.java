@@ -4,12 +4,19 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class Searcher {
+    private static final Searcher INSTANCE = new Searcher();
     private final Comparator<String> queryComparator;
     private final DataContainer dataContainer;
 
     {
         queryComparator = initializeComparator();
         dataContainer = DataContainer.getInstance();
+    }
+    private Searcher() {
+    }
+
+    public static Searcher getINSTANCE() {
+        return INSTANCE;
     }
 
     private Comparator<String> initializeComparator() {

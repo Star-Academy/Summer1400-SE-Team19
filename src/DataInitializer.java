@@ -3,11 +3,17 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class DataInitializer {
-    private static final DataInitializer INSTANCE = new DataInitializer();
+    private static final DataInitializer INSTANCE;
+
+    static {
+        INSTANCE = new DataInitializer();
+    }
+
     private final DataContainer dataContainer = DataContainer.getInstance();
     private final File fileDirectory = new File("resources/SampleEnglishData");
 
-    private DataInitializer() {}
+    private DataInitializer() {
+    }
 
     public static DataInitializer getInstance() {
         return INSTANCE;
