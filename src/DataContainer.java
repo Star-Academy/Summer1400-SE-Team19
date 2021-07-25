@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DataController {
-    private static DataController instance = new DataController();
+public class DataContainer {
+    private static DataContainer instance = new DataContainer();
     private HashMap<String, ArrayList<Integer>> allData = new HashMap<>();
 
-    private DataController() {}
+    private DataContainer() {}
 
-    public static DataController getInstance() {
+    public static DataContainer getInstance() {
         return instance;
     }
 
