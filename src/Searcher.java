@@ -23,19 +23,29 @@ public class Searcher {
     public void run() {
         String input;
         while (true) {
-            input = scanner.nextLine().toLowerCase();
-            input = input.replaceAll("\\+", " +");
-            input = input.replaceAll("-", " -");
+            input = getInput();
+            input = processInput(input);
             String[] words = input.split("[ ]+");
             // Making "words" an arraylist to sort it
             sortWordsQuery(words);
-
             ArrayList<Integer> arrayList = wordHashmap.get(words[0]);
             if (arrayList == null)
                 arrayList = new ArrayList<>();
             applyingSearchOperation(words, arrayList);
             System.out.println(arrayList);
         }
+    }
+
+    private String getInput() {
+        String input;
+        input = scanner.nextLine().toLowerCase();
+        return input;
+    }
+
+    private String processInput(String input) {
+        input = input.replaceAll("\\+", " +");
+        input = input.replaceAll("-", " -");
+        return input;
     }
 
     private void applyingSearchOperation(String[] words, ArrayList<Integer> arrayList) {
