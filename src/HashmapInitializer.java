@@ -27,8 +27,10 @@ public class HashmapInitializer {
             if (!wordHashmap.containsKey(word)) {
                 wordHashmap.put(word, new ArrayList<>());
             }
-            if (!wordHashmap.get(word).contains(fileName)) {
+            try {
+                if (wordHashmap.get(word).contains(fileName)) throw new RepeatedElementException();
                 wordHashmap.get(word).add(fileName);
+            } catch (RepeatedElementException ignored) {
             }
         }
     }
