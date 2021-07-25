@@ -1,23 +1,37 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
 
 public class Searcher {
-    private final Scanner scanner;
-    private final HashMap<String, ArrayList<Integer>> wordHashmap;
-    private final Comparator<String> queryComparator = (word1, word2) -> {
-        if (word1.startsWith("+"))
-            return -1;
-        if (word2.startsWith("+"))
-            return 1;
-        if (word1.startsWith("-"))
-            return -1;
-        if (word2.startsWith("-"))
-            return 1;
-        return 0;
-    };
+    private static final Searcher INSTANCE = new Searcher();
+    private final Comparator<String> queryComparator;
+    private final DataContainer dataContainer;
 
-    public Searcher(HashmapInitializer hashmapInitializer) {
-        scanner = new Scanner(System.in);
-        wordHashmap = hashmapInitializer.getWordHashmap();
+    {
+        queryComparator = initializeComparator();
+        dataContainer = DataContainer.getInstance();
+    }
+    private Searcher() {
+    }
+
+    public static Searcher getINSTANCE() {
+        return INSTANCE;
+    }
+
+    private Comparator<String> initializeComparator() {
+        return (word1, word2) -> {
+            if (doesHavePriority(word2))
+                return 1;
+            if (doesHavePriority(word1))
+                return -1;
+
+            return 0;
+        };
+    }
+
+    private boolean doesHavePriority(String word2) {
+        return word2.startsWith("+") || word2.startsWith("-");
     }
 
     public void run() {
@@ -26,20 +40,15 @@ public class Searcher {
             input = getInput();
             input = processInput(input);
             String[] words = input.split("[ ]+");
-            // Making "words" an arraylist to sort it
             sortWordsQuery(words);
-            ArrayList<Integer> arrayList = wordHashmap.get(words[0]);
-            if (arrayList == null)
-                arrayList = new ArrayList<>();
-            applyingSearchOperation(words, arrayList);
-            System.out.println(arrayList);
+            ArrayList<Integer> results = applyingSearchOperation(words);
+            System.out.println(results);
         }
     }
 
     private String getInput() {
-        String input;
-        input = scanner.nextLine().toLowerCase();
-        return input;
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine().toLowerCase();
     }
 
     private String processInput(String input) {
@@ -48,19 +57,26 @@ public class Searcher {
         return input;
     }
 
-    private void applyingSearchOperation(String[] words, ArrayList<Integer> arrayList) {
+    private ArrayList<Integer> applyingSearchOperation(String[] words) {
+        ArrayList<Integer> arrayList = dataContainer.getAddress(words[0]);
         for (int i = 1; i < words.length; i++) {
-            StringBuilder word = new StringBuilder(words[i]);
-            if (word.charAt(0) == '+')
-                arrayList.addAll(wordHashmap.get(word.deleteCharAt(0).toString()));
-            else if (word.charAt(0) == '-')
-                arrayList.removeAll(wordHashmap.get(word.deleteCharAt(0).toString()));
-            else
-                arrayList.retainAll(wordHashmap.get(words[i]));
+            checkType(words[i], arrayList);
         }
+        return arrayList;
+    }
+
+    private void checkType(String word1, ArrayList<Integer> arrayList) {
+        StringBuilder word = new StringBuilder(word1);
+        if (word.charAt(0) == '+')
+            arrayList.addAll(dataContainer.getAddress(word.deleteCharAt(0).toString()));
+        else if (word.charAt(0) == '-')
+            arrayList.removeAll(dataContainer.getAddress(word.deleteCharAt(0).toString()));
+        else
+            arrayList.retainAll(dataContainer.getAddress(word.toString()));
     }
 
     private void sortWordsQuery(String[] words) {
+        // Making "words" an arraylist to sort it
         ArrayList<String> wordAsAnArrayList = new ArrayList<>(Arrays.asList(words));
         wordAsAnArrayList.sort(this.queryComparator);
         for (int i = 0; i < words.length; i++) {
