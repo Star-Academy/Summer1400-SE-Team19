@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DataContainer {
-    private static DataContainer instance = new DataContainer();
-    private HashMap<String, ArrayList<Integer>> allData = new HashMap<>();
+    private static final DataContainer INSTANCE = new DataContainer();
+    private final HashMap<String, ArrayList<Integer>> allData = new HashMap<>();
 
     private DataContainer() {}
 
     public static DataContainer getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     public ArrayList<Integer> getAddress(String fileName) {

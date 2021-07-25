@@ -1,7 +1,9 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
 
 public class Searcher {
-    private DataContainer dataContainer = DataContainer.getInstance();
     private final Comparator<String> queryComparator = (word1, word2) -> {
         if (word1.startsWith("+"))
             return -1;
@@ -13,6 +15,7 @@ public class Searcher {
             return 1;
         return 0;
     };
+    private final DataContainer dataContainer = DataContainer.getInstance();
 
     public void run() {
         String input;
@@ -20,14 +23,9 @@ public class Searcher {
             input = getInput();
             input = processInput(input);
             String[] words = input.split("[ ]+");
-
             sortWordsQuery(words);
-
-            ArrayList<Integer> arrayList = dataContainer.getAddress(words[0]);
-            if (arrayList == null)
-                arrayList = new ArrayList<>();
-            applyingSearchOperation(words, arrayList);
-            System.out.println(arrayList);
+            ArrayList<Integer> results = applyingSearchOperation(words);
+            System.out.println(results);
         }
     }
 
@@ -42,7 +40,8 @@ public class Searcher {
         return input;
     }
 
-    private void applyingSearchOperation(String[] words, ArrayList<Integer> arrayList) {
+    private ArrayList<Integer> applyingSearchOperation(String[] words) {
+        ArrayList<Integer> arrayList = dataContainer.getAddress(words[0]);
         for (int i = 1; i < words.length; i++) {
             StringBuilder word = new StringBuilder(words[i]);
             if (word.charAt(0) == '+')
@@ -52,6 +51,7 @@ public class Searcher {
             else
                 arrayList.retainAll(dataContainer.getAddress(words[i]));
         }
+        return arrayList;
     }
 
     private void sortWordsQuery(String[] words) {
