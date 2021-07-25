@@ -4,18 +4,28 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class Searcher {
-    private final Comparator<String> queryComparator = (word1, word2) -> {
-        if (word1.startsWith("+"))
-            return -1;
-        if (word2.startsWith("+"))
-            return 1;
-        if (word1.startsWith("-"))
-            return -1;
-        if (word2.startsWith("-"))
-            return 1;
-        return 0;
-    };
-    private final DataContainer dataContainer = DataContainer.getInstance();
+    private final Comparator<String> queryComparator;
+    private final DataContainer dataContainer;
+
+    {
+        queryComparator = initializeComparator();
+        dataContainer = DataContainer.getInstance();
+    }
+
+    private Comparator<String> initializeComparator() {
+        return (word1, word2) -> {
+            if (doesHavePriority(word2))
+                return 1;
+            if (doesHavePriority(word1))
+                return -1;
+
+            return 0;
+        };
+    }
+
+    private boolean doesHavePriority(String word2) {
+        return word2.startsWith("+") || word2.startsWith("-");
+    }
 
     public void run() {
         String input;
@@ -43,15 +53,19 @@ public class Searcher {
     private ArrayList<Integer> applyingSearchOperation(String[] words) {
         ArrayList<Integer> arrayList = dataContainer.getAddress(words[0]);
         for (int i = 1; i < words.length; i++) {
-            StringBuilder word = new StringBuilder(words[i]);
-            if (word.charAt(0) == '+')
-                arrayList.addAll(dataContainer.getAddress(word.deleteCharAt(0).toString()));
-            else if (word.charAt(0) == '-')
-                arrayList.removeAll(dataContainer.getAddress(word.deleteCharAt(0).toString()));
-            else
-                arrayList.retainAll(dataContainer.getAddress(words[i]));
+            checkType(words[i], arrayList);
         }
         return arrayList;
+    }
+
+    private void checkType(String word1, ArrayList<Integer> arrayList) {
+        StringBuilder word = new StringBuilder(word1);
+        if (word.charAt(0) == '+')
+            arrayList.addAll(dataContainer.getAddress(word.deleteCharAt(0).toString()));
+        else if (word.charAt(0) == '-')
+            arrayList.removeAll(dataContainer.getAddress(word.deleteCharAt(0).toString()));
+        else
+            arrayList.retainAll(dataContainer.getAddress(word.toString()));
     }
 
     private void sortWordsQuery(String[] words) {
