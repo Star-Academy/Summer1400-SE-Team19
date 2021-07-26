@@ -11,16 +11,16 @@ public class DataContainer {
         return INSTANCE;
     }
 
-    public ArrayList<Integer> getAddress(String fileName) {
-        if (allData.containsKey(fileName))
-            return allData.get(fileName);
+    public ArrayList<Integer> getAddress(String word) {
+        if (allData.containsKey(word))
+            return allData.get(word);
         return new ArrayList<>();
     }
 
     public void addAddress(String word, Integer address) {
         if (!allData.containsKey(word))
             allData.put(word, new ArrayList<>());
-        if (!allData.get(word).contains(address))
+        if (!allData.get(word).contains(address) && !word.equals(""))
             allData.get(word).add(address);
     }
 }
