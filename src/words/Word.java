@@ -2,7 +2,17 @@ package words;
 
 import java.util.ArrayList;
 
-public interface Word {
-    void action(ArrayList<Integer> wordSearchResult, ArrayList<Integer> userSearchResult);
-    String getWordInString();
+public abstract class Word {
+    protected static int priority;
+    protected String word;
+
+    public abstract void action(ArrayList<Integer> wordSearchResult, ArrayList<Integer> userSearchResult);
+
+    public String getWordInString() {
+        return word;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
 }

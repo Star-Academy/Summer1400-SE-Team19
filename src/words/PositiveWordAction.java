@@ -2,10 +2,12 @@ package words;
 
 import java.util.ArrayList;
 
-public class PositiveWord implements Word {
-  private final String word;
+public class PositiveWordAction extends Word {
+    static {
+        priority = 2;
+    }
 
-    public PositiveWord(String word) {
+    public PositiveWordAction(String word) {
         this.word = word.substring(1);
     }
 
@@ -14,8 +16,4 @@ public class PositiveWord implements Word {
         userSearchResult.retainAll(wordSearchResult);
     }
 
-    @Override
-    public String getWordInString() {
-        return word;
-    }
 }

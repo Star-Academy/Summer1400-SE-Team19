@@ -2,10 +2,12 @@ package words;
 
 import java.util.ArrayList;
 
-public class NeutralWord implements Word {
-    private final String word;
+public class NeutralWordAction extends Word  {
+    static {
+        priority = 1;
+    }
 
-    public NeutralWord(String word) {
+    public NeutralWordAction(String word) {
         this.word = word;
     }
 
@@ -14,8 +16,4 @@ public class NeutralWord implements Word {
         userSearchResult.retainAll(wordSearchResult);
     }
 
-    @Override
-    public String getWordInString() {
-        return word;
-    }
 }
