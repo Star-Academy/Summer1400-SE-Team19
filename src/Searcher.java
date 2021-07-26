@@ -12,6 +12,7 @@ public class Searcher {
     {
         dataContainer = DataContainer.getInstance();
     }
+
     private Searcher() {
     }
 
@@ -23,6 +24,9 @@ public class Searcher {
         String input;
         while (true) {
             input = getInput();
+            if (input.equals("#end")) {
+                break;
+            }
             input = processInput(input);
 
             String[] words = input.split("\s+");
