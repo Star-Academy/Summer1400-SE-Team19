@@ -12,7 +12,7 @@ public class NegativeWordAction extends Word  {
     }
 
     @Override
-    public void action(ArrayList<Integer> wordSearchResult, ArrayList<Integer> userSearchResult) {
+    public void filter(ArrayList<Integer> wordSearchResult, ArrayList<Integer> userSearchResult) {
         userSearchResult.removeAll(wordSearchResult);
     }
 

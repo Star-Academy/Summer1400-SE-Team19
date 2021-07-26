@@ -2,22 +2,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DataContainer {
-    private static final DataContainer INSTANCE = new DataContainer();
-    private final HashMap<String, ArrayList<Integer>> allData = new HashMap<>();
+    private final HashMap<String, ArrayList<Integer>> allData;
 
-    private DataContainer() {}
-
-    public static DataContainer getInstance() {
-        return INSTANCE;
+    public DataContainer() {
+        allData = new HashMap<>();
     }
 
-    public ArrayList<Integer> getAddress(String fileName) {
+    public ArrayList<Integer> getFileNames(String fileName) {
         if (allData.containsKey(fileName))
             return allData.get(fileName);
         return new ArrayList<>();
     }
 
-    public void addAddress(String word, Integer address) {
+    public void addFileName(String word, Integer address) {
         if (!allData.containsKey(word))
             allData.put(word, new ArrayList<>());
         if (!allData.get(word).contains(address))

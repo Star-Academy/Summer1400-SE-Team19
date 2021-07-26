@@ -6,19 +6,12 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class Searcher {
-    private static final Searcher INSTANCE = new Searcher();
     private final DataContainer dataContainer;
 
-    {
-        dataContainer = DataContainer.getInstance();
+    public Searcher(DataContainer dataContainer) {
+        this.dataContainer = dataContainer;
     }
 
-    private Searcher() {
-    }
-
-    public static Searcher getINSTANCE() {
-        return INSTANCE;
-    }
 
     public void run() {
         String input;
@@ -27,10 +20,9 @@ public class Searcher {
             if (input.equals("#end")) {
                 break;
             }
-            input = processInput(input);
 
             String[] words = input.split("\s+");
-            ArrayList<Integer> results = dataContainer.getAddress(words[0]);
+            ArrayList<Integer> results = dataContainer.getFileNames(words[0]);
 
             ArrayList<Word> separateWords = getWords(words);
 
@@ -46,15 +38,9 @@ public class Searcher {
         return scanner.nextLine().toLowerCase();
     }
 
-    private String processInput(String input) {
-        input = input.replaceAll("\\+", " +");
-        input = input.replaceAll("-", " -");
-        return input;
-    }
-
     private void mergeSearchResults(ArrayList<Integer> results, ArrayList<Word> separateWords) {
         for (Word separateWord : separateWords) {
-            separateWord.action(dataContainer.getAddress(separateWord.getWordInString()), results);
+            separateWord.filter(dataContainer.getFileNames(separateWord.getWordInString()), results);
         }
     }
 

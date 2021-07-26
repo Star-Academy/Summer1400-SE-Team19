@@ -6,7 +6,7 @@ public abstract class Word {
     protected static int priority;
     protected String word;
 
-    public abstract void action(ArrayList<Integer> wordSearchResult, ArrayList<Integer> userSearchResult);
+    public abstract void filter(ArrayList<Integer> wordSearchResult, ArrayList<Integer> userSearchResult);
 
     public String getWordInString() {
         return word;
