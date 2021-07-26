@@ -1,9 +1,11 @@
-import words.NegativeWord;
-import words.NeutralWord;
-import words.PositiveWord;
+import words.NegativeWordAction;
+import words.NeutralWordAction;
+import words.PositiveWordAction;
 import words.Word;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class TypeChecker {
     ArrayList<Word> words;
@@ -20,9 +22,9 @@ public class TypeChecker {
         for (String word : words) {
             Word wordInObject;
 
-            if (word.charAt(0) == '+') wordInObject = new PositiveWord(word);
-            else if (word.charAt(0) == '-') wordInObject = new NegativeWord(word);
-            else wordInObject = new NeutralWord(word);
+            if (word.charAt(0) == '+') wordInObject = new PositiveWordAction(word);
+            else if (word.charAt(0) == '-') wordInObject = new NegativeWordAction(word);
+            else wordInObject = new NeutralWordAction(word);
 
             this.words.add(wordInObject);
         }
