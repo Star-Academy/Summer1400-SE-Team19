@@ -2,12 +2,12 @@ package words;
 
 import java.util.HashSet;
 
-public class NegativeWordAction implements Word {
+public class NegativeWord implements Word {
     private static final int priority = 3;
     private final String word;
     private  HashSet<Integer> searchResultOfWord;
 
-    public NegativeWordAction(String word) {
+    public NegativeWord(String word) {
         this.word = word.substring(1);
     }
 

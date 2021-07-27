@@ -1,15 +1,15 @@
 package words;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
-public class NeutralWordAction implements Word {
-    private static final int PRIORITY = 2;
+public class PositiveWord implements Word {
+    private static final int PRIORITY = 1;
     private final String word;
-    private  HashSet<Integer> searchResultOfWord;
+    private HashSet<Integer> searchResultOfWord;
 
-    public NeutralWordAction(String word) {
-        this.word = word;
+    public PositiveWord(String word) {
+        this.word = word.substring(1);
+
     }
 
     @Override
@@ -31,4 +31,5 @@ public class NeutralWordAction implements Word {
     public int getPriority() {
         return PRIORITY;
     }
+
 }

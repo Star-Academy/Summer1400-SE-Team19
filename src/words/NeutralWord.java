@@ -1,21 +1,20 @@
 package words;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
-public class PositiveWordAction implements Word {
-    private static final int PRIORITY = 1;
+public class NeutralWord implements Word {
+    private static final int PRIORITY = 2;
     private final String word;
     private HashSet<Integer> searchResultOfWord;
 
-    public PositiveWordAction(String word) {
-        this.word = word.substring(1);
-
+    public NeutralWord(String word) {
+        this.word = word;
     }
 
     @Override
     public void filter(HashSet<Integer> userSearchResult) {
-        userSearchResult.retainAll(this.searchResultOfWord);
+        if (userSearchResult.size() == 0) userSearchResult.addAll(searchResultOfWord);
+        else userSearchResult.retainAll(searchResultOfWord);
     }
 
     @Override
@@ -32,5 +31,4 @@ public class PositiveWordAction implements Word {
     public int getPriority() {
         return PRIORITY;
     }
-
 }
