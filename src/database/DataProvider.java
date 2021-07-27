@@ -1,3 +1,5 @@
+package database;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Objects;
@@ -21,7 +23,6 @@ public class DataProvider {
             try {
                 processInfo(file);
             } catch (FileNotFoundException ignored) {
-
             }
         }
     }
