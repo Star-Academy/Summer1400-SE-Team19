@@ -13,5 +13,4 @@ public class Main {
         dataProvider.initialize();
         new UserInterface(parameterHolder.getUserInterfaceParameters(), new Searcher(dataProvider.getDataContainer())).run();
     }
-
 }

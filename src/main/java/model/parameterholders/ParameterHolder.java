@@ -1,11 +1,11 @@
 package model.parameterholders;
 
 public class ParameterHolder {
-    DataContainerParameters dataContainerParameters;
-    DataProviderParameters dataProviderParameters;
-    MergerParameters mergerParameters;
-    TypeCheckerParameters typeCheckerParameters;
-    UserInterfaceParameters userInterfaceParameters;
+    private DataContainerParameters dataContainerParameters;
+    private DataProviderParameters dataProviderParameters;
+    private MergerParameters mergerParameters;
+    private TypeCheckerParameters typeCheckerParameters;
+    private UserInterfaceParameters userInterfaceParameters;
 
     public DataContainerParameters getDataContainerParameters() {
         return dataContainerParameters;
