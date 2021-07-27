@@ -8,8 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import words.NegativeWord;
 
+@ExtendWith(MockitoExtension.class)
 class SearcherTest {
 
     @Mock
@@ -19,12 +21,12 @@ class SearcherTest {
 
     @BeforeEach
     public void init() {
-        Mock.init();
-        dataContainer.addFileName("wow", 222);
+
     }
 
     @Test
     void search() {
+        dataContainer.addFileName("wow", 222);
         Assertions.assertEquals(dataContainer.getFilesNameWithSearchedWord("wow").size(), 1);
     }
 }
