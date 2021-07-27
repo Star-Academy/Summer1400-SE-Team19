@@ -1,18 +1,11 @@
 package words;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
-public abstract class Word {
-    protected static int priority;
-    protected String word;
-
-    public abstract void filter(ArrayList<Integer> wordSearchResult, ArrayList<Integer> userSearchResult);
-
-    public String getWordInString() {
-        return word;
-    }
-
-    public int getPriority() {
-        return priority;
-    }
+public interface Word {
+    int getPriority();
+    void filter(HashSet<Integer> userSearchResult);
+    String getWordInString();
+    void setSearchResult(HashSet<Integer> searchResultOfWord);
 }

@@ -1,19 +1,33 @@
 package words;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
-public class NegativeWordAction extends Word  {
-    static {
-        priority = 3;
-    }
+public class NegativeWordAction implements Word {
+    private static final int priority = 3;
+    private final String word;
+    private  HashSet<Integer> searchResultOfWord;
 
     public NegativeWordAction(String word) {
         this.word = word.substring(1);
     }
 
     @Override
-    public void filter(ArrayList<Integer> wordSearchResult, ArrayList<Integer> userSearchResult) {
-        userSearchResult.removeAll(wordSearchResult);
+    public void filter(HashSet<Integer> userSearchResult) {
+        userSearchResult.removeAll(this.searchResultOfWord);
     }
 
+    @Override
+    public String getWordInString() {
+        return word;
+    }
+
+    @Override
+    public void setSearchResult(HashSet<Integer> searchResultOfWord) {
+        this.searchResultOfWord = searchResultOfWord;
+    }
+
+    @Override
+    public int getPriority() {
+        return priority;
+    }
 }
