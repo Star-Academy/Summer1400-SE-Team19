@@ -1,8 +1,10 @@
-import database.DataContainer;
-import modifiers.Merger;
-import modifiers.Searcher;
-import modifiers.TypeChecker;
-import words.Word;
+package view;
+
+import controller.modifiers.Merger;
+import controller.modifiers.Searcher;
+import controller.modifiers.TypeChecker;
+import model.parameterholders.UserInterfaceParameters;
+import model.words.Word;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,11 +17,11 @@ public class UserInterface {
     private final Merger merger;
     private final Scanner scanner;
 
-    public UserInterface(DataContainer dataContainer) {
-        searcher = new Searcher(dataContainer);
-        typeChecker = new TypeChecker();
-        merger = new Merger();
-        scanner = new Scanner(System.in);
+    public UserInterface(UserInterfaceParameters userInterfaceParameters, Searcher searcher) {
+        this.searcher = searcher;
+        typeChecker = userInterfaceParameters.getTypeChecker();
+        merger = userInterfaceParameters.getMerger();
+        scanner = userInterfaceParameters.getScanner();
     }
 
     public void run() {

@@ -1,9 +1,10 @@
-package modifiers;
+package controller.modifiers;
 
-import words.NegativeWord;
-import words.NeutralWord;
-import words.PositiveWord;
-import words.Word;
+import model.parameterholders.TypeCheckerParameters;
+import model.words.NegativeWord;
+import model.words.NeutralWord;
+import model.words.PositiveWord;
+import model.words.Word;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,8 +12,8 @@ import java.util.Comparator;
 public class TypeChecker {
     private final ArrayList<Word> wordsInObject;
 
-    public TypeChecker() {
-        wordsInObject = new ArrayList<>();
+    public TypeChecker(TypeCheckerParameters typeCheckerParameters) {
+        wordsInObject = typeCheckerParameters.getWordsInObject();
     }
 
     public ArrayList<Word> separateWords(ArrayList<String> words) {

@@ -1,4 +1,4 @@
-package words;
+package model.words;
 
 import java.util.HashSet;
 

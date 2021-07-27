@@ -1,6 +1,6 @@
-package modifiers;
+package controller.modifiers;
 
-import words.Word;
+import model.words.Word;
 
 import java.util.ArrayList;
 import java.util.HashSet;

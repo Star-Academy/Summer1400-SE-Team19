@@ -1,4 +1,6 @@
-package database;
+package model.database;
+
+import model.parameterholders.DataProviderParameters;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,9 +11,9 @@ public class DataProvider {
     private final DataContainer dataContainer;
     private final File fileDirectory;
 
-    public DataProvider() {
-        dataContainer = new DataContainer();
-        fileDirectory = new File("resources/SampleEnglishData");
+    public DataProvider(DataProviderParameters dataProviderParameters) {
+        dataContainer = dataProviderParameters.getDataContainer();
+        fileDirectory = dataProviderParameters.getFileDirectory();
     }
 
     public DataContainer getDataContainer() {
@@ -23,6 +25,7 @@ public class DataProvider {
             try {
                 processInfo(file);
             } catch (FileNotFoundException ignored) {
+
             }
         }
     }

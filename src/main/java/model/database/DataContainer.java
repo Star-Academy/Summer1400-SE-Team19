@@ -1,4 +1,6 @@
-package database;
+package model.database;
+
+import model.parameterholders.DataContainerParameters;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -6,12 +8,12 @@ import java.util.HashSet;
 public class DataContainer {
     private final HashMap<String, HashSet<Integer>> allData;
 
-    public DataContainer() {
-        allData = new HashMap<>();
+    public DataContainer(DataContainerParameters dataContainerParameters) {
+        allData = dataContainerParameters.getAllData();
     }
 
-    public HashSet<Integer> getFilesNameWithSearchedWord(String fileName) {
-        if (allData.containsKey(fileName)) return allData.get(fileName);
+    public HashSet<Integer> getFilesNameWithSearchedWord(String searchedWord) {
+        if (allData.containsKey(searchedWord)) return allData.get(searchedWord);
         return new HashSet<>();
     }
 
