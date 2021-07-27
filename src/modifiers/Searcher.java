@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Searcher {
-    private DataContainer dataContainer;
+    private final DataContainer dataContainer;
 
     public  Searcher(DataContainer dataContainer) {
         this.dataContainer = dataContainer;

@@ -1,8 +1,8 @@
 package modifiers;
 
-import words.NegativeWordAction;
-import words.NeutralWordAction;
-import words.PositiveWordAction;
+import words.NegativeWord;
+import words.NeutralWord;
+import words.PositiveWord;
 import words.Word;
 
 import java.util.ArrayList;
@@ -19,16 +19,16 @@ public class TypeChecker {
         for (String word : words) {
             Word wordInObject;
 
-            if (word.charAt(0) == '+') wordInObject = new PositiveWordAction(word);
-            else if (word.charAt(0) == '-') wordInObject = new NegativeWordAction(word);
-            else wordInObject = new NeutralWordAction(word);
+            if (word.charAt(0) == '+') wordInObject = new PositiveWord(word);
+            else if (word.charAt(0) == '-') wordInObject = new NegativeWord(word);
+            else wordInObject = new NeutralWord(word);
             wordsInObject.add(wordInObject);
         }
         return sortResult(wordsInObject);
     }
 
     private ArrayList<Word> sortResult(ArrayList<Word> wordsInObject) {
-        Comparator<Word> comparator = Comparator.comparing(Word::getPriority);
+        Comparator<Word> comparator = Comparator.comparing(Word::getPriority).reversed();
         wordsInObject.sort(comparator);
         return wordsInObject;
     }
