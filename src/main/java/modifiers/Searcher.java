@@ -9,7 +9,7 @@ import java.util.HashSet;
 public class Searcher {
     private final DataContainer dataContainer;
 
-    public  Searcher(DataContainer dataContainer) {
+    public Searcher(DataContainer dataContainer) {
         this.dataContainer = dataContainer;
     }
 

@@ -10,8 +10,8 @@ public class DataContainer {
         allData = new HashMap<>();
     }
 
-    public HashSet<Integer> getFilesNameWithSearchedWord(String fileName) {
-        if (allData.containsKey(fileName)) return allData.get(fileName);
+    public HashSet<Integer> getFilesNameWithSearchedWord(String searchedWord) {
+        if (allData.containsKey(searchedWord)) return allData.get(searchedWord);
         return new HashSet<>();
     }
 
