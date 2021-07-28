@@ -1,6 +1,6 @@
-package model.parameterholders;
+package parameterholders;
 
-import model.words.Word;
+import words.Word;
 
 import java.util.ArrayList;
 

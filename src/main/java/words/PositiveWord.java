@@ -1,19 +1,20 @@
-package model.words;
+package words;
 
 import java.util.HashSet;
 
-public class NegativeWord implements Word {
-    private static final int priority = 3;
+public class PositiveWord implements Word {
+    private static final int PRIORITY = 1;
     private final String word;
-    private  HashSet<Integer> searchResultOfWord;
+    private HashSet<Integer> searchResultOfWord;
 
-    public NegativeWord(String word) {
+    public PositiveWord(String word) {
         this.word = word.substring(1);
+
     }
 
     @Override
     public void filter(HashSet<Integer> userSearchResult) {
-        userSearchResult.removeAll(this.searchResultOfWord);
+        userSearchResult.retainAll(this.searchResultOfWord);
     }
 
     @Override
@@ -28,6 +29,7 @@ public class NegativeWord implements Word {
 
     @Override
     public int getPriority() {
-        return priority;
+        return PRIORITY;
     }
+
 }

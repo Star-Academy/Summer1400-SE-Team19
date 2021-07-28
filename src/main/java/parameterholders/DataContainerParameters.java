@@ -1,4 +1,4 @@
-package model.parameterholders;
+package parameterholders;
 
 import java.util.HashMap;
 import java.util.HashSet;

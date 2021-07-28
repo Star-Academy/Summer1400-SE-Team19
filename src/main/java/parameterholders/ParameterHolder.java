@@ -1,4 +1,4 @@
-package model.parameterholders;
+package parameterholders;
 
 public class ParameterHolder {
     private DataContainerParameters dataContainerParameters;

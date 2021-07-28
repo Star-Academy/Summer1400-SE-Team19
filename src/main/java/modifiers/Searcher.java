@@ -1,7 +1,7 @@
-package controller.modifiers;
+package modifiers;
 
-import model.database.DataContainer;
-import model.words.Word;
+import database.DataContainer;
+import words.Word;
 
 import java.util.ArrayList;
 import java.util.HashSet;

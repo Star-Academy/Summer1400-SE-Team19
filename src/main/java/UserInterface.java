@@ -1,10 +1,8 @@
-package view;
-
-import controller.modifiers.Merger;
-import controller.modifiers.Searcher;
-import controller.modifiers.TypeChecker;
-import model.parameterholders.UserInterfaceParameters;
-import model.words.Word;
+import modifiers.Merger;
+import modifiers.Searcher;
+import modifiers.TypeChecker;
+import parameterholders.UserInterfaceParameters;
+import words.Word;
 
 import java.util.ArrayList;
 import java.util.Arrays;

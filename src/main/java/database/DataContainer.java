@@ -1,6 +1,6 @@
-package model.database;
+package database;
 
-import model.parameterholders.DataContainerParameters;
+import parameterholders.DataContainerParameters;
 
 import java.util.HashMap;
 import java.util.HashSet;

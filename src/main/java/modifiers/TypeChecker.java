@@ -1,10 +1,10 @@
-package controller.modifiers;
+package modifiers;
 
-import model.parameterholders.TypeCheckerParameters;
-import model.words.NegativeWord;
-import model.words.NeutralWord;
-import model.words.PositiveWord;
-import model.words.Word;
+import parameterholders.TypeCheckerParameters;
+import words.NegativeWord;
+import words.NeutralWord;
+import words.PositiveWord;
+import words.Word;
 
 import java.util.ArrayList;
 import java.util.Comparator;

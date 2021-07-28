@@ -1,6 +1,6 @@
-package model.database;
+package database;
 
-import model.parameterholders.DataProviderParameters;
+import parameterholders.DataProviderParameters;
 
 import java.io.File;
 import java.io.FileNotFoundException;

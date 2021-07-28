@@ -1,6 +1,6 @@
-package model.parameterholders;
+package parameterholders;
 
-import model.database.DataContainer;
+import database.DataContainer;
 
 import java.io.File;
 

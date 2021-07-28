@@ -1,8 +1,6 @@
-import controller.ParameterHolderInitializer;
-import controller.modifiers.Searcher;
-import model.database.DataProvider;
-import model.parameterholders.ParameterHolder;
-import view.UserInterface;
+import modifiers.Searcher;
+import database.DataProvider;
+import parameterholders.ParameterHolder;
 
 import java.io.FileNotFoundException;
 

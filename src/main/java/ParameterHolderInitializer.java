@@ -1,9 +1,7 @@
-package controller;
-
-import controller.modifiers.Merger;
-import controller.modifiers.TypeChecker;
-import model.database.DataContainer;
-import model.parameterholders.*;
+import modifiers.Merger;
+import modifiers.TypeChecker;
+import database.DataContainer;
+import parameterholders.*;
 
 import java.io.File;
 import java.util.ArrayList;

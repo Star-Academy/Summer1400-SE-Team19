@@ -1,7 +1,7 @@
-package model.parameterholders;
+package parameterholders;
 
-import controller.modifiers.Merger;
-import controller.modifiers.TypeChecker;
+import modifiers.Merger;
+import modifiers.TypeChecker;
 
 import java.util.Scanner;
 
