@@ -1,9 +1,10 @@
 package modifiers;
 
-import org.junit.jupiter.api.Assertions;
+
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.ExtendWith;;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import words.NegativeWord;
@@ -15,8 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doCallRealMethod;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class MergerTest {
@@ -31,22 +31,13 @@ public class MergerTest {
 
     @BeforeEach
     public void init() {
-
-        doCallRealMethod().when(positiveWord).setSearchResult(any());
-        doCallRealMethod().when(negativeWord).setSearchResult(any());
-        doCallRealMethod().when(neutralWord).setSearchResult(any());
-
-        doCallRealMethod().when(positiveWord).filter(any());
-        doCallRealMethod().when(negativeWord).filter(any());
-        doCallRealMethod().when(neutralWord).filter(any());
-
         HashSet<Integer> demoResultForPositiveWord = new HashSet<>(Arrays.asList(1, 2, 3));
         HashSet<Integer> demoResultForNegativeWord = new HashSet<>(Arrays.asList(1, 2, 3, 4));
         HashSet<Integer> demoResultForNeutralWord = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5));
 
-        positiveWord.setSearchResult(demoResultForPositiveWord);
-        neutralWord.setSearchResult(demoResultForNeutralWord);
-        negativeWord.setSearchResult(demoResultForNegativeWord);
+        when(positiveWord.getSearchResult()).thenReturn(demoResultForPositiveWord);
+        when(neutralWord.getSearchResult()).thenReturn(demoResultForNeutralWord);
+        when(negativeWord.getSearchResult()).thenReturn(demoResultForNegativeWord);
 
     }
 

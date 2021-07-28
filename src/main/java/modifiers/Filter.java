@@ -18,7 +18,7 @@ public class Filter {
     }
 
     public void filterNegative(NegativeWord word, HashSet<Integer> result) {
-        result.addAll(word.getSearchResult());
+        result.removeAll(word.getSearchResult());
     }
 
     public void filter(Word word, HashSet<Integer> result) {
