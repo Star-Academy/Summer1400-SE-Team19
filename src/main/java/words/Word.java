@@ -10,4 +10,5 @@ public interface Word {
     void setSearchResult(HashSet<Integer> searchResultOfWord);
 
     HashSet<Integer> getSearchResult();
+
 }
