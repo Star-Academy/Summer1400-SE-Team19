@@ -8,16 +8,16 @@ import words.Word;
 import java.util.HashSet;
 
 public class Filter {
-    public void filterPositive(PositiveWord word, HashSet<Integer> result) {
+    private void filterPositive(PositiveWord word, HashSet<Integer> result) {
         result.addAll(word.getSearchResult());
     }
 
-    public void filterNeutral(NeutralWord word, HashSet<Integer> result) {
+    private void filterNeutral(NeutralWord word, HashSet<Integer> result) {
         if (result.size() == 0) result.addAll(word.getSearchResult());
         else result.retainAll(word.getSearchResult());
     }
 
-    public void filterNegative(NegativeWord word, HashSet<Integer> result) {
+    private void filterNegative(NegativeWord word, HashSet<Integer> result) {
         result.removeAll(word.getSearchResult());
     }
 

@@ -1,4 +1,4 @@
-import modifiers.Merger;
+import modifiers.Filter;
 import modifiers.TypeChecker;
 import database.DataContainer;
 import parameterholders.*;
@@ -28,8 +28,9 @@ public class ParameterHolderInitializer {
     private void initializeUserInterfaceParameters() {
         parameterHolder.setUserInterfaceParameters(new UserInterfaceParameters());
         parameterHolder.getUserInterfaceParameters().setTypeChecker(new TypeChecker(parameterHolder.getTypeCheckerParameters()));
-        parameterHolder.getUserInterfaceParameters().setMerger(new Merger());
         parameterHolder.getUserInterfaceParameters().setScanner(new Scanner(System.in));
+        parameterHolder.getUserInterfaceParameters().setFilter(new Filter());
+        parameterHolder.getUserInterfaceParameters().setResult(new HashSet<>());
     }
 
     private void initializeTypeCheckerParameters() {

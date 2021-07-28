@@ -1,9 +1,8 @@
-import modifiers.Merger;
+import modifiers.Filter;
 import modifiers.Searcher;
 import modifiers.TypeChecker;
 import parameterholders.UserInterfaceParameters;
 import words.Word;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -12,14 +11,16 @@ import java.util.Scanner;
 public class UserInterface {
     private final TypeChecker typeChecker;
     private final Searcher searcher;
-    private final Merger merger;
     private final Scanner scanner;
+    private final Filter filter;
+    private final HashSet<Integer> result;
 
     public UserInterface(UserInterfaceParameters userInterfaceParameters, Searcher searcher) {
         this.searcher = searcher;
         typeChecker = userInterfaceParameters.getTypeChecker();
-        merger = userInterfaceParameters.getMerger();
         scanner = userInterfaceParameters.getScanner();
+        filter = userInterfaceParameters.getFilter();
+        result = userInterfaceParameters.getResult();
     }
 
     public void run() {
@@ -42,8 +43,15 @@ public class UserInterface {
         ArrayList<String> wordsAsArrayList = new ArrayList<>(Arrays.asList(words));
         ArrayList<Word> wordsInObject = typeChecker.separateWords(wordsAsArrayList);
         searcher.search(wordsInObject);
-        return merger.mergeSearchResult(wordsInObject);
+        return mergeSearchResult(wordsInObject);
     }
 
+
+    private HashSet<Integer> mergeSearchResult(ArrayList<Word> words) {
+        for (Word word : words) {
+            filter.filter(word, result);
+        }
+        return result;
+    }
 
 }
