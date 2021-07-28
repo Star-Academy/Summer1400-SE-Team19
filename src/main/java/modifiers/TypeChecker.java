@@ -34,7 +34,7 @@ public class TypeChecker {
     }
 
     private ArrayList<Word> sortResult(ArrayList<Word> wordsInObject) {
-        Comparator<Word> comparator = Comparator.comparing(Word::getPriority).reversed();
+        Comparator<Word> comparator = Comparator.comparing(Word::getPriority);
         wordsInObject.sort(comparator);
         return wordsInObject;
     }

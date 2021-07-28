@@ -12,12 +12,6 @@ public class NeutralWord implements Word {
     }
 
     @Override
-    public void filter(HashSet<Integer> userSearchResult) {
-        if (userSearchResult.size() == 0) userSearchResult.addAll(searchResultOfWord);
-        else userSearchResult.retainAll(searchResultOfWord);
-    }
-
-    @Override
     public String getWordInString() {
         return word;
     }
@@ -25,6 +19,11 @@ public class NeutralWord implements Word {
     @Override
     public void setSearchResult(HashSet<Integer> searchResultOfWord) {
         this.searchResultOfWord = searchResultOfWord;
+    }
+
+    @Override
+    public HashSet<Integer> getSearchResult() {
+        return searchResultOfWord;
     }
 
     @Override

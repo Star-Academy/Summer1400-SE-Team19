@@ -13,13 +13,13 @@ public class PositiveWord implements Word {
     }
 
     @Override
-    public void filter(HashSet<Integer> userSearchResult) {
-        userSearchResult.retainAll(this.searchResultOfWord);
+    public String getWordInString() {
+        return word;
     }
 
     @Override
-    public String getWordInString() {
-        return word;
+    public HashSet<Integer> getSearchResult() {
+        return searchResultOfWord;
     }
 
     @Override

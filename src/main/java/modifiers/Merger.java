@@ -7,14 +7,16 @@ import java.util.HashSet;
 
 public class Merger {
     private final HashSet<Integer> result;
+    private final Filter filter;
 
     public Merger() {
         result = new HashSet<>();
+        filter = new Filter();
     }
 
     public HashSet<Integer> mergeSearchResult(ArrayList<Word> words) {
         for (Word word : words) {
-            word.filter(result);
+            filter.filter(word, result);
         }
         return result;
     }
