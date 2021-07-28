@@ -66,4 +66,14 @@ public class DataContainerTest {
         Assertions.assertTrue(result.contains(123));
     }
 
+    @Test
+    public void addFileNameToRepeatedWord() {
+        HashSet<Integer> result = new HashSet<>();
+        when(demoAllData.containsKey("test")).thenReturn(true);
+        when(demoAllData.get("test")).thenReturn(result);
+        DataContainer dataContainer = new DataContainer(parameters);
+        dataContainer.addFileName("test", 123);
+        Assertions.assertTrue(result.contains(123));
+    }
+
 }
