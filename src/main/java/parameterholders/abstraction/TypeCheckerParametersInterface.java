@@ -1,4 +1,4 @@
-package parameterholders;
+package parameterholders.abstraction;
 
 import words.Word;
 

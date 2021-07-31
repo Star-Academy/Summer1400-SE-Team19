@@ -1,20 +1,22 @@
 package parameterholders;
 
+import parameterholders.abstraction.*;
+
 public class ParameterHolder implements ParameterHolderInterface {
-    private DataContainerParameters dataContainerParameters;
+    private DataContainerParametersInterface dataContainerParametersInterface;
     private DataProviderParametersInterface dataProviderParametersInterface;
     private MergerParametersInterface mergerParametersInterface;
     private TypeCheckerParametersInterface typeCheckerParametersInterface;
     private UserInterfaceParametersInterface userInterfaceParametersInterface;
 
     @Override
-    public DataContainerParameters getDataContainerParameters() {
-        return dataContainerParameters;
+    public DataContainerParametersInterface getDataContainerParametersInterface() {
+        return dataContainerParametersInterface;
     }
 
     @Override
-    public void setDataContainerParameters(DataContainerParameters dataContainerParameters) {
-        this.dataContainerParameters = dataContainerParameters;
+    public void setDataContainerParameters(DataContainerParametersInterface dataContainerParametersInterface) {
+        this.dataContainerParametersInterface = dataContainerParametersInterface;
     }
 
     @Override
@@ -53,7 +55,7 @@ public class ParameterHolder implements ParameterHolderInterface {
     }
 
     @Override
-    public void setUserInterfaceParameters(UserInterfaceParametersInterface userInterfaceParametersInterface) {
+    public void setUserInterfaceParameters(UserInterfaceParameters userInterfaceParametersInterface) {
         this.userInterfaceParametersInterface = userInterfaceParametersInterface;
     }
 }

@@ -1,9 +1,12 @@
-package parameterholders;
+package parameterholders.abstraction;
+
+import parameterholders.DataContainerParameters;
+import parameterholders.UserInterfaceParameters;
 
 public interface ParameterHolderInterface {
-    DataContainerParameters getDataContainerParameters();
+    DataContainerParametersInterface getDataContainerParametersInterface();
 
-    void setDataContainerParameters(DataContainerParameters dataContainerParameters);
+    void setDataContainerParameters(DataContainerParametersInterface dataContainerParametersInterface);
 
     DataProviderParametersInterface getDataProviderParameters();
 
@@ -19,5 +22,5 @@ public interface ParameterHolderInterface {
 
     UserInterfaceParametersInterface getUserInterfaceParameters();
 
-    void setUserInterfaceParameters(UserInterfaceParametersInterface userInterfaceParametersInterface);
+    void setUserInterfaceParameters(UserInterfaceParameters userInterfaceParametersInterface);
 }

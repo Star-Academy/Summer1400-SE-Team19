@@ -1,6 +1,6 @@
 package database;
 
-import parameterholders.DataProviderParametersInterface;
+import parameterholders.abstraction.DataProviderParametersInterface;
 
 import java.io.File;
 import java.io.FileNotFoundException;

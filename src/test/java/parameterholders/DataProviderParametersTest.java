@@ -3,6 +3,7 @@ package parameterholders;
 import database.DataContainer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import parameterholders.abstraction.DataProviderParametersInterface;
 
 import java.io.File;
 

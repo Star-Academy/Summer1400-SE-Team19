@@ -2,6 +2,7 @@ package parameterholders;
 
 import database.DataContainer;
 import database.FileReader;
+import parameterholders.abstraction.DataProviderParametersInterface;
 
 import java.io.File;
 

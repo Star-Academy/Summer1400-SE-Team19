@@ -1,6 +1,7 @@
-package parameterholders;
+package parameterholders.abstraction;
 
 import database.DataContainer;
+import database.FileReader;
 
 import java.io.File;
 
@@ -12,4 +13,8 @@ public interface DataProviderParametersInterface {
     File getFileDirectory();
 
     void setFileDirectory(File fileDirectory);
+
+    FileReader getReader();
+
+    void setReader(FileReader reader);
 }

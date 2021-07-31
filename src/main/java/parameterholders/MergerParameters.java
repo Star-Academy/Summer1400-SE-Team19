@@ -1,5 +1,7 @@
 package parameterholders;
 
+import parameterholders.abstraction.MergerParametersInterface;
+
 import java.util.HashSet;
 
 public class MergerParameters implements MergerParametersInterface {

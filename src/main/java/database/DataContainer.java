@@ -1,6 +1,7 @@
 package database;
 
 import parameterholders.DataContainerParameters;
+import parameterholders.abstraction.DataContainerParametersInterface;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,7 +9,7 @@ import java.util.HashSet;
 public class DataContainer {
     private final HashMap<String, HashSet<Integer>> allData;
 
-    public DataContainer(DataContainerParameters dataContainerParameters) {
+    public DataContainer(DataContainerParametersInterface dataContainerParameters) {
         allData = dataContainerParameters.getAllData();
     }
 

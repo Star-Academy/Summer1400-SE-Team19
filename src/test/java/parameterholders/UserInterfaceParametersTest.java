@@ -4,6 +4,7 @@ import modifiers.Filter;
 import modifiers.TypeChecker;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import parameterholders.abstraction.UserInterfaceParametersInterface;
 
 import java.util.HashSet;
 import java.util.Scanner;

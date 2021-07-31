@@ -1,5 +1,6 @@
 package parameterholders;
 
+import parameterholders.abstraction.TypeCheckerParametersInterface;
 import words.Word;
 
 import java.util.ArrayList;

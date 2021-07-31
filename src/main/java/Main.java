@@ -1,6 +1,6 @@
 import modifiers.Searcher;
 import database.DataProvider;
-import parameterholders.ParameterHolderInterface;
+import parameterholders.abstraction.ParameterHolderInterface;
 
 import java.io.FileNotFoundException;
 

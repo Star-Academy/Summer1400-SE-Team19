@@ -3,19 +3,19 @@ import modifiers.Filter;
 import modifiers.TypeChecker;
 import database.DataContainer;
 import parameterholders.*;
+import parameterholders.abstraction.ParameterHolderInterface;
 
 import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class ParameterHolderInitializer {
-    private final ParameterHolderInterface parameterHolderInterface;
+    private final ParameterHolder parameterHolder;
 
     public ParameterHolderInitializer() {
-        parameterHolderInterface = new ParameterHolder();
+        parameterHolder = new ParameterHolder();
         initializeParameters();
     }
 
@@ -28,36 +28,36 @@ public class ParameterHolderInitializer {
     }
 
     private void initializeUserInterfaceParameters() {
-        parameterHolderInterface.setUserInterfaceParameters(new UserInterfaceParameters());
-        parameterHolderInterface.getUserInterfaceParameters().setTypeChecker(new TypeChecker(parameterHolderInterface.getTypeCheckerParameters()));
-        parameterHolderInterface.getUserInterfaceParameters().setScanner(new Scanner(System.in));
-        parameterHolderInterface.getUserInterfaceParameters().setFilter(new Filter());
-        parameterHolderInterface.getUserInterfaceParameters().setResult(new HashSet<>());
+        parameterHolder.setUserInterfaceParameters(new UserInterfaceParameters());
+        parameterHolder.getUserInterfaceParameters().setTypeChecker(new TypeChecker(parameterHolder.getTypeCheckerParameters()));
+        parameterHolder.getUserInterfaceParameters().setScanner(new Scanner(System.in));
+        parameterHolder.getUserInterfaceParameters().setFilter(new Filter());
+        parameterHolder.getUserInterfaceParameters().setResult(new HashSet<>());
     }
 
     private void initializeTypeCheckerParameters() {
-        parameterHolderInterface.setTypeCheckerParameters(new TypeCheckerParameters());
-        parameterHolderInterface.getTypeCheckerParameters().setWordsInObject(new ArrayList<>());
+        parameterHolder.setTypeCheckerParameters(new TypeCheckerParameters());
+        parameterHolder.getTypeCheckerParameters().setWordsInObject(new ArrayList<>());
     }
 
     private void initializeMergerParameters() {
-        parameterHolderInterface.setMergerParameters(new MergerParameters());
-        parameterHolderInterface.getMergerParameters().setHashSet(new HashSet<>());
+        parameterHolder.setMergerParameters(new MergerParameters());
+        parameterHolder.getMergerParameters().setHashSet(new HashSet<>());
     }
 
     private void initializeDataProviderParameters() {
-        parameterHolderInterface.setDataProviderParameters(new DataProviderParameters());
-        parameterHolderInterface.getDataProviderParameters().setDataContainer(new DataContainer(parameterHolderInterface.getDataContainerParameters()));
-        parameterHolderInterface.getDataProviderParameters().setFileDirectory(new File("resources/SampleEnglishData"));
-        parameterHolderInterface.getDataProviderParameters().setReader(new FileReader(parameterHolderInterface.getDataProviderParameters().getDataContainer()));
+        parameterHolder.setDataProviderParameters(new DataProviderParameters());
+        parameterHolder.getDataProviderParameters().setDataContainer(new DataContainer(parameterHolder.getDataContainerParametersInterface()));
+        parameterHolder.getDataProviderParameters().setFileDirectory(new File("resources/SampleEnglishData"));
+        parameterHolder.getDataProviderParameters().setReader(new FileReader(parameterHolder.getDataProviderParameters().getDataContainer()));
     }
 
     private void initializeDataContainerParameters() {
-        parameterHolderInterface.setDataContainerParameters(new DataContainerParameters());
-        parameterHolderInterface.getDataContainerParameters().setAllData(new HashMap<>());
+        parameterHolder.setDataContainerParameters(new DataContainerParameters());
+        parameterHolder.getDataContainerParametersInterface().setAllData(new HashMap<>());
     }
 
     public ParameterHolderInterface getParameterHolder() {
-        return parameterHolderInterface;
+        return parameterHolder;
     }
 }

@@ -2,6 +2,7 @@ package parameterholders;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import parameterholders.abstraction.TypeCheckerParametersInterface;
 import words.Word;
 
 import java.util.ArrayList;
