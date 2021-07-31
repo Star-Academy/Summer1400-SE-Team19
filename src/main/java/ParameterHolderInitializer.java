@@ -1,3 +1,4 @@
+import database.FileReader;
 import modifiers.Filter;
 import modifiers.TypeChecker;
 import database.DataContainer;
@@ -45,8 +46,9 @@ public class ParameterHolderInitializer {
 
     private void initializeDataProviderParameters() {
         parameterHolder.setDataProviderParameters(new DataProviderParameters());
-        parameterHolder.getDataProviderParameters().setDataContainer(new DataContainer(parameterHolder.getDataContainerParameters()));
+        parameterHolder.getDataProviderParameters().setDataContainer( new DataContainer(parameterHolder.getDataContainerParameters()));
         parameterHolder.getDataProviderParameters().setFileDirectory(new File("resources/SampleEnglishData"));
+        parameterHolder.getDataProviderParameters().setReader(new FileReader(parameterHolder.getDataProviderParameters().getDataContainer()));
     }
 
     private void initializeDataContainerParameters() {
