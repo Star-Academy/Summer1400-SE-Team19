@@ -5,8 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FileReader {
-    private File file;
     private final DataContainer dataContainer;
+    private File file;
     private Scanner scanner;
 
     public FileReader(DataContainer dataContainer) {
@@ -29,10 +29,9 @@ public class FileReader {
 
     public void setFile(File file) {
         this.file = file;
-        try {
-            this.scanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
     }
 }
