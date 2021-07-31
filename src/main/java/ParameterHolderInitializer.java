@@ -57,7 +57,7 @@ public class ParameterHolderInitializer {
         parameterHolder.getDataContainerParametersInterface().setAllData(new HashMap<>());
     }
 
-    public ParameterHolderInterface getParameterHolder() {
+    public ParameterHolder getParameterHolder() {
         return parameterHolder;
     }
 }

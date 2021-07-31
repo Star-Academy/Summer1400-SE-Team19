@@ -3,54 +3,54 @@ package parameterholders;
 import parameterholders.abstraction.*;
 
 public class ParameterHolder implements ParameterHolderInterface {
-    private DataContainerParametersInterface dataContainerParametersInterface;
-    private DataProviderParametersInterface dataProviderParametersInterface;
-    private MergerParametersInterface mergerParametersInterface;
-    private TypeCheckerParametersInterface typeCheckerParametersInterface;
-    private UserInterfaceParametersInterface userInterfaceParametersInterface;
+    private DataContainerParameters dataContainerParametersInterface;
+    private DataProviderParameters dataProviderParametersInterface;
+    private MergerParameters mergerParametersInterface;
+    private TypeCheckerParameters typeCheckerParametersInterface;
+    private UserInterfaceParameters userInterfaceParametersInterface;
 
     @Override
-    public DataContainerParametersInterface getDataContainerParametersInterface() {
+    public DataContainerParameters getDataContainerParametersInterface() {
         return dataContainerParametersInterface;
     }
 
     @Override
-    public void setDataContainerParameters(DataContainerParametersInterface dataContainerParametersInterface) {
+    public void setDataContainerParameters(DataContainerParameters dataContainerParametersInterface) {
         this.dataContainerParametersInterface = dataContainerParametersInterface;
     }
 
     @Override
-    public DataProviderParametersInterface getDataProviderParameters() {
+    public DataProviderParameters getDataProviderParameters() {
         return dataProviderParametersInterface;
     }
 
     @Override
-    public void setDataProviderParameters(DataProviderParametersInterface dataProviderParametersInterface) {
+    public void setDataProviderParameters(DataProviderParameters dataProviderParametersInterface) {
         this.dataProviderParametersInterface = dataProviderParametersInterface;
     }
 
     @Override
-    public MergerParametersInterface getMergerParameters() {
+    public MergerParameters getMergerParameters() {
         return mergerParametersInterface;
     }
 
     @Override
-    public void setMergerParameters(MergerParametersInterface mergerParametersInterface) {
+    public void setMergerParameters(MergerParameters mergerParametersInterface) {
         this.mergerParametersInterface = mergerParametersInterface;
     }
 
     @Override
-    public TypeCheckerParametersInterface getTypeCheckerParameters() {
+    public TypeCheckerParameters getTypeCheckerParameters() {
         return typeCheckerParametersInterface;
     }
 
     @Override
-    public void setTypeCheckerParameters(TypeCheckerParametersInterface typeCheckerParametersInterface) {
+    public void setTypeCheckerParameters(TypeCheckerParameters typeCheckerParametersInterface) {
         this.typeCheckerParametersInterface = typeCheckerParametersInterface;
     }
 
     @Override
-    public UserInterfaceParametersInterface getUserInterfaceParameters() {
+    public UserInterfaceParameters getUserInterfaceParameters() {
         return userInterfaceParametersInterface;
     }
 

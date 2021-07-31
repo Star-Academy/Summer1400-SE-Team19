@@ -1,26 +1,25 @@
 package parameterholders.abstraction;
 
-import parameterholders.DataContainerParameters;
-import parameterholders.UserInterfaceParameters;
+import parameterholders.*;
 
 public interface ParameterHolderInterface {
-    DataContainerParametersInterface getDataContainerParametersInterface();
+    DataContainerParameters getDataContainerParametersInterface();
 
-    void setDataContainerParameters(DataContainerParametersInterface dataContainerParametersInterface);
+    void setDataContainerParameters(DataContainerParameters dataContainerParametersInterface);
 
-    DataProviderParametersInterface getDataProviderParameters();
+    DataProviderParameters getDataProviderParameters();
 
-    void setDataProviderParameters(DataProviderParametersInterface dataProviderParametersInterface);
+    void setDataProviderParameters(DataProviderParameters dataProviderParametersInterface);
 
-    MergerParametersInterface getMergerParameters();
+    MergerParameters getMergerParameters();
 
-    void setMergerParameters(MergerParametersInterface mergerParametersInterface);
+    void setMergerParameters(MergerParameters mergerParametersInterface);
 
-    TypeCheckerParametersInterface getTypeCheckerParameters();
+    TypeCheckerParameters getTypeCheckerParameters();
 
-    void setTypeCheckerParameters(TypeCheckerParametersInterface typeCheckerParametersInterface);
+    void setTypeCheckerParameters(TypeCheckerParameters typeCheckerParametersInterface);
 
-    UserInterfaceParametersInterface getUserInterfaceParameters();
+    UserInterfaceParameters getUserInterfaceParameters();
 
     void setUserInterfaceParameters(UserInterfaceParameters userInterfaceParametersInterface);
 }
