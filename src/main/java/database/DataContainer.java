@@ -19,6 +19,7 @@ public class DataContainer {
 
     public void addFileName(String word, Integer address) {
         if (!allData.containsKey(word))  allData.put(word, new HashSet<>());
+
         allData.get(word).add(address);
     }
 }

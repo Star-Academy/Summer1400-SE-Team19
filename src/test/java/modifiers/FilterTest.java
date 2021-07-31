@@ -2,22 +2,23 @@ package modifiers;
 
 
 import customizedassertions.CollectionsComparator;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import words.NegativeWord;
 import words.NeutralWord;
 import words.PositiveWord;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
 import static org.mockito.Mockito.when;
+
+;
 
 @ExtendWith(MockitoExtension.class)
 public class FilterTest {

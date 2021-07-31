@@ -1,9 +1,11 @@
+import database.FileReader;
 import modifiers.Filter;
 import modifiers.TypeChecker;
 import database.DataContainer;
 import parameterholders.*;
 
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -47,6 +49,7 @@ public class ParameterHolderInitializer {
         parameterHolderInterface.setDataProviderParameters(new DataProviderParameters());
         parameterHolderInterface.getDataProviderParameters().setDataContainer(new DataContainer(parameterHolderInterface.getDataContainerParameters()));
         parameterHolderInterface.getDataProviderParameters().setFileDirectory(new File("resources/SampleEnglishData"));
+        parameterHolderInterface.getDataProviderParameters().setReader(new FileReader(parameterHolderInterface.getDataProviderParameters().getDataContainer()));
     }
 
     private void initializeDataContainerParameters() {

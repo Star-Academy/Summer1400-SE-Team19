@@ -1,12 +1,14 @@
 package parameterholders;
 
 import database.DataContainer;
+import database.FileReader;
 
 import java.io.File;
 
 public class DataProviderParameters implements DataProviderParametersInterface {
     private DataContainer dataContainer;
     private File fileDirectory;
+    private FileReader reader;
 
     @Override
     public DataContainer getDataContainer() {
@@ -26,5 +28,13 @@ public class DataProviderParameters implements DataProviderParametersInterface {
     @Override
     public void setFileDirectory(File fileDirectory) {
         this.fileDirectory = fileDirectory;
+    }
+
+    public FileReader getReader() {
+        return reader;
+    }
+
+    public void setReader(FileReader reader) {
+        this.reader = reader;
     }
 }
