@@ -1,7 +1,7 @@
 package parameterholders.abstraction;
 
-import modifiers.Filter;
 import modifiers.TypeChecker;
+import modifiers.abstraction.Filter;
 
 import java.util.HashSet;
 import java.util.Scanner;

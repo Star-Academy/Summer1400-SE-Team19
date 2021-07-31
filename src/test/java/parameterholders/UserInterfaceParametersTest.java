@@ -14,7 +14,7 @@ public class UserInterfaceParametersTest {
     private UserInterfaceParametersInterface userInterfaceParametersInterface = new UserInterfaceParameters();
     private TypeChecker typeChecker;
     private Scanner scanner;
-    private Filter filter = new Filter();
+    private modifiers.abstraction.Filter filter = new Filter();
     private HashSet<Integer> result = new HashSet<>();
 
     @Test

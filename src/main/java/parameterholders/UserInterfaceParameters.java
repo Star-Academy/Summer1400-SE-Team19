@@ -1,8 +1,8 @@
 package parameterholders;
 
-import modifiers.Filter;
 import modifiers.TypeChecker;
 import parameterholders.abstraction.UserInterfaceParametersInterface;
+import modifiers.abstraction.Filter;
 
 import java.util.HashSet;
 import java.util.Scanner;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class UserInterfaceParameters implements UserInterfaceParametersInterface {
     private TypeChecker typeChecker;
     private Scanner scanner;
-    private Filter filter;
+    private modifiers.abstraction.Filter filter;
     private HashSet<Integer> result;
 
     @Override
@@ -19,7 +19,7 @@ public class UserInterfaceParameters implements UserInterfaceParametersInterface
     }
 
     @Override
-    public void setFilter(Filter filter) {
+    public void setFilter(modifiers.abstraction.Filter filter) {
         this.filter = filter;
     }
 
