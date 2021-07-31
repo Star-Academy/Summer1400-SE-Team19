@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import parameterholders.DataProviderParameters;
+import parameterholders.DataProviderParametersInterface;
 
 import java.io.File;
 
@@ -15,7 +15,7 @@ public class DataProviderTest {
 
 
     @Mock
-    private DataProviderParameters parameters;
+    private DataProviderParametersInterface parameters;
     @Mock
     private File fileDirectory;
     @Mock

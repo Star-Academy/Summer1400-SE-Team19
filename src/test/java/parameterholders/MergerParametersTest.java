@@ -1,26 +1,25 @@
 package parameterholders;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 
 public class MergerParametersTest {
 
-    private MergerParameters mergerParameters = new MergerParameters();
+    private MergerParametersInterface mergerParametersInterface = new MergerParameters();
     private HashSet<Integer> integerHashSet = new HashSet<>();
 
 
     @Test
     public void setHashSetTest() {
-        mergerParameters.setHashSet(integerHashSet);
+        mergerParametersInterface.setHashSet(integerHashSet);
     }
 
     @Test
     public void getHashSetTest() {
-        mergerParameters.setHashSet(integerHashSet);
-        Assertions.assertNotNull(mergerParameters.getHashSet());
-        Assertions.assertEquals(mergerParameters.getHashSet(), integerHashSet);
+        mergerParametersInterface.setHashSet(integerHashSet);
+        Assertions.assertNotNull(mergerParametersInterface.getHashSet());
+        Assertions.assertEquals(mergerParametersInterface.getHashSet(), integerHashSet);
     }
 }

@@ -8,31 +8,31 @@ import java.io.File;
 
 public class DataProviderParametersTest {
 
-    private DataProviderParameters dataProviderParameters = new DataProviderParameters();
+    private DataProviderParametersInterface dataProviderParametersInterface = new DataProviderParameters();
     private DataContainer dataContainer;
     private File fileDirectory;
 
     @Test
     public void setDataContainerTest() {
-        dataProviderParameters.setDataContainer(dataContainer);
+        dataProviderParametersInterface.setDataContainer(dataContainer);
     }
 
     @Test
     public void setFileDirectoryTest() {
-        dataProviderParameters.setFileDirectory(fileDirectory);
+        dataProviderParametersInterface.setFileDirectory(fileDirectory);
     }
 
     @Test
     public void getDataContainerTest() {
-        dataProviderParameters.setDataContainer(dataContainer);
-        Assertions.assertNull(dataProviderParameters.getDataContainer());
-        Assertions.assertEquals(dataContainer, dataProviderParameters.getDataContainer());
+        dataProviderParametersInterface.setDataContainer(dataContainer);
+        Assertions.assertNull(dataProviderParametersInterface.getDataContainer());
+        Assertions.assertEquals(dataContainer, dataProviderParametersInterface.getDataContainer());
     }
 
     @Test
     public void getFileDirectoryTest() {
-        dataProviderParameters.setFileDirectory(fileDirectory);
-        Assertions.assertNull(dataProviderParameters.getFileDirectory());
-        Assertions.assertEquals(fileDirectory, dataProviderParameters.getFileDirectory());
+        dataProviderParametersInterface.setFileDirectory(fileDirectory);
+        Assertions.assertNull(dataProviderParametersInterface.getFileDirectory());
+        Assertions.assertEquals(fileDirectory, dataProviderParametersInterface.getFileDirectory());
     }
 }

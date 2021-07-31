@@ -1,6 +1,6 @@
 package modifiers;
 
-import parameterholders.TypeCheckerParameters;
+import parameterholders.TypeCheckerParametersInterface;
 import words.NegativeWord;
 import words.NeutralWord;
 import words.PositiveWord;
@@ -12,8 +12,8 @@ import java.util.Comparator;
 public class TypeChecker {
     private final ArrayList<Word> wordsInObject;
 
-    public TypeChecker(TypeCheckerParameters typeCheckerParameters) {
-        wordsInObject = typeCheckerParameters.getWordsInObject();
+    public TypeChecker(TypeCheckerParametersInterface typeCheckerParametersInterface) {
+        wordsInObject = typeCheckerParametersInterface.getWordsInObject();
     }
 
     public ArrayList<Word> separateWords(ArrayList<String> words) {

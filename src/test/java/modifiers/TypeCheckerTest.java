@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import parameterholders.TypeCheckerParameters;
+import parameterholders.TypeCheckerParametersInterface;
 import words.NegativeWord;
 import words.NeutralWord;
 import words.PositiveWord;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class TypeCheckerTest {
     @Mock
-    private TypeCheckerParameters parameters;
+    private TypeCheckerParametersInterface parameters;
 
     @BeforeEach
     public void initBeforeEachTest() {

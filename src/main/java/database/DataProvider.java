@@ -1,6 +1,6 @@
 package database;
 
-import parameterholders.DataProviderParameters;
+import parameterholders.DataProviderParametersInterface;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,9 +11,9 @@ public class DataProvider {
     private final DataContainer dataContainer;
     private final File fileDirectory;
 
-    public DataProvider(DataProviderParameters dataProviderParameters) {
-        dataContainer = dataProviderParameters.getDataContainer();
-        fileDirectory = dataProviderParameters.getFileDirectory();
+    public DataProvider(DataProviderParametersInterface dataProviderParametersInterface) {
+        dataContainer = dataProviderParametersInterface.getDataContainer();
+        fileDirectory = dataProviderParametersInterface.getFileDirectory();
     }
 
     public DataContainer getDataContainer() {

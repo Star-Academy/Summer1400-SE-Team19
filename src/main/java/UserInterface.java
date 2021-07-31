@@ -1,7 +1,7 @@
 import modifiers.Filter;
 import modifiers.Searcher;
 import modifiers.TypeChecker;
-import parameterholders.UserInterfaceParameters;
+import parameterholders.UserInterfaceParametersInterface;
 import words.Word;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,12 +15,12 @@ public class UserInterface {
     private final Filter filter;
     private final HashSet<Integer> result;
 
-    public UserInterface(UserInterfaceParameters userInterfaceParameters, Searcher searcher) {
+    public UserInterface(UserInterfaceParametersInterface userInterfaceParametersInterface, Searcher searcher) {
         this.searcher = searcher;
-        typeChecker = userInterfaceParameters.getTypeChecker();
-        scanner = userInterfaceParameters.getScanner();
-        filter = userInterfaceParameters.getFilter();
-        result = userInterfaceParameters.getResult();
+        typeChecker = userInterfaceParametersInterface.getTypeChecker();
+        scanner = userInterfaceParametersInterface.getScanner();
+        filter = userInterfaceParametersInterface.getFilter();
+        result = userInterfaceParametersInterface.getResult();
     }
 
     public void run() {

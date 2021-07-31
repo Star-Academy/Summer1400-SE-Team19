@@ -1,14 +1,14 @@
 import modifiers.Searcher;
 import database.DataProvider;
-import parameterholders.ParameterHolder;
+import parameterholders.ParameterHolderInterface;
 
 import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        ParameterHolder parameterHolder = new ParameterHolderInitializer().getParameterHolder();
-        DataProvider dataProvider = new DataProvider(parameterHolder.getDataProviderParameters());
+        ParameterHolderInterface parameterHolderInterface = new ParameterHolderInitializer().getParameterHolder();
+        DataProvider dataProvider = new DataProvider(parameterHolderInterface.getDataProviderParameters());
         dataProvider.initialize();
-        new UserInterface(parameterHolder.getUserInterfaceParameters(), new Searcher(dataProvider.getDataContainer())).run();
+        new UserInterface(parameterHolderInterface.getUserInterfaceParameters(), new Searcher(dataProvider.getDataContainer())).run();
     }
 }

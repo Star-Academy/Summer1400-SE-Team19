@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class UserInterfaceParametersTest {
 
-    private UserInterfaceParameters userInterfaceParameters = new UserInterfaceParameters();
+    private UserInterfaceParametersInterface userInterfaceParametersInterface = new UserInterfaceParameters();
     private TypeChecker typeChecker;
     private Scanner scanner;
     private Filter filter = new Filter();
@@ -18,49 +18,49 @@ public class UserInterfaceParametersTest {
 
     @Test
     public void setTypeCheckerTest() {
-        userInterfaceParameters.setTypeChecker(typeChecker);
+        userInterfaceParametersInterface.setTypeChecker(typeChecker);
     }
 
     @Test
     public void setScannerTest() {
-        userInterfaceParameters.setScanner(scanner);
+        userInterfaceParametersInterface.setScanner(scanner);
     }
 
     @Test
     public void setFilterTest() {
-        userInterfaceParameters.setFilter(filter);
+        userInterfaceParametersInterface.setFilter(filter);
     }
 
     @Test
     public void setResultTest() {
-        userInterfaceParameters.setResult(result);
+        userInterfaceParametersInterface.setResult(result);
     }
 
     @Test
     public void getTypeCheckerTest() {
-        userInterfaceParameters.setTypeChecker(typeChecker);
-        Assertions.assertNull(userInterfaceParameters.getTypeChecker());
-        Assertions.assertEquals(userInterfaceParameters.getTypeChecker(), typeChecker);
+        userInterfaceParametersInterface.setTypeChecker(typeChecker);
+        Assertions.assertNull(userInterfaceParametersInterface.getTypeChecker());
+        Assertions.assertEquals(userInterfaceParametersInterface.getTypeChecker(), typeChecker);
     }
 
     @Test
     public void getScannerTest() {
-        userInterfaceParameters.setScanner(scanner);
-        Assertions.assertNull(userInterfaceParameters.getScanner());
-        Assertions.assertEquals(userInterfaceParameters.getScanner(), scanner);
+        userInterfaceParametersInterface.setScanner(scanner);
+        Assertions.assertNull(userInterfaceParametersInterface.getScanner());
+        Assertions.assertEquals(userInterfaceParametersInterface.getScanner(), scanner);
     }
 
     @Test
     public void getFilterTest() {
-        userInterfaceParameters.setFilter(filter);
-        Assertions.assertNotNull(userInterfaceParameters.getFilter());
-        Assertions.assertEquals(userInterfaceParameters.getFilter(), filter);
+        userInterfaceParametersInterface.setFilter(filter);
+        Assertions.assertNotNull(userInterfaceParametersInterface.getFilter());
+        Assertions.assertEquals(userInterfaceParametersInterface.getFilter(), filter);
     }
 
     @Test
     public void getResultTest() {
-        userInterfaceParameters.setResult(result);
-        Assertions.assertNotNull(userInterfaceParameters.getResult());
-        Assertions.assertEquals(userInterfaceParameters.getResult(), result);
+        userInterfaceParametersInterface.setResult(result);
+        Assertions.assertNotNull(userInterfaceParametersInterface.getResult());
+        Assertions.assertEquals(userInterfaceParametersInterface.getResult(), result);
     }
 }
