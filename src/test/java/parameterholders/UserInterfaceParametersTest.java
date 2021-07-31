@@ -13,7 +13,7 @@ public class UserInterfaceParametersTest {
     private UserInterfaceParameters userInterfaceParameters = new UserInterfaceParameters();
     private TypeChecker typeChecker;
     private Scanner scanner;
-    private Filter filter = new Filter();
+    private modifiers.abstraction.Filter filter = new Filter();
     private HashSet<Integer> result = new HashSet<>();
 
     @Test

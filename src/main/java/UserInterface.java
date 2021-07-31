@@ -1,6 +1,6 @@
-import modifiers.Filter;
 import modifiers.Searcher;
 import modifiers.TypeChecker;
+import modifiers.abstraction.Filter;
 import parameterholders.UserInterfaceParameters;
 import words.Word;
 import java.util.ArrayList;
