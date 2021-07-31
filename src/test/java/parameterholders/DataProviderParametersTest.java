@@ -2,24 +2,25 @@ package parameterholders;
 
 import database.DataContainer;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import parameterholders.abstraction.DataProviderParametersInterface;
 
 import java.io.File;
 
 public class DataProviderParametersTest {
 
-    private DataProviderParametersInterface dataProviderParametersInterface = new DataProviderParameters();
-    private DataContainer dataContainer;
-    private File fileDirectory;
+    private static final DataProviderParametersInterface
+            dataProviderParametersInterface = new DataProviderParameters();
+    @Mock
+    private static DataContainer dataContainer;
+    @Mock
+    private static File fileDirectory;
 
-    @Test
-    public void setDataContainerTest() {
+    @BeforeAll
+    public static void init() {
         dataProviderParametersInterface.setDataContainer(dataContainer);
-    }
-
-    @Test
-    public void setFileDirectoryTest() {
         dataProviderParametersInterface.setFileDirectory(fileDirectory);
     }
 

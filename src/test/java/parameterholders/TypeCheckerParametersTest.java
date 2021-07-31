@@ -2,14 +2,19 @@ package parameterholders;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import parameterholders.abstraction.TypeCheckerParametersInterface;
 import words.Word;
 
 import java.util.ArrayList;
 
+@ExtendWith(MockitoExtension.class)
 public class TypeCheckerParametersTest {
-    private TypeCheckerParametersInterface typeCheckerParametersInterface = new TypeCheckerParameters();
-    private ArrayList<Word> wordArrayList = new ArrayList<>();
+    private final TypeCheckerParametersInterface typeCheckerParametersInterface = new TypeCheckerParameters();
+    @Mock
+    private ArrayList<Word> wordArrayList;
 
 
     @Test
