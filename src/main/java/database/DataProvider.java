@@ -25,12 +25,22 @@ public class DataProvider {
     public void initialize() {
         for (File file : Objects.requireNonNull(fileDirectory.listFiles())) {
             try {
-                reader.setFile(file);
-                reader.setScanner(new Scanner(file));
-                reader.read();
+                callFileReader(initializeCustomScanner(file));
             } catch (FileNotFoundException ignored) {
             }
         }
+    }
+
+    private CustomScanner initializeCustomScanner(File file) throws FileNotFoundException {
+        CustomScanner customScanner = new CustomScanner();
+        customScanner.setFile(file);
+        customScanner.setScanner(new Scanner(file));
+        return customScanner;
+    }
+
+    private void callFileReader(CustomScanner customScanner) throws FileNotFoundException {
+        reader.setCustomScanner(customScanner);
+        reader.read();
     }
 
 

@@ -1,37 +1,38 @@
 package database;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class FileReader {
     private final DataContainer dataContainer;
-    private File file;
-    private Scanner scanner;
+    private CustomScanner customScanner;
 
     public FileReader(DataContainer dataContainer) {
         this.dataContainer = dataContainer;
     }
 
+    public void setCustomScanner(CustomScanner customScanner) {
+        this.customScanner = customScanner;
+    }
 
     public void read() throws FileNotFoundException {
-        int fileName = Integer.parseInt(file.getName());
-        while (scanner.hasNext()) {
-            addWordToDataContainer(fileName, scanner);
+        int fileName = Integer.parseInt(customScanner.getFileName());
+        while (customScanner.hasNext()) {
+            addWordToDataContainer(fileName);
         }
     }
 
-    private void addWordToDataContainer(int fileName, Scanner scanner) {
-        String word = scanner.next().toLowerCase();
+    private void addWordToDataContainer(int fileName) {
+        String word = customScanner.getNext().toLowerCase();
         word = word.replaceAll("[^a-zA-Z0-9]", "");
-        dataContainer.addFileName(word, fileName);
+        addFileName(word, fileName);
     }
 
-    public void setFile(File file) {
-        this.file = file;
-    }
-
-    public void setScanner(Scanner scanner) {
-        this.scanner = scanner;
+    private void addFileName(String word, Integer address) {
+        HashMap<String, HashSet<Integer>> allData = dataContainer.getAllData();
+        if (!allData.containsKey(word))  allData.put(word, new HashSet<>());
+        dataContainer.getWordAddresses(word).add(address);
     }
 }

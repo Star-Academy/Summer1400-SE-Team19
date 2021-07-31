@@ -17,6 +17,8 @@ public class Searcher {
         for (Word word : words) {
             String wordInString = word.getWordInString();
             HashSet<Integer> searchResult = dataContainer.getFilesNameWithSearchedWord(wordInString);
+            if (searchResult == null)
+                searchResult = new HashSet<>();
             word.setSearchResult(searchResult);
         }
     }

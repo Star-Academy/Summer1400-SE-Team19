@@ -1,49 +1,54 @@
 package database;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import parameterholders.DataContainerParameters;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-
 public class FileReaderTest {
-
     @Mock
-    File file;
+    private DataContainer dataContainer;
     @Mock
-    DataContainer dataContainer;
+    private CustomScanner customScanner;
 
     @BeforeEach
     public void init() {
-        when(file.getName()).thenReturn("1");
+
     }
 
     @Test
-    public void avoidNonAlphabeticalSignsTest() {
+    public void addAddressForExistingWordTest() {
         FileReader fileReader = new FileReader(dataContainer);
-        fileReader.setFile(file);
-        try {
-            fileReader.setScanner(new Scanner(file));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        String input = "one two three";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        fileReader.setCustomScanner(customScanner);
+        when(customScanner.hasNext()).thenReturn(true).thenReturn(false);
+        HashSet<Integer> demoResult = new HashSet<>(Arrays.asList(1, 2, 3));
+        HashMap<String, HashSet<Integer>> demoAllData = new HashMap<>();
+        demoAllData.put("test", demoResult);
+        when(customScanner.getFileName()).thenReturn("7");
+        when(dataContainer.getAllData()).thenReturn(demoAllData);
+        when(customScanner.getNext()).thenReturn("test");
         try {
             fileReader.read();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException ignored) {
         }
+        verify(dataContainer, times(1)).getWordAddresses(any());
+    }
+
+    @Test
+    public void addAddressForNonExistingWordTest() {
+
     }
 }

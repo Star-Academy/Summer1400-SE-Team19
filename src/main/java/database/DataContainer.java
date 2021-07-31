@@ -14,12 +14,16 @@ public class DataContainer {
     }
 
     public HashSet<Integer> getFilesNameWithSearchedWord(String searchedWord) {
-        if (allData.containsKey(searchedWord)) return allData.get(searchedWord);
-        return new HashSet<>();
+        return allData.get(searchedWord);
+
     }
 
-    public void addFileName(String word, Integer address) {
-        if (!allData.containsKey(word))  allData.put(word, new HashSet<>());
-        allData.get(word).add(address);
+    public HashMap<String, HashSet<Integer>> getAllData() {
+        return allData;
     }
+
+    public HashSet<Integer> getWordAddresses(String word) {
+        return allData.get(word);
+    }
+
 }
