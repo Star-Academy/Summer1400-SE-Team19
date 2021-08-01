@@ -15,7 +15,6 @@ public class DataContainer {
 
     public HashSet<Integer> getFilesNameWithSearchedWord(String searchedWord) {
         return allData.get(searchedWord);
-
     }
 
     public HashMap<String, HashSet<Integer>> getAllData() {
@@ -25,5 +24,4 @@ public class DataContainer {
     public HashSet<Integer> getWordAddresses(String word) {
         return allData.get(word);
     }
-
 }

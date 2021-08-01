@@ -28,18 +28,24 @@ class SearcherTest {
 
     private HashSet<Integer> results;
 
-    @BeforeEach
-    public void init() {
+    @Test
+    void searchNotNullTest() {
         HashSet<Integer> demoResult = new HashSet<>(Arrays.asList(1, 2, 3));
         when(dataContainer.getFilesNameWithSearchedWord("test")).thenReturn(demoResult);
         when(sampleWord.getWordInString()).thenReturn("test");
         doAnswer((invocation -> results = invocation.getArgument(0))).when(sampleWord).setSearchResult(any());
-    }
-
-    @Test
-    void searchTest() {
         Searcher searcher = new Searcher(dataContainer);
         searcher.search(new ArrayList<>(Collections.singletonList(sampleWord)));
         Assertions.assertEquals(results.size(), 3);
+    }
+
+    @Test
+    void searcherNullTest() {
+        when(dataContainer.getFilesNameWithSearchedWord("test")).thenReturn(null);
+        when(sampleWord.getWordInString()).thenReturn("test");
+        doAnswer((invocation -> results = invocation.getArgument(0))).when(sampleWord).setSearchResult(any());
+        Searcher searcher = new Searcher(dataContainer);
+        searcher.search(new ArrayList<>(Collections.singletonList(sampleWord)));
+        Assertions.assertEquals(results.size(), 0);
     }
 }

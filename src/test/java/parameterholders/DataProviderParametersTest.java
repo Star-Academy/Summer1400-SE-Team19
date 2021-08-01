@@ -1,6 +1,7 @@
 package parameterholders;
 
 import database.DataContainer;
+import database.FileReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,18 +12,15 @@ import java.io.File;
 
 public class DataProviderParametersTest {
 
-    private static final DataProviderParametersInterface
+    private final DataProviderParametersInterface
             dataProviderParametersInterface = new DataProviderParameters();
     @Mock
-    private static DataContainer dataContainer;
+    private DataContainer dataContainer;
     @Mock
-    private static File fileDirectory;
+    private File fileDirectory;
+    @Mock
+    private FileReader reader;
 
-    @BeforeAll
-    public static void init() {
-        dataProviderParametersInterface.setDataContainer(dataContainer);
-        dataProviderParametersInterface.setFileDirectory(fileDirectory);
-    }
 
     @Test
     public void getDataContainerTest() {
@@ -36,5 +34,12 @@ public class DataProviderParametersTest {
         dataProviderParametersInterface.setFileDirectory(fileDirectory);
         Assertions.assertNull(dataProviderParametersInterface.getFileDirectory());
         Assertions.assertEquals(fileDirectory, dataProviderParametersInterface.getFileDirectory());
+    }
+
+    @Test
+    public void getFileReaderTest() {
+        dataProviderParametersInterface.setReader(reader);
+        Assertions.assertNull(dataProviderParametersInterface.getReader());
+        Assertions.assertEquals(reader, dataProviderParametersInterface.getReader());
     }
 }
