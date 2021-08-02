@@ -7,16 +7,20 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Searcher {
-    private final DataContainer dataContainer;
+    private DataContainer dataContainer;
 
-    public Searcher(DataContainer dataContainer) {
+    public DataContainer getDataContainer() {
+        return dataContainer;
+    }
+
+    public void setDataContainer(DataContainer dataContainer) {
         this.dataContainer = dataContainer;
     }
 
     public void search(ArrayList<Word> words) {
         for (Word word : words) {
-            String wordInString = word.getWordInString();
-            HashSet<Integer> searchResult = dataContainer.getFilesNameWithSearchedWord(wordInString);
+            String wordString = word.getWordInString();
+            HashSet<Integer> searchResult = dataContainer.getFilesNameWithSearchedWord(wordString);
             if (searchResult == null)
                 searchResult = new HashSet<>();
             word.setSearchResult(searchResult);

@@ -1,5 +1,6 @@
 package parameterholders.abstraction;
 
+import modifiers.Searcher;
 import modifiers.TypeChecker;
 import modifiers.abstraction.Filter;
 
@@ -22,4 +23,8 @@ public interface UserInterfaceParametersInterface {
     Scanner getScanner();
 
     void setScanner(Scanner scanner);
+
+    Searcher getSearcher();
+
+    void setSearcher(Searcher searcher);
 }

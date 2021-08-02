@@ -1,7 +1,6 @@
 package parameterholders;
 
 import parameterholders.abstraction.DataContainerParametersInterface;
-
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -17,6 +16,5 @@ public class DataContainerParameters implements DataContainerParametersInterface
     public void setAllData(HashMap<String, HashSet<Integer>> allData) {
         this.allData = allData;
     }
-
 
 }

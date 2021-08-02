@@ -1,3 +1,4 @@
+import database.DataContainer;
 import modifiers.Searcher;
 import modifiers.TypeChecker;
 import parameterholders.abstraction.UserInterfaceParametersInterface;
@@ -16,8 +17,8 @@ public class UserInterface {
     private final Filter filter;
     private final HashSet<Integer> result;
 
-    public UserInterface(UserInterfaceParametersInterface userInterfaceParametersInterface, Searcher searcher) {
-        this.searcher = searcher;
+    public UserInterface(UserInterfaceParametersInterface userInterfaceParametersInterface) {
+        searcher = userInterfaceParametersInterface.getSearcher();
         typeChecker = userInterfaceParametersInterface.getTypeChecker();
         scanner = userInterfaceParametersInterface.getScanner();
         filter = userInterfaceParametersInterface.getFilter();

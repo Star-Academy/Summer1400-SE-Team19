@@ -26,7 +26,8 @@ public class DataProvider {
         for (File file : Objects.requireNonNull(fileDirectory.listFiles())) {
             try {
                 callFileReader(initializeCustomScanner(file));
-            } catch (FileNotFoundException ignored) {
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
         }
     }

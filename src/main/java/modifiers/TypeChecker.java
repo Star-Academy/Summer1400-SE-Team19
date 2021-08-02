@@ -18,8 +18,7 @@ public class TypeChecker {
 
     public ArrayList<Word> separateWords(ArrayList<String> words) {
         for (String word : words) {
-            Word wordInObject;
-            wordInObject = checkWordCondition(word);
+            Word wordInObject = checkWordCondition(word);
             wordsInObject.add(wordInObject);
         }
         return sortResult(wordsInObject);
@@ -34,8 +33,9 @@ public class TypeChecker {
     }
 
     private ArrayList<Word> sortResult(ArrayList<Word> wordsInObject) {
+        ArrayList<Word> result = new ArrayList<>(wordsInObject);
         Comparator<Word> comparator = Comparator.comparing(Word::getPriority);
-        wordsInObject.sort(comparator);
-        return wordsInObject;
+        result.sort(comparator);
+        return result;
     }
 }

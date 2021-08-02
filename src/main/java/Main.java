@@ -10,6 +10,7 @@ public class Main {
         ParameterHolder parameterHolderInterface = new ParameterHolderInitializer().getParameterHolder();
         DataProvider dataProvider = new DataProvider(parameterHolderInterface.getDataProviderParameters());
         dataProvider.initialize();
-        new UserInterface(parameterHolderInterface.getUserInterfaceParameters(), new Searcher(dataProvider.getDataContainer())).run();
+        UserInterface userInterface = new UserInterface(parameterHolderInterface.getUserInterfaceParameters());
+        userInterface.run();
     }
 }

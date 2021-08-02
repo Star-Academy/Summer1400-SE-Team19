@@ -34,7 +34,7 @@ class SearcherTest {
         when(dataContainer.getFilesNameWithSearchedWord("test")).thenReturn(demoResult);
         when(sampleWord.getWordInString()).thenReturn("test");
         doAnswer((invocation -> results = invocation.getArgument(0))).when(sampleWord).setSearchResult(any());
-        Searcher searcher = new Searcher(dataContainer);
+        Searcher searcher = new Searcher();
         searcher.search(new ArrayList<>(Collections.singletonList(sampleWord)));
         Assertions.assertEquals(results.size(), 3);
     }
@@ -44,7 +44,7 @@ class SearcherTest {
         when(dataContainer.getFilesNameWithSearchedWord("test")).thenReturn(null);
         when(sampleWord.getWordInString()).thenReturn("test");
         doAnswer((invocation -> results = invocation.getArgument(0))).when(sampleWord).setSearchResult(any());
-        Searcher searcher = new Searcher(dataContainer);
+        Searcher searcher = new Searcher();
         searcher.search(new ArrayList<>(Collections.singletonList(sampleWord)));
         Assertions.assertEquals(results.size(), 0);
     }

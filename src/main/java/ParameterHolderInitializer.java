@@ -1,5 +1,6 @@
 import database.FileReader;
 import modifiers.Filter;
+import modifiers.Searcher;
 import modifiers.TypeChecker;
 import database.DataContainer;
 import parameterholders.*;
@@ -33,6 +34,9 @@ public class ParameterHolderInitializer {
         parameterHolder.getUserInterfaceParameters().setScanner(new Scanner(System.in));
         parameterHolder.getUserInterfaceParameters().setFilter(new Filter());
         parameterHolder.getUserInterfaceParameters().setResult(new HashSet<>());
+        parameterHolder.getUserInterfaceParameters().setSearcher(new Searcher());
+        parameterHolder.getUserInterfaceParameters().getSearcher().setDataContainer(
+                parameterHolder.getDataProviderParameters().getDataContainer());
     }
 
     private void initializeTypeCheckerParameters() {

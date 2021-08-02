@@ -1,5 +1,6 @@
 package parameterholders;
 
+import modifiers.Searcher;
 import modifiers.TypeChecker;
 import parameterholders.abstraction.UserInterfaceParametersInterface;
 import modifiers.abstraction.Filter;
@@ -12,6 +13,7 @@ public class UserInterfaceParameters implements UserInterfaceParametersInterface
     private Scanner scanner;
     private modifiers.abstraction.Filter filter;
     private HashSet<Integer> result;
+    private Searcher searcher;
 
     @Override
     public Filter getFilter() {
@@ -51,5 +53,15 @@ public class UserInterfaceParameters implements UserInterfaceParametersInterface
     @Override
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
+    }
+
+    @Override
+    public Searcher getSearcher() {
+        return searcher;
+    }
+
+    @Override
+    public void setSearcher(Searcher searcher) {
+        this.searcher = searcher;
     }
 }
