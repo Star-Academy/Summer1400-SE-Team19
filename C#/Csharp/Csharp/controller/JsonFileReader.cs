@@ -22,5 +22,10 @@ namespace Csharp.controller
             var model = JsonConvert.DeserializeObject<List<Grade>>(json);
             Grade.AllGrades = model;
         }
+
+        public void Read<T>(string address)
+        {
+            
+        }
     }
 }
