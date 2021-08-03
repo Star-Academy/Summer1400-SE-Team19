@@ -7,23 +7,30 @@ namespace Csharp.controller
 {
     public class JsonFileReader : IReader
     {
-        public void ReadStudents(string address)
+        private readonly StreamReader _studentsStreamReader;
+        private readonly StreamReader _gradesStreamReader;
+
+        public JsonFileReader(ParameterHolder parameterHolder)
         {
-            var json = MakeStringJson(address);
+            _studentsStreamReader = parameterHolder.StudentsStreamReader;
+            _gradesStreamReader = parameterHolder.GradesStreamReader;
+        }
+        public void ReadStudents()
+        {
+            var json = MakeStringJson(_studentsStreamReader);
             var model = JsonConvert.DeserializeObject<List<Student>>(json);
             Student.AllStudents = model;
         }
-        public void ReadGrades(string address)
+        public void ReadGrades()
         {
-            var json = MakeStringJson(address);
+            var json = MakeStringJson(_gradesStreamReader);
             var model = JsonConvert.DeserializeObject<List<Grade>>(json);
             Grade.AllGrades = model;
         }
         
         
-        private static string MakeStringJson(string address)
+        private static string MakeStringJson(StreamReader streamReader)
         {
-            using StreamReader streamReader = new StreamReader(address);
             string json = streamReader.ReadToEnd();
             return json;
         }

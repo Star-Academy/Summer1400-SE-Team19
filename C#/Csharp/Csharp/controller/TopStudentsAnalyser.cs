@@ -4,40 +4,44 @@ using Csharp.model;
 
 namespace Csharp.controller
 {
-    public class TopStudentsAnalyser : IDataAnalyser<Student>
+    public class TopStudentsAnalyser : IDataAnalyser<Student, double>
     {
-        public Dictionary<Student, List<Grade>> StudentGradesDictionary { get; set; }
-        public Dictionary<Student, double> StudentGpaDictionary;
+        private Dictionary<Student, List<Grade>> _studentGradesDictionary;
+        private readonly Dictionary<Student, double> _studentGpaDictionary;
+        private readonly IDataProvider<Student, Grade> _studentsAndGradesProvider;
+        private readonly Dictionary<Student, double> _topStudents;
 
-        public List<Student> Analyse()
+        public TopStudentsAnalyser(ParameterHolder parameterHolder)
         {
-            IDataProvider<Student, Grade> studentsAndGradesProvider = new StudentsAndGradesProvider();
-            StudentGradesDictionary = studentsAndGradesProvider.Provide(Student.AllStudents, Grade.AllGrades);
+            _studentGpaDictionary = parameterHolder.StudentGpaDictionary;
+            _studentsAndGradesProvider = parameterHolder.StudentsAndGradesProvider;
+            _topStudents = parameterHolder.TopStudents;
+        }
+
+        public Dictionary<Student, double> Analyse()
+        {
+            _studentGradesDictionary = _studentsAndGradesProvider.Provide(Student.AllStudents, Grade.AllGrades);
             CalculateGpaForEachStudent();
             return SelectTopStudents(3);
         }
 
-        private List<Student> SelectTopStudents(int numberOfStudents)
+        private Dictionary<Student, double> SelectTopStudents(int numberOfStudents)
         {
-            List<Student> topStudents = new List<Student>();
             for (int i = 0; i < numberOfStudents; i++)
             {
-                Student topStudent = StudentGpaDictionary.OrderByDescending(x => x.Value).Skip(i).First().Key;
-                topStudents.Add(topStudent);
+                var topStudent = _studentGpaDictionary.OrderByDescending(x => x.Value).Skip(i).First();
+                _topStudents.Add(topStudent.Key, topStudent.Value);
             }
 
-            return topStudents;
+            return _topStudents;
         }
 
         private void CalculateGpaForEachStudent()
         {
-            StudentGpaDictionary = new Dictionary<Student, double>();
-            foreach (var iterator in StudentGradesDictionary)
+            foreach (var (student, grades) in _studentGradesDictionary)
             {
-                var student = iterator.Key;
-                var grades = iterator.Value;
                 double gpa = grades.Average(g => g.Score);
-                StudentGpaDictionary.Add(student, gpa);
+                _studentGpaDictionary.Add(student, gpa);
             }
         }
     }
