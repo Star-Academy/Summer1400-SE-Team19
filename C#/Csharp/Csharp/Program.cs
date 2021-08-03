@@ -1,32 +1,28 @@
-﻿using System.IO;
-using Csharp.controller;
-using Csharp.model;
-using Csharp.view;
-
-namespace Csharp
+﻿namespace Csharp
 {
-    class Program
+    public static class Program
     {
-        static void Main()
+        private static NewInstancesInitializer _newInstancesInitializer;
+        public static void Main()
         {
+            _newInstancesInitializer = new NewInstancesInitializer();
+            _newInstancesInitializer.Initialize();
             ReadFromJson();
             Process();
         }
 
         private static void Process()
         {
-            IDisplay<Student> displayStudents = new DisplayStudents();
-            IDataAnalyser<Student> topStudentsAnalyser = new TopStudentsAnalyser();
+            var displayStudents = _newInstancesInitializer.ParameterHolder.DisplayStudents;
+            var topStudentsAnalyser = _newInstancesInitializer.ParameterHolder.TopStudentsAnalyzer;
             displayStudents.Display(topStudentsAnalyser.Analyse());
         }
 
         private static void ReadFromJson()
         {
-            IReader fileReader = new JsonFileReader();
-            string studentsFilePath = Path.GetFullPath("resources/Students.json");
-            fileReader.ReadStudents(studentsFilePath);
-            string gradesFilePath = Path.GetFullPath("resources/Grades.json");
-            fileReader.ReadGrades(gradesFilePath);
+            var fileReader = _newInstancesInitializer.ParameterHolder.FileReader;
+            fileReader.ReadStudents();
+            fileReader.ReadGrades();
         }
     }
 }
