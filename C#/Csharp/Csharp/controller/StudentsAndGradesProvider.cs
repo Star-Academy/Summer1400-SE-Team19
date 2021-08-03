@@ -8,7 +8,6 @@ namespace Csharp.controller
     {
         public Dictionary<Student, List<Grade>> Provide(List<Student> students, List<Grade> grades)
         {
-            Dictionary<Student, List<Grade>> dictionary = new Dictionary<Student, List<Grade>>();
             var studentNumAndGradesGroup = 
                 grades.GroupBy(g => g.StudentNumber).ToDictionary(x => x.Key);
             

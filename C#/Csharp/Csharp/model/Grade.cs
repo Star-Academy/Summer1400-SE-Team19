@@ -5,7 +5,7 @@ namespace Csharp.model
     public class Grade
     {
         public static List<Grade> AllGrades { get; set; }
-        public int StudentNumber;
+        public readonly int StudentNumber;
         public string Lesson;
         public double Score;
 

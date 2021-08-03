@@ -9,23 +9,23 @@ namespace Csharp.controller
     {
         public void ReadStudents(string address)
         {
-            using StreamReader streamReader = new StreamReader(address);
-            string json = streamReader.ReadToEnd();
+            var json = MakeStringJson(address);
             var model = JsonConvert.DeserializeObject<List<Student>>(json);
             Student.AllStudents = model;
         }
-
         public void ReadGrades(string address)
         {
-            using StreamReader streamReader = new StreamReader(address);
-            string json = streamReader.ReadToEnd();
+            var json = MakeStringJson(address);
             var model = JsonConvert.DeserializeObject<List<Grade>>(json);
             Grade.AllGrades = model;
         }
-
-        public void Read<T>(string address)
+        
+        
+        private static string MakeStringJson(string address)
         {
-            
+            using StreamReader streamReader = new StreamReader(address);
+            string json = streamReader.ReadToEnd();
+            return json;
         }
     }
 }

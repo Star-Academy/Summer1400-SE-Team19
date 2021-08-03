@@ -8,10 +8,10 @@ namespace Csharp.controller
     {
         public Dictionary<Student, List<Grade>> StudentGradesDictionary { get; set; }
         public Dictionary<Student, double> StudentGpaDictionary;
-        
+
         public List<Student> Analyse()
         {
-            StudentsAndGradesProvider studentsAndGradesProvider = new StudentsAndGradesProvider();
+            IDataProvider<Student, Grade> studentsAndGradesProvider = new StudentsAndGradesProvider();
             StudentGradesDictionary = studentsAndGradesProvider.Provide(Student.AllStudents, Grade.AllGrades);
             CalculateGpaForEachStudent();
             return SelectTopStudents(3);
@@ -25,6 +25,7 @@ namespace Csharp.controller
                 Student topStudent = StudentGpaDictionary.OrderByDescending(x => x.Value).Skip(i).First().Key;
                 topStudents.Add(topStudent);
             }
+
             return topStudents;
         }
 
@@ -35,7 +36,7 @@ namespace Csharp.controller
             {
                 var student = iterator.Key;
                 var grades = iterator.Value;
-                double gpa = grades.Average(g => g.Score); 
+                double gpa = grades.Average(g => g.Score);
                 StudentGpaDictionary.Add(student, gpa);
             }
         }

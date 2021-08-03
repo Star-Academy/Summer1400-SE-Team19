@@ -7,21 +7,26 @@ namespace Csharp
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             ReadFromJson();
-            DisplayStudents displayStudents = new DisplayStudents();
+            Process();
+        }
+
+        private static void Process()
+        {
+            IDisplay<Student> displayStudents = new DisplayStudents();
             IDataAnalyser<Student> topStudentsAnalyser = new TopStudentsAnalyser();
             displayStudents.Display(topStudentsAnalyser.Analyse());
         }
 
         private static void ReadFromJson()
         {
-            JsonFileReader fileReader = new JsonFileReader();
-            string sFilePath = Path.GetFullPath("resources/Students.json");
-            fileReader.ReadStudents(sFilePath);
-            sFilePath = Path.GetFullPath("resources/Grades.json");
-            fileReader.ReadGrades(sFilePath);
+            IReader fileReader = new JsonFileReader();
+            string studentsFilePath = Path.GetFullPath("resources/Students.json");
+            fileReader.ReadStudents(studentsFilePath);
+            string gradesFilePath = Path.GetFullPath("resources/Grades.json");
+            fileReader.ReadGrades(gradesFilePath);
         }
     }
 }
