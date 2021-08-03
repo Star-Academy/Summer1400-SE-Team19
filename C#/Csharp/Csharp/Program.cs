@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using Csharp.controller;
 
 namespace Csharp
 {
@@ -6,7 +8,9 @@ namespace Csharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            JsonFileReader fileReader = new JsonFileReader();
+            string sFilePath = Path.GetFullPath("Csharp/resources/Students.json");
+            fileReader.Read(sFilePath);
         }
     }
 }

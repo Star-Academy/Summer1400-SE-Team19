@@ -6,7 +6,18 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Json.Net" Version="1.0.33" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="NSubstitute" Version="4.2.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="resources\Students.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="resources\Grades.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
