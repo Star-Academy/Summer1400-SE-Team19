@@ -4,14 +4,14 @@ using Csharp.model;
 
 namespace Csharp.view
 {
-    public class DisplayStudents : IDisplay<Student>
+    public class DisplayStudents : IDisplay<Student, double>
     {
-        public void Display(List<Student> list)
+        public void Display(Dictionary<Student, double> dictionary)
         {
-            foreach (var student in list)
+            foreach (var (student, grade) in dictionary)
             {
-                Console.WriteLine($"{student.FirstName} {student.LastName}");
-            }
+                Console.WriteLine("{0} {1} {2:F3}", student.FirstName, student.LastName, grade);
+            } 
         }
     }
 }
