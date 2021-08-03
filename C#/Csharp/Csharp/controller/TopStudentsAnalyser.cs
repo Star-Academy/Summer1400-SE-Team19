@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Csharp.model;
 
 namespace Csharp.controller
@@ -9,7 +10,7 @@ namespace Csharp.controller
         
         public List<Student> Analyse()
         {
-            
+            throw new NotImplementedException(); 
         }
     }
 }
