@@ -2,6 +2,7 @@
 {
     public interface IReader
     {
-        void Read(string address); 
+        void ReadStudents(string address); 
+        void ReadGrades(string address); 
     }
 }

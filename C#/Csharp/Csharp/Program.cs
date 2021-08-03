@@ -9,8 +9,10 @@ namespace Csharp
         static void Main(string[] args)
         {
             JsonFileReader fileReader = new JsonFileReader();
-            string sFilePath = Path.GetFullPath("Csharp/resources/Students.json");
-            fileReader.Read(sFilePath);
+            string sFilePath = Path.GetFullPath("resources/Students.json");
+            fileReader.ReadStudents(sFilePath);
+            sFilePath = Path.GetFullPath("resources/Grades.json");
+            fileReader.ReadGrades(sFilePath);
         }
     }
 }

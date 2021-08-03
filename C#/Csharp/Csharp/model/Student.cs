@@ -5,9 +5,9 @@ namespace Csharp.model
     public class Student
     {
         public static List<Student> AllStudents { set; get; }
-        public int StudentNumber;
-        public string FirstName;
-        public string LastName;
+        public int StudentNumber { get; }
+        public string FirstName { get; }
+        public string LastName { get; }
 
         public Student(int studentNumber, string firstName, string lastName)
         {

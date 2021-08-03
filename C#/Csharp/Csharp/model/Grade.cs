@@ -4,16 +4,16 @@ namespace Csharp.model
 {
     public class Grade
     {
-        private static List<Grade> _allGrades;
-        private int _studentNumber;
-        private string _lesson;
-        private double _score;
+        public static List<Grade> AllGrades { get; set; }
+        public int StudentNumber;
+        public string Lesson;
+        public double Score;
 
         public Grade(int studentNumber, string lesson, double score)
         {
-            _studentNumber = studentNumber;
-            _lesson = lesson;
-            _score = score;
+            StudentNumber = studentNumber;
+            Lesson = lesson;
+            Score = score;
         }
     }
 }

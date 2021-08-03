@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using Csharp.model;
 using Newtonsoft.Json;
@@ -9,17 +7,20 @@ namespace Csharp.controller
 {
     public class JsonFileReader : IReader
     {
-        public void Read(string address)
+        public void ReadStudents(string address)
         {
-            using (StreamReader r = new StreamReader(address))
-            {
-                string  json = r.ReadToEnd();  
-                var model = JsonConvert.DeserializeObject<List<Student>>(json);
-                foreach (Student student in model)
-                {
-                    Console.WriteLine(student);
-                }
-            }
+            using StreamReader streamReader = new StreamReader(address);
+            string json = streamReader.ReadToEnd();
+            var model = JsonConvert.DeserializeObject<List<Student>>(json);
+            Student.AllStudents = model;
+        }
+
+        public void ReadGrades(string address)
+        {
+            using StreamReader streamReader = new StreamReader(address);
+            string json = streamReader.ReadToEnd();
+            var model = JsonConvert.DeserializeObject<List<Grade>>(json);
+            Grade.AllGrades = model;
         }
     }
 }
