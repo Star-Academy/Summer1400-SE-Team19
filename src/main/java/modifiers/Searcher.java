@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Searcher {
-    private final DataContainer dataContainer;
+    private DataContainer dataContainer;
 
-    public Searcher(DataContainer dataContainer) {
+    public void setDataContainer(DataContainer dataContainer) {
         this.dataContainer = dataContainer;
     }
 
@@ -17,6 +17,8 @@ public class Searcher {
         for (Word word : words) {
             String wordInString = word.getWordInString();
             HashSet<Integer> searchResult = dataContainer.getFilesNameWithSearchedWord(wordInString);
+            if (searchResult == null)
+                searchResult = new HashSet<>();
             word.setSearchResult(searchResult);
         }
     }

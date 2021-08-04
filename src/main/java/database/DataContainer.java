@@ -1,6 +1,7 @@
 package database;
 
 import parameterholders.DataContainerParameters;
+import parameterholders.abstraction.DataContainerParametersInterface;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,7 +9,7 @@ import java.util.HashSet;
 public class DataContainer {
     private final HashMap<String, HashSet<Integer>> allData;
 
-    public DataContainer(DataContainerParameters dataContainerParameters) {
+    public DataContainer(DataContainerParametersInterface dataContainerParameters) {
         allData = dataContainerParameters.getAllData();
     }
 
@@ -17,9 +18,11 @@ public class DataContainer {
         return new HashSet<>();
     }
 
-    public void addFileName(String word, Integer address) {
-        if (!allData.containsKey(word))  allData.put(word, new HashSet<>());
+    public HashSet<Integer> getWordAddresses(String word) {
+        return allData.get(word);
+    }
 
-        allData.get(word).add(address);
+    public HashMap<String, HashSet<Integer>> getAllData() {
+        return allData;
     }
 }

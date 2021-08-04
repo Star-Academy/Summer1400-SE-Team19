@@ -1,4 +1,5 @@
-import modifiers.Merger;
+import modifiers.Filter;
+import modifiers.Searcher;
 import modifiers.TypeChecker;
 import database.DataContainer;
 import parameterholders.*;
@@ -27,9 +28,14 @@ public class ParameterHolderInitializer {
 
     private void initializeUserInterfaceParameters() {
         parameterHolder.setUserInterfaceParameters(new UserInterfaceParameters());
-        parameterHolder.getUserInterfaceParameters().setTypeChecker(new TypeChecker(parameterHolder.getTypeCheckerParameters()));
-        parameterHolder.getUserInterfaceParameters().setMerger(new Merger());
+        parameterHolder.getUserInterfaceParameters().
+                setTypeChecker(new TypeChecker(parameterHolder.getTypeCheckerParameters()));
         parameterHolder.getUserInterfaceParameters().setScanner(new Scanner(System.in));
+        parameterHolder.getUserInterfaceParameters().setFilter(new Filter());
+        parameterHolder.getUserInterfaceParameters().setResult(new HashSet<>());
+        parameterHolder.getUserInterfaceParameters().setSearcher(new Searcher());
+        parameterHolder.getUserInterfaceParameters().getSearcher().setDataContainer(
+                parameterHolder.getDataProviderParameters().getDataContainer());
     }
 
     private void initializeTypeCheckerParameters() {
@@ -44,13 +50,14 @@ public class ParameterHolderInitializer {
 
     private void initializeDataProviderParameters() {
         parameterHolder.setDataProviderParameters(new DataProviderParameters());
-        parameterHolder.getDataProviderParameters().setDataContainer(new DataContainer(parameterHolder.getDataContainerParameters()));
+        parameterHolder.getDataProviderParameters().setDataContainer
+                (new DataContainer(parameterHolder.getDataContainerParametersInterface()));
         parameterHolder.getDataProviderParameters().setFileDirectory(new File("resources/SampleEnglishData"));
     }
 
     private void initializeDataContainerParameters() {
         parameterHolder.setDataContainerParameters(new DataContainerParameters());
-        parameterHolder.getDataContainerParameters().setAllData(new HashMap<>());
+        parameterHolder.getDataContainerParametersInterface().setAllData(new HashMap<>());
     }
 
     public ParameterHolder getParameterHolder() {

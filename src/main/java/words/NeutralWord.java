@@ -1,5 +1,6 @@
 package words;
 
+import javax.naming.directory.SearchResult;
 import java.util.HashSet;
 
 public class NeutralWord implements Word {
@@ -12,14 +13,13 @@ public class NeutralWord implements Word {
     }
 
     @Override
-    public void filter(HashSet<Integer> userSearchResult) {
-        if (userSearchResult.size() == 0) userSearchResult.addAll(searchResultOfWord);
-        else userSearchResult.retainAll(searchResultOfWord);
+    public String getWordInString() {
+        return word;
     }
 
     @Override
-    public String getWordInString() {
-        return word;
+    public HashSet<Integer> getSearchResult() {
+     return searchResultOfWord;
     }
 
     @Override

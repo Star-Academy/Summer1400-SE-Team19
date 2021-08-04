@@ -1,13 +1,15 @@
 package parameterholders;
 
-public class ParameterHolder {
+import parameterholders.abstraction.ParameterHolderInterface;
+
+public class ParameterHolder implements ParameterHolderInterface {
     private DataContainerParameters dataContainerParameters;
     private DataProviderParameters dataProviderParameters;
     private MergerParameters mergerParameters;
     private TypeCheckerParameters typeCheckerParameters;
     private UserInterfaceParameters userInterfaceParameters;
 
-    public DataContainerParameters getDataContainerParameters() {
+    public DataContainerParameters getDataContainerParametersInterface() {
         return dataContainerParameters;
     }
 

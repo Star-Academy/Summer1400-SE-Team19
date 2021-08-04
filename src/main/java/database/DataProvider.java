@@ -1,6 +1,6 @@
 package database;
 
-import parameterholders.DataProviderParameters;
+import parameterholders.abstraction.DataProviderParametersInterface;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,41 +8,36 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class DataProvider {
-    private final DataContainer dataContainer;
     private final File fileDirectory;
+    private final FileReader reader;
 
-    public DataProvider(DataProviderParameters dataProviderParameters) {
-        dataContainer = dataProviderParameters.getDataContainer();
+    public DataProvider(DataProviderParametersInterface dataProviderParameters) {
         fileDirectory = dataProviderParameters.getFileDirectory();
-    }
-
-    public DataContainer getDataContainer() {
-        return dataContainer;
+        reader = dataProviderParameters.getReader();
     }
 
     public void initialize() {
         for (File file : Objects.requireNonNull(fileDirectory.listFiles())) {
             try {
-                processInfo(file);
-            } catch (FileNotFoundException ignored) {
-
+                callFileReader(initializeCustomScanner(file));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
         }
     }
 
-    private void processInfo(File file) throws FileNotFoundException {
-        int fileName = Integer.parseInt(file.getName());
-        Scanner scanner = new Scanner(file);
-        while (scanner.hasNext()) {
-            addWordToDataContainer(fileName, scanner);
-        }
+    private CustomScanner initializeCustomScanner(File file) throws FileNotFoundException {
+        CustomScanner customScanner = new CustomScanner();
+        customScanner.setFile(file);
+        customScanner.setScanner(new Scanner(file));
+        return customScanner;
     }
 
-    private void addWordToDataContainer(int fileName, Scanner scanner) {
-        String word = scanner.next().toLowerCase();
-        word = word.replaceAll("[^a-zA-Z0-9]", "");
-        dataContainer.addFileName(word, fileName);
+    private void callFileReader(CustomScanner customScanner) throws FileNotFoundException {
+        reader.setCustomScanner(customScanner);
+        reader.read();
     }
+
 
 
 }

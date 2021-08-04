@@ -11,15 +11,14 @@ public class PositiveWord implements Word {
         this.word = word.substring(1);
 
     }
-
-    @Override
-    public void filter(HashSet<Integer> userSearchResult) {
-        userSearchResult.retainAll(this.searchResultOfWord);
-    }
-
     @Override
     public String getWordInString() {
         return word;
+    }
+
+    @Override
+    public HashSet<Integer> getSearchResult() {
+        return searchResultOfWord;
     }
 
     @Override
