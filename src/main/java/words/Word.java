@@ -5,7 +5,7 @@ import java.util.HashSet;
 public interface Word {
     int getPriority();
 
-    String getWordInString();
+    String getWordAsString();
 
     void setSearchResult(HashSet<Integer> searchResultOfWord);
 

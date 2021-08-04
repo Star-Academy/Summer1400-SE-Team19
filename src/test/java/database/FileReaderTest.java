@@ -1,19 +1,14 @@
 package database;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import parameterholders.DataContainerParameters;
-
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Scanner;
 
 import static org.mockito.Mockito.*;
 
@@ -23,11 +18,6 @@ public class FileReaderTest {
     private DataContainer dataContainer;
     @Mock
     private CustomScanner customScanner;
-
-    @BeforeEach
-    public void init() {
-
-    }
 
     @Test
     public void addAddressForExistingWordTest() {
@@ -42,13 +32,27 @@ public class FileReaderTest {
         when(customScanner.getNext()).thenReturn("test");
         try {
             fileReader.read();
-        } catch (FileNotFoundException ignored) {
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        verify(dataContainer, times(1)).getWordAddresses(any());
+        verify(dataContainer, times(1)).getFilesNameWithSearchedWord(any());
     }
 
     @Test
     public void addAddressForNonExistingWordTest() {
-
+        FileReader fileReader = new FileReader(dataContainer);
+        fileReader.setCustomScanner(customScanner);
+        when(customScanner.hasNext()).thenReturn(true).thenReturn(false);
+        HashMap<String, HashSet<Integer>> demoAllData = new HashMap<>();
+        when(customScanner.getFileName()).thenReturn("7");
+        when(dataContainer.getAllData()).thenReturn(demoAllData);
+        when(customScanner.getNext()).thenReturn("test");
+        try {
+            fileReader.read();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        verify(dataContainer, times(1)).getFilesNameWithSearchedWord(any());
+        Assertions.assertEquals(0, demoAllData.get("test").size());
     }
 }

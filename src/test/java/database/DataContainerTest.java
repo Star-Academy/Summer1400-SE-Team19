@@ -47,6 +47,6 @@ public class DataContainerTest {
 
     @Test
     public void getWordAddressesTest() {
-        Assertions.assertEquals(hashSet, dataContainer.getWordAddresses("test"));
+        Assertions.assertEquals(hashSet, dataContainer.getFilesNameWithSearchedWord("test"));
     }
 }

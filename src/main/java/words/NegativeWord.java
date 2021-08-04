@@ -12,7 +12,7 @@ public class NegativeWord implements Word {
     }
 
     @Override
-    public String getWordInString() {
+    public String getWordAsString() {
         return word;
     }
 

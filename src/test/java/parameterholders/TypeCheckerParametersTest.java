@@ -20,6 +20,7 @@ public class TypeCheckerParametersTest {
     @Test
     public void setWordsInObjectTest() {
         typeCheckerParametersInterface.setWordsInObject(wordArrayList);
+        Assertions.assertEquals(wordArrayList, typeCheckerParametersInterface.getWordsInObject());
     }
 
     @Test

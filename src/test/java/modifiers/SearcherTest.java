@@ -2,7 +2,6 @@ package modifiers;
 
 import database.DataContainer;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -32,7 +31,7 @@ class SearcherTest {
     void searchNotNullTest() {
         HashSet<Integer> demoResult = new HashSet<>(Arrays.asList(1, 2, 3));
         when(dataContainer.getFilesNameWithSearchedWord("test")).thenReturn(demoResult);
-        when(sampleWord.getWordInString()).thenReturn("test");
+        when(sampleWord.getWordAsString()).thenReturn("test");
         doAnswer((invocation -> results = invocation.getArgument(0))).when(sampleWord).setSearchResult(any());
         Searcher searcher = new Searcher();
         searcher.search(new ArrayList<>(Collections.singletonList(sampleWord)));
@@ -42,7 +41,7 @@ class SearcherTest {
     @Test
     void searcherNullTest() {
         when(dataContainer.getFilesNameWithSearchedWord("test")).thenReturn(null);
-        when(sampleWord.getWordInString()).thenReturn("test");
+        when(sampleWord.getWordAsString()).thenReturn("test");
         doAnswer((invocation -> results = invocation.getArgument(0))).when(sampleWord).setSearchResult(any());
         Searcher searcher = new Searcher();
         searcher.search(new ArrayList<>(Collections.singletonList(sampleWord)));

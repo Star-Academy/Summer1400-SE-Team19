@@ -3,7 +3,6 @@ package database;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Scanner;
 
 public class FileReader {
     private final DataContainer dataContainer;
@@ -33,6 +32,6 @@ public class FileReader {
     private void addFileName(String word, Integer address) {
         HashMap<String, HashSet<Integer>> allData = dataContainer.getAllData();
         if (!allData.containsKey(word))  allData.put(word, new HashSet<>());
-        dataContainer.getWordAddresses(word).add(address);
+        dataContainer.getFilesNameWithSearchedWord(word).add(address);
     }
 }

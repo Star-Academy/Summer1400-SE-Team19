@@ -2,15 +2,12 @@ package modifiers;
 
 
 import customizedassertions.CollectionsComparator;
+import modifiers.abstraction.Filter;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import words.NegativeWord;
-import words.NeutralWord;
-import words.PositiveWord;
 import words.Word;
 
 import java.util.Arrays;
@@ -19,12 +16,11 @@ import java.util.HashSet;
 
 import static org.mockito.Mockito.when;
 
-;
 
 @ExtendWith(MockitoExtension.class)
-public class FilterTest {
+public class FiltererTest {
 
-    private static CollectionsComparator collectionsComparator;
+    private final CollectionsComparator collectionsComparator = new CollectionsComparator();
 
     @Mock
     Word positiveWord;
@@ -32,11 +28,6 @@ public class FilterTest {
     Word neutralWord;
     @Mock
     Word negativeWord;
-
-    @BeforeAll
-    public static void init() {
-        collectionsComparator = new CollectionsComparator();
-    }
 
 
 
@@ -46,7 +37,7 @@ public class FilterTest {
         when(positiveWord.getSearchResult()).thenReturn(demoResultForPositiveWord);
         when(positiveWord.getPriority()).thenReturn(1);
         HashSet<Integer> demoResult = new HashSet<>(Arrays.asList(1, 2, 5));
-        modifiers.abstraction.Filter filter = new Filter();
+        modifiers.abstraction.Filter filter = new Filterer();
         filter.filter(positiveWord, demoResult);
         Assertions.assertTrue(collectionsComparator.areHashSetsEqual(demoResult, new HashSet<>(Arrays.asList(1, 2, 3, 5))));
     }
@@ -57,7 +48,7 @@ public class FilterTest {
         when(neutralWord.getSearchResult()).thenReturn(demoResultForNeutralWord);
         when(neutralWord.getPriority()).thenReturn(2);
         HashSet<Integer> demoResult = new HashSet<>(Arrays.asList(1, 2, 5, 6));
-        modifiers.abstraction.Filter filter = new Filter();
+        Filter filter = new Filterer();
         filter.filter(neutralWord, demoResult);
         Assertions.assertTrue(collectionsComparator.areHashSetsEqual(demoResult, new HashSet<>(Arrays.asList(1, 2, 5))));
     }
@@ -68,7 +59,7 @@ public class FilterTest {
         when(negativeWord.getSearchResult()).thenReturn(demoResultForNegativeWord);
         when(negativeWord.getPriority()).thenReturn(3);
         HashSet<Integer> demoResult = new HashSet<>(Arrays.asList(1, 2, 5));
-        modifiers.abstraction.Filter filter = new Filter();
+        modifiers.abstraction.Filter filter = new Filterer();
         filter.filter(negativeWord, demoResult);
         Assertions.assertTrue(collectionsComparator.areHashSetsEqual(demoResult, new HashSet<>(Collections.singletonList(5))));
     }

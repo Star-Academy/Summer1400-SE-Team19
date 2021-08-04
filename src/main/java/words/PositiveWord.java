@@ -13,7 +13,7 @@ public class PositiveWord implements Word {
     }
 
     @Override
-    public String getWordInString() {
+    public String getWordAsString() {
         return word;
     }
 

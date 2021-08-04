@@ -19,7 +19,7 @@ public class Searcher {
 
     public void search(ArrayList<Word> words) {
         for (Word word : words) {
-            String wordString = word.getWordInString();
+            String wordString = word.getWordAsString();
             HashSet<Integer> searchResult = dataContainer.getFilesNameWithSearchedWord(wordString);
             if (searchResult == null)
                 searchResult = new HashSet<>();

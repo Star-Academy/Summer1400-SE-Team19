@@ -1,10 +1,9 @@
 import database.FileReader;
-import modifiers.Filter;
+import modifiers.Filterer;
 import modifiers.Searcher;
 import modifiers.TypeChecker;
 import database.DataContainer;
 import parameterholders.*;
-import parameterholders.abstraction.ParameterHolderInterface;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class ParameterHolderInitializer {
         parameterHolder.setUserInterfaceParameters(new UserInterfaceParameters());
         parameterHolder.getUserInterfaceParameters().setTypeChecker(new TypeChecker(parameterHolder.getTypeCheckerParameters()));
         parameterHolder.getUserInterfaceParameters().setScanner(new Scanner(System.in));
-        parameterHolder.getUserInterfaceParameters().setFilter(new Filter());
+        parameterHolder.getUserInterfaceParameters().setFilter(new Filterer());
         parameterHolder.getUserInterfaceParameters().setResult(new HashSet<>());
         parameterHolder.getUserInterfaceParameters().setSearcher(new Searcher());
         parameterHolder.getUserInterfaceParameters().getSearcher().setDataContainer(

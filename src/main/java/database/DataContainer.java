@@ -21,7 +21,4 @@ public class DataContainer {
         return allData;
     }
 
-    public HashSet<Integer> getWordAddresses(String word) {
-        return allData.get(word);
-    }
 }

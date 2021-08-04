@@ -4,7 +4,7 @@ import words.Word;
 
 import java.util.HashSet;
 
-public class Filter implements modifiers.abstraction.Filter {
+public class Filterer implements modifiers.abstraction.Filter {
     private void filterPositive(Word word, HashSet<Integer> result) {
         result.addAll(word.getSearchResult());
     }
