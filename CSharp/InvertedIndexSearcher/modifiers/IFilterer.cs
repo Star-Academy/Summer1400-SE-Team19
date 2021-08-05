@@ -5,6 +5,6 @@ namespace InvertedIndexSearcher.modifiers
 {
     public interface IFilterer
     {
-        public void Filter(IWord word, HashSet<int> result);
+        public HashSet<int> Filter(IWord word, HashSet<int> preResult);
     }
 }

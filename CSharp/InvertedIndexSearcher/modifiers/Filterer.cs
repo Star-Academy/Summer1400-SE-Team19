@@ -5,9 +5,23 @@ namespace InvertedIndexSearcher.modifiers
 {
     public class Filterer : IFilterer
     {
-        public void Filter(IWord word, HashSet<int> result)
+        public HashSet<int> Filter(IWord word, HashSet<int> preResult)
         {
-            throw new System.NotImplementedException();
+            var result = new HashSet<int>(preResult);
+            switch (word.Priority)
+            {
+                case 1:
+                    result.UnionWith(word.SearchResults);
+                    break;
+                case 2:
+                    result.ExceptWith(word.SearchResults);
+                    break;
+                case 3:
+                    result.IntersectWith(word.SearchResults);
+                    break;
+            }
+
+            return result;
         }
     }
 }
