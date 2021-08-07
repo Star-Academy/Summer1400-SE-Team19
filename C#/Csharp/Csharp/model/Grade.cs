@@ -2,9 +2,8 @@
 
 namespace Csharp.model
 {
-    public class Grade
+    public class Grade : IReadable
     {
-        public static List<Grade> AllGrades { get; set; }
         public readonly int StudentNumber;
         public string Lesson;
         public double Score;
@@ -14,6 +13,11 @@ namespace Csharp.model
             StudentNumber = studentNumber;
             Lesson = lesson;
             Score = score;
+        }
+
+        public ReadableTypes getType()
+        {
+            return ReadableTypes.Grade;
         }
     }
 }

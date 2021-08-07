@@ -12,7 +12,10 @@ namespace Csharp.controller
         public List<Student> Analyse()
         {
             IDataProvider<Student, Grade> studentsAndGradesProvider = new StudentsAndGradesProvider();
-            StudentGradesDictionary = studentsAndGradesProvider.Provide(Student.AllStudents, Grade.AllGrades);
+            StudentGradesDictionary =
+                studentsAndGradesProvider.Provide(DataBasesManagement.GetInstance().AllStudents.AllPropertiesOfThisType,
+                    DataBasesManagement.GetInstance().AllGrades.AllPropertiesOfThisType);
+            
             CalculateGpaForEachStudent();
             return SelectTopStudents(3);
         }
