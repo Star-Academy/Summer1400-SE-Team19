@@ -2,8 +2,8 @@
 
 namespace Csharp.view
 {
-    public interface IDisplay<T>
+    public interface IDisplay<T1, T2>
     {
-        void Display(List<T> list);
+        void Display(Dictionary<T1, T2> dictionary);
     }
 }

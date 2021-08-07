@@ -2,9 +2,8 @@
 
 namespace Csharp.controller
 {
-    public interface IDataAnalyser<T>
+    public interface IDataAnalyser<T1, T2>
     {
-        
-        List<T> Analyse();
+        Dictionary<T1, T2> Analyse();
     }
 }

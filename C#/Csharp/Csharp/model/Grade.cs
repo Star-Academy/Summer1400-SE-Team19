@@ -6,7 +6,7 @@ namespace Csharp.model
     {
         public readonly int StudentNumber;
         public string Lesson;
-        public double Score;
+        public readonly double Score;
 
         public Grade(int studentNumber, string lesson, double score)
         {
