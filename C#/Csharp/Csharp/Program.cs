@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using Csharp.controller;
 using Csharp.model;
 using Csharp.view;
@@ -23,10 +24,21 @@ namespace Csharp
         private static void ReadFromJson()
         {
             IReader fileReader = new JsonFileReader();
+            
             string studentsFilePath = Path.GetFullPath("resources/Students.json");
-            fileReader.ReadStudents(studentsFilePath);
             string gradesFilePath = Path.GetFullPath("resources/Grades.json");
-            fileReader.ReadGrades(gradesFilePath);
+            
+            var newStudents = fileReader.Read<Student>(studentsFilePath);
+            var newGrades = fileReader.Read<Grade>(gradesFilePath);
+            
+            
+            UpdateDataBase(newStudents, newGrades);
+        }
+
+        private static void UpdateDataBase(List<Student> newStudents, List<Grade> newGrades)
+        {
+            DataBasesManagement.GetInstance().UpdateStudents(newStudents);
+            DataBasesManagement.GetInstance().UpdateGrades(newGrades);
         }
     }
 }

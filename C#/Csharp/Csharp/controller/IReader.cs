@@ -1,8 +1,10 @@
-﻿namespace Csharp.controller
+﻿using System.Collections.Generic;
+using Csharp.model;
+
+namespace Csharp.controller
 {
     public interface IReader
     {
-        void ReadStudents(string address);
-        void ReadGrades(string address);
+        List<T> Read<T>(string address); 
     }
 }
