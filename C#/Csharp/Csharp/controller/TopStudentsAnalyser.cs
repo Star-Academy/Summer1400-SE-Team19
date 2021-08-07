@@ -4,29 +4,29 @@ using Csharp.model;
 
 namespace Csharp.controller
 {
-    public class TopStudentsAnalyser : IDataAnalyser<Student>
+    public class TopStudentsAnalyser : IDataAnalyser<Student, double>
     {
         public Dictionary<Student, List<Grade>> StudentGradesDictionary { get; set; }
         public Dictionary<Student, double> StudentGpaDictionary;
 
-        public List<Student> Analyse()
+        public Dictionary<Student, double> Analyse()
         {
             IDataProvider<Student, Grade> studentsAndGradesProvider = new StudentsAndGradesProvider();
             StudentGradesDictionary =
                 studentsAndGradesProvider.Provide(DataBasesManagement.GetInstance().AllStudents.AllPropertiesOfThisType,
                     DataBasesManagement.GetInstance().AllGrades.AllPropertiesOfThisType);
-            
+
             CalculateGpaForEachStudent();
             return SelectTopStudents(3);
         }
 
-        private List<Student> SelectTopStudents(int numberOfStudents)
+        private Dictionary<Student, double> SelectTopStudents(int numberOfStudents)
         {
-            List<Student> topStudents = new List<Student>();
+            Dictionary<Student, double> topStudents = new Dictionary<Student, double>();
             for (int i = 0; i < numberOfStudents; i++)
             {
-                Student topStudent = StudentGpaDictionary.OrderByDescending(x => x.Value).Skip(i).First().Key;
-                topStudents.Add(topStudent);
+                var topStudent = StudentGpaDictionary.OrderByDescending(x => x.Value).Skip(i).First();
+                topStudents.Add(topStudent.Key, topStudent.Value);
             }
 
             return topStudents;

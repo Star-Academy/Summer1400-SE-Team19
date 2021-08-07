@@ -16,8 +16,8 @@ namespace Csharp
 
         private static void Process()
         {
-            IDisplay<Student> displayStudents = new DisplayStudents();
-            IDataAnalyser<Student> topStudentsAnalyser = new TopStudentsAnalyser();
+            IDisplay<Student, double> displayStudents = new DisplayStudents();
+            IDataAnalyser<Student, double > topStudentsAnalyser = new TopStudentsAnalyser();
             displayStudents.Display(topStudentsAnalyser.Analyse());
         }
 

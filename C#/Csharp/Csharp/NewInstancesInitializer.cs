@@ -23,8 +23,8 @@ namespace Csharp
             ParameterHolder.StudentsAndGradesProvider = new StudentsAndGradesProvider();
             ParameterHolder.DisplayStudents = new DisplayStudents();
             ParameterHolder.TopStudents = new Dictionary<Student, double>();
-            ParameterHolder.TopStudentsAnalyzer = new TopStudentsAnalyser(ParameterHolder);
-            ParameterHolder.FileReader = new JsonFileReader(ParameterHolder);
+            ParameterHolder.TopStudentsAnalyzer = new TopStudentsAnalyser();
+            ParameterHolder.FileReader = new JsonFileReader();
         }
     }
 }

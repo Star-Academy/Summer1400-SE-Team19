@@ -2,7 +2,7 @@
 
 namespace Csharp.model
 {
-    public class Student : IReadable
+    public class Student
     {
         public int StudentNumber { get; }
         public string FirstName { get; }
@@ -13,11 +13,6 @@ namespace Csharp.model
             StudentNumber = studentNumber;
             FirstName = firstName;
             LastName = lastName;
-        }
-
-        public ReadableTypes getType()
-        {
-            return ReadableTypes.Student;
         }
     }
 }
