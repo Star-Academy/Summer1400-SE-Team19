@@ -9,19 +9,19 @@ namespace InvertedIndexTest.words
         private readonly IWord _negativeWord = new NegativeWord("-negative");
 
         [Fact]
-        public void PositiveWordPriorityTest()
+        public void NegativeWordPriorityTest()
         {
             Assert.Equal(3, _negativeWord.Priority);
         }
 
         [Fact]
-        public void PositiveWordAsStringTest()
+        public void NegativeWordAsStringTest()
         {
             Assert.Equal("negative", _negativeWord.WordAsString);
         }
 
         [Fact]
-        public void PositiveWordSearchResultTest()
+        public void NegativeWordSearchResultTest()
         {
             var hashSet = new HashSet<int>() {4, 5, 6};
             _negativeWord.SearchResults = hashSet;

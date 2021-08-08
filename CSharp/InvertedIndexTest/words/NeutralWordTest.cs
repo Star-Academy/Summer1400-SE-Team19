@@ -9,19 +9,19 @@ namespace InvertedIndexTest.words
         private readonly IWord _neutralWord = new NeutralWord("neutral");
 
         [Fact]
-        public void PositiveWordPriorityTest()
+        public void NeutralWordPriorityTest()
         {
             Assert.Equal(2, _neutralWord.Priority);
         }
 
         [Fact]
-        public void PositiveWordAsStringTest()
+        public void NeutralWordAsStringTest()
         {
             Assert.Equal("neutral", _neutralWord.WordAsString);
         }
 
         [Fact]
-        public void PositiveWordSearchResultTest()
+        public void NeutralWordSearchResultTest()
         {
             var hashSet = new HashSet<int>() {1, 2};
             _neutralWord.SearchResults = hashSet;
