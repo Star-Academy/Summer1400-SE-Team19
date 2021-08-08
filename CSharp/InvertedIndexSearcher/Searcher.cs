@@ -24,7 +24,7 @@ namespace InvertedIndexSearcher
             _collector = collector;
         }
 
-        public HashSet<int> Search(string searchedNote)
+        public IEnumerable<int> Search(string searchedNote)
         {
             var separatedWords = searchedNote.Split(" ");
             _typeChecker.CheckWordsType(separatedWords);

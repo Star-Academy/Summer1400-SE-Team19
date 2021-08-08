@@ -15,7 +15,7 @@ namespace ProgramRunner
         
         public void Run()
         {
-            string input = Console.ReadLine();
+            var input = Console.ReadLine();
             var result = _searcher.Search(input);
             foreach (var i in result)
             {

@@ -4,6 +4,6 @@ namespace InvertedIndexSearcher
 {
     public interface ISearcher
     {
-        HashSet<int> Search(string searchedNote);
+        IEnumerable<int> Search(string searchedNote);
     }
 }

@@ -20,9 +20,9 @@ namespace InvertedIndexSearcher.database
 
         public void Initialize()
         {
-            foreach (string fileName in System.IO.Directory.EnumerateFiles(Directory))
+            foreach (var fileName in System.IO.Directory.EnumerateFiles(Directory))
             {
-                string content = _fileReader.ReadFile(fileName);
+                var content = _fileReader.ReadFile(fileName);
                 Process(content, new DirectoryInfo(fileName).Name);
             }
         }
@@ -31,7 +31,7 @@ namespace InvertedIndexSearcher.database
         {
             var words = Regex.Split(content, "\\s+").Select(w => w.ToLower())
                 .Select(w => Regex.Replace(w, "[^a-zA-Z0-9]", ""));
-            foreach (string word in words)
+            foreach (var word in words)
             {
                 AddWordToDataBase(word, fileName);
             }
