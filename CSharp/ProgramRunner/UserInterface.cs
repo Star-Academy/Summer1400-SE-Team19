@@ -1,34 +1,27 @@
 ﻿using System;
-using InvertedIndexSearcher.modifiers;
+using InvertedIndexSearcher;
 
 namespace ProgramRunner
 {
 
     public class UserInterface
     {
-        private const string LastWord = "#end";
-        private IFilterer _filterer;
+        private readonly ISearcher _searcher;
 
-        public UserInterface(IFilterer filterer)
+        public UserInterface(ISearcher searcher)
         {
-            _filterer = filterer;
+            _searcher = searcher;
         }
-
+        
         public void Run()
         {
-            while (true)
+            string input = Console.ReadLine();
+            var result = _searcher.Search(input);
+            foreach (var i in result)
             {
-                string input = Console.ReadLine();
-                if (input == LastWord)
-                    break;
-                string output = Process(input);
-                Console.WriteLine(output);
+                Console.WriteLine(i);
             }
         }
-
-        public string Process(string input)
-        {
-            return "nope";
-        }
+        
     }
 }
