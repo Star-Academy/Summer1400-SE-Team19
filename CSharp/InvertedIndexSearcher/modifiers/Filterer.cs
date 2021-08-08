@@ -1,24 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using InvertedIndexSearcher.words;
 
 namespace InvertedIndexSearcher.modifiers
 {
     public class Filterer : IFilterer
     {
-        public HashSet<int> Filter(IWord word, HashSet<int> preResult)
+        public HashSet<int> FilterSearchResult(WordType type, IEnumerable<int> searchResultOfWord,
+            IEnumerable<int> preResult)
         {
             var result = new HashSet<int>(preResult);
-            switch (word.Priority)
+            switch (type)
             {
-                case 1:
-                    result.UnionWith(word.SearchResults);
+                case WordType.Positive:
+                    result.UnionWith(searchResultOfWord);
                     break;
-                case 2:
-                    result.ExceptWith(word.SearchResults);
+                case WordType.Neutral:
+                    result.ExceptWith(searchResultOfWord);
                     break;
-                case 3:
-                    result.IntersectWith(word.SearchResults);
+                case WordType.Negative:
+                    result.IntersectWith(searchResultOfWord);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, "system not working properly");
             }
 
             return result;
