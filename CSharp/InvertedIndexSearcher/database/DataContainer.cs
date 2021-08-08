@@ -2,9 +2,18 @@
 
 namespace InvertedIndexSearcher.database
 {
-    public class DataContainer
+    public class DataContainer : IDataContainer<string, HashSet<int>>
     {
-        public Dictionary<string, HashSet<int>> AllData { get; set; }
-        
+        private Dictionary<string, HashSet<int>> _allData;
+
+        public Dictionary<string, HashSet<int>> GetAllData()
+        {
+            return _allData;
+        }
+
+        public void SetAllData(Dictionary<string, HashSet<int>> allData)
+        {
+            _allData = allData;
+        }
     }
 }
