@@ -11,7 +11,7 @@ namespace InvertedIndexTest.words
         [Fact]
         public void PositiveWordPriorityTest()
         {
-            Assert.Equal(1, _positiveWord.Priority);
+            Assert.Equal(1,(int) _positiveWord.Priority);
         }
 
         [Fact]
@@ -20,12 +20,5 @@ namespace InvertedIndexTest.words
             Assert.Equal("positive", _positiveWord.WordAsString);
         }
 
-        [Fact]
-        public void PositiveWordSearchResultTest()
-        {
-            var hashSet = new HashSet<int>() {1, 2, 3};
-            _positiveWord.SearchResults = hashSet;
-            Assert.True(new HashSet<int>(){1, 2, 3}.SetEquals(_positiveWord.SearchResults));
-        }
     }
 }
