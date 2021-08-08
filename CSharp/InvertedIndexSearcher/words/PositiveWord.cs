@@ -4,9 +4,8 @@ namespace InvertedIndexSearcher.words
 {
     public class PositiveWord : IWord
     {
-        public int Priority => 1;
+        public WordType Priority => WordType.Positive;
         public string WordAsString { get; }
-        public HashSet<int> SearchResults { get; set; }
 
         public PositiveWord(string wordAsString)
         {
