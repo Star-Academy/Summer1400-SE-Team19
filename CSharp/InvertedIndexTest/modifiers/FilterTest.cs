@@ -8,13 +8,12 @@ namespace InvertedIndexTest.modifiers
 {
     public class FilterTest
     {
-        private readonly Filterer _filterer = new Filterer();
-
         [Fact]
         public void PositiveWordFilterTest()
         {
+            var positivesWordFilterer = new PositivesWordFilterer();
             var demoSearchResultForWord = new HashSet<int>() {1, 2, 3, 4};
-            var results = _filterer.FilterSearchResult(WordType.Positive, demoSearchResultForWord,
+            var results = positivesWordFilterer.FilterSearchResult(demoSearchResultForWord,
                 new HashSet<int>() {8, 9, 1});
             Assert.True(results.SetEquals(new HashSet<int>() {1, 2, 3, 4, 8, 9}));
         }
@@ -22,8 +21,9 @@ namespace InvertedIndexTest.modifiers
         [Fact]
         public void NegativeWordFilterTest()
         {
+            var negativesWordFilterer = new NegativesWordFilterer();
             var demoSearchResultForWord = new HashSet<int>() {1, 2, 3};
-            var results = _filterer.FilterSearchResult(WordType.Negative, demoSearchResultForWord,
+            var results = negativesWordFilterer.FilterSearchResult(demoSearchResultForWord,
                 new HashSet<int>() {1, 2, 3, 4});
             Assert.True(results.SetEquals(new HashSet<int>() {4}));
         }
@@ -31,8 +31,9 @@ namespace InvertedIndexTest.modifiers
         [Fact]
         public void NeutralWordFilterTest()
         {
+            var neutralWordFilterer = new NeutralWordFilterer();
             var demoSearchResultForWord = new HashSet<int>() {1, 2, 3, 4, 6};
-            var results = _filterer.FilterSearchResult(WordType.Neutral, demoSearchResultForWord,
+            var results = neutralWordFilterer.FilterSearchResult(demoSearchResultForWord,
                 new HashSet<int>() {1, 2, 3, 4, 5});
             Assert.True(results.SetEquals(new HashSet<int>() {1, 2, 3, 4}));
         }
