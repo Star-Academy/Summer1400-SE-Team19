@@ -31,7 +31,7 @@ namespace InvertedIndexTest.modifiers
         [Fact]
         public void NeutralWordFilterTest()
         {
-            var neutralWordFilterer = new NeutralWordFilterer();
+            var neutralWordFilterer = new NeutralsWordFilterer();
             var demoSearchResultForWord = new HashSet<int>() {1, 2, 3, 4, 6};
             var results = neutralWordFilterer.FilterSearchResult(demoSearchResultForWord,
                 new HashSet<int>() {1, 2, 3, 4, 5});

@@ -5,7 +5,7 @@ using InvertedIndexSearcher.words;
 
 namespace InvertedIndexSearcher.modifiers
 {
-    public class DataCollector
+    public class DataCollector : IDataCollector
     {
         private readonly IDataContainer<string, HashSet<int>> _dataContainer;
 
@@ -14,18 +14,18 @@ namespace InvertedIndexSearcher.modifiers
             _dataContainer = dataContainer;
         }
 
-        public Dictionary<IWord, HashSet<int>> Collect(IEnumerable<IWord> words)
+        public List<HashSet<int>> Collect(IEnumerable<IWord> words)
         {
-            var wordAndSearchResultsDictionary = new Dictionary<IWord, HashSet<int>>();
+            var listOfSearchedResultOfWords = new List<HashSet<int>>();
             foreach (var word in words)
             {
                 if (!_dataContainer.GetAllData().TryGetValue(word.WordAsString, out var result))
                     result = new HashSet<int>();
 
-                wordAndSearchResultsDictionary.Add(word, result);
+                listOfSearchedResultOfWords.Add(result);
             }
 
-            return wordAndSearchResultsDictionary;
+            return listOfSearchedResultOfWords;
         }
     }
 }

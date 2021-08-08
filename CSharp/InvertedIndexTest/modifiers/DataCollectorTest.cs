@@ -33,7 +33,7 @@ namespace InvertedIndexTest.modifiers
             {
                 _word
             });
-            Assert.Equal(demoSearchInfoForWord, result[_word]);
+            Assert.Equal(demoSearchInfoForWord, result[0]);
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace InvertedIndexTest.modifiers
             {
                 _word
             });
-            Assert.Empty(result[_word]);
+            Assert.Empty(result[0]);
         }
     }
 }

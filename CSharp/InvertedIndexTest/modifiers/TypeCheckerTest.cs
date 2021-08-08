@@ -21,7 +21,7 @@ namespace InvertedIndexTest.modifiers
             const string negativeWordAsString = "-negative";
             var checker = new TypeChecker();
             checker.CheckWordsType(new[] {negativeWordAsString});
-            Assert.True(checker.negativeWords[0].GetType() == typeof(NegativeWord));
+            Assert.True(checker.NegativeWords[0].GetType() == typeof(NegativeWord));
         }
 
         [Fact]
