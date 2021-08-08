@@ -8,12 +8,12 @@ using Xunit;
 
 namespace InvertedIndexTest.modifiers
 {
-    public class SearcherTest
+    public class DataCollectorTest
     {
         private readonly IWord _word;
         private readonly IDataContainer<string, HashSet<int>> _dataContainer;
 
-        public SearcherTest()
+        public DataCollectorTest()
         {
             _dataContainer = Substitute.For<IDataContainer<string, HashSet<int>>>();
             _word = Substitute.For<IWord>();
@@ -28,8 +28,8 @@ namespace InvertedIndexTest.modifiers
             _dataContainer.GetAllData().Returns(demoDatabaseInfo);
 
             _word.WordAsString.Returns("test");
-            var searcher = new Searcher(_dataContainer);
-            var result = searcher.Search(new List<IWord>()
+            var searcher = new DataCollector(_dataContainer);
+            var result = searcher.Collect(new List<IWord>()
             {
                 _word
             });
@@ -41,8 +41,8 @@ namespace InvertedIndexTest.modifiers
         {
             _dataContainer.GetAllData().Returns(new Dictionary<string, HashSet<int>>());
             _word.WordAsString.Returns("negative");
-            var searcher = new Searcher(_dataContainer);
-            var result = searcher.Search(new List<IWord>()
+            var searcher = new DataCollector(_dataContainer);
+            var result = searcher.Collect(new List<IWord>()
             {
                 _word
             });

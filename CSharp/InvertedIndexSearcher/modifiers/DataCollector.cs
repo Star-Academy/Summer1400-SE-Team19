@@ -5,16 +5,16 @@ using InvertedIndexSearcher.words;
 
 namespace InvertedIndexSearcher.modifiers
 {
-    public class Searcher
+    public class DataCollector
     {
         private readonly IDataContainer<string, HashSet<int>> _dataContainer;
 
-        public Searcher(IDataContainer<string, HashSet<int>> dataContainer)
+        public DataCollector(IDataContainer<string, HashSet<int>> dataContainer)
         {
             _dataContainer = dataContainer;
         }
 
-        public Dictionary<IWord, HashSet<int>> Search(IEnumerable<IWord> words)
+        public Dictionary<IWord, HashSet<int>> Collect(IEnumerable<IWord> words)
         {
             var wordAndSearchResultsDictionary = new Dictionary<IWord, HashSet<int>>();
             foreach (var word in words)
