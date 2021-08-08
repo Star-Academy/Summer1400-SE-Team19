@@ -6,6 +6,11 @@ namespace InvertedIndexSearcher.database
     {
         private Dictionary<string, HashSet<int>> _allData;
 
+        public DataContainer()
+        {
+            _allData = new Dictionary<string, HashSet<int>>();
+        }
+
         public Dictionary<string, HashSet<int>> GetAllData()
         {
             return _allData;

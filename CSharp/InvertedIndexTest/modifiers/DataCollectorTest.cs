@@ -3,7 +3,6 @@ using InvertedIndexSearcher.database;
 using InvertedIndexSearcher.modifiers;
 using InvertedIndexSearcher.words;
 using NSubstitute;
-using NSubstitute.ReceivedExtensions;
 using Xunit;
 
 namespace InvertedIndexTest.modifiers
@@ -18,8 +17,7 @@ namespace InvertedIndexTest.modifiers
             _dataContainer = Substitute.For<IDataContainer<string, HashSet<int>>>();
             _word = Substitute.For<IWord>();
         }
-
-
+        
         [Fact]
         public void SearchAvailableWord()
         {

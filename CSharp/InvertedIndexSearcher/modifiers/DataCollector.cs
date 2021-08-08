@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using InvertedIndexSearcher.database;
 using InvertedIndexSearcher.words;
 
