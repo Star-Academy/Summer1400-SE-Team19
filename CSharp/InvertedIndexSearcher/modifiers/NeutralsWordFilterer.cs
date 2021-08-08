@@ -8,7 +8,10 @@ namespace InvertedIndexSearcher.modifiers
             IEnumerable<int> preResult)
         {
             var result = new HashSet<int>(preResult);
-            result.IntersectWith(searchResultOfWord);
+            if (result.Count != 0)
+                result.IntersectWith(searchResultOfWord);
+            else
+                result.UnionWith(searchResultOfWord);
             return result;
         }
     }

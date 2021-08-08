@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using InvertedIndexSearcher.modifiers;
-using InvertedIndexSearcher.words;
-using NSubstitute;
 using Xunit;
 
 namespace InvertedIndexTest.modifiers

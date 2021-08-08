@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using InvertedIndexSearcher.words;
+﻿using InvertedIndexSearcher.words;
 using Xunit;
 
 namespace InvertedIndexTest.words
@@ -9,16 +8,9 @@ namespace InvertedIndexTest.words
         private readonly IWord _neutralWord = new NeutralWord("neutral");
 
         [Fact]
-        public void NeutralWordPriorityTest()
-        {
-            Assert.Equal(2, (int)_neutralWord.Priority);
-        }
-
-        [Fact]
         public void NeutralWordAsStringTest()
         {
             Assert.Equal("neutral", _neutralWord.WordAsString);
         }
-
     }
 }
