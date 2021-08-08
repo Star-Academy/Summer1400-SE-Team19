@@ -1,4 +1,4 @@
-﻿using InvertedIndexSearcher.modifiers;
+using InvertedIndexSearcher.modifiers;
 using InvertedIndexSearcher.words;
 using Xunit;
 

@@ -19,5 +19,6 @@ namespace InvertedIndexTest.words
         {
             Assert.Equal("neutral", _neutralWord.WordAsString);
         }
+
     }
 }
