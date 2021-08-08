@@ -11,7 +11,7 @@ namespace InvertedIndexTest.words
         [Fact]
         public void NeutralWordPriorityTest()
         {
-            Assert.Equal(2, _neutralWord.Priority);
+            Assert.Equal(2, (int)_neutralWord.Priority);
         }
 
         [Fact]
@@ -20,12 +20,5 @@ namespace InvertedIndexTest.words
             Assert.Equal("neutral", _neutralWord.WordAsString);
         }
 
-        [Fact]
-        public void NeutralWordSearchResultTest()
-        {
-            var hashSet = new HashSet<int>() {1, 2};
-            _neutralWord.SearchResults = hashSet;
-            Assert.True(new HashSet<int>(){1, 2}.SetEquals(_neutralWord.SearchResults));
-        }
     }
 }
