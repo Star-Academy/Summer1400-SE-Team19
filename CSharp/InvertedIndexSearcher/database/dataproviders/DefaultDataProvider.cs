@@ -32,7 +32,7 @@ namespace InvertedIndexSearcher.database.dataproviders
                 .Select(w => Regex.Replace(w, "[^a-zA-Z0-9]", "")).Distinct();
             foreach (var word in words)
             {
-                AddWordToDataBase(word, fileName); ;
+                AddWordToDataBase(word, fileName);
             }
         }
 
