@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvertedIndexSearcher", "InvertedIndexSearcher\InvertedIndexSearcher.csproj", "{6D13D4FA-5415-4B95-8AF1-958D50CE0868}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvertedIndexTest", "InvertedIndexTest\InvertedIndexTest.csproj", "{52061FAD-41A0-4805-91BC-2237AD4EA667}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramRunner", "ProgramRunner\ProgramRunner.csproj", "{DBA8F78C-F5F2-4A0A-B687-06A5EC279F0B}"
 EndProject
 Global
@@ -16,10 +14,6 @@ Global
 		{6D13D4FA-5415-4B95-8AF1-958D50CE0868}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D13D4FA-5415-4B95-8AF1-958D50CE0868}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D13D4FA-5415-4B95-8AF1-958D50CE0868}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52061FAD-41A0-4805-91BC-2237AD4EA667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52061FAD-41A0-4805-91BC-2237AD4EA667}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52061FAD-41A0-4805-91BC-2237AD4EA667}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52061FAD-41A0-4805-91BC-2237AD4EA667}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DBA8F78C-F5F2-4A0A-B687-06A5EC279F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DBA8F78C-F5F2-4A0A-B687-06A5EC279F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA8F78C-F5F2-4A0A-B687-06A5EC279F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
