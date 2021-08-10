@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using InvertedIndexSearcher.modifiers;
+using InvertedIndexSearcher.modifiers.filterers;
 
 namespace InvertedIndexSearcher
 {
