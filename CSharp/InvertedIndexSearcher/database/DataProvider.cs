@@ -46,7 +46,7 @@ namespace InvertedIndexSearcher.database
                 Word = word,
                 Address = int.Parse(fileName)
             };
-            _database.WordAndAddressWrappers.Add(wordAndAddressWrapper);
+            _database.WordAndAddressWrapper.Add(wordAndAddressWrapper);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace InvertedIndexSearcher
 {
     public class Database : DbContext
     {
-        public DbSet<WordAndAddressWrapper> WordAndAddressWrappers { set; get; }
+        public DbSet<WordAndAddressWrapper> WordAndAddressWrapper { set; get; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

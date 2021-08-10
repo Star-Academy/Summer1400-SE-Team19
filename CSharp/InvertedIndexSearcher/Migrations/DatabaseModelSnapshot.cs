@@ -33,7 +33,7 @@ namespace InvertedIndexSearcher.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WordAndAddressWrappers");
+                    b.ToTable("WordAndAddressWrapper");
                 });
 #pragma warning restore 612, 618
         }

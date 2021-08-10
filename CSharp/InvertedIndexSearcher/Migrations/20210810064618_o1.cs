@@ -2,27 +2,29 @@
 
 namespace InvertedIndexSearcher.Migrations
 {
-    public partial class WordsDB : Migration
+    public partial class o1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "WordAndAddressWrappers",
+                name: "WordAndAddressWrapper",
                 columns: table => new
                 {
-                    Word = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Word = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WordAndAddressWrappers", x => x.Word);
+                    table.PrimaryKey("PK_WordAndAddressWrapper", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "WordAndAddressWrappers");
+                name: "WordAndAddressWrapper");
         }
     }
 }

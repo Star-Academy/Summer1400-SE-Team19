@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InvertedIndexSearcher.Migrations
 {
     [DbContext(typeof(Database))]
-    [Migration("20210810043543_WordsDB")]
-    partial class WordsDB
+    [Migration("20210810064618_o1")]
+    partial class o1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,15 +22,20 @@ namespace InvertedIndexSearcher.Migrations
 
             modelBuilder.Entity("InvertedIndexSearcher.WordAndAddressWrapper", b =>
                 {
-                    b.Property<string>("Word")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Address")
                         .HasColumnType("int");
 
-                    b.HasKey("Word");
+                    b.Property<string>("Word")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("WordAndAddressWrappers");
+                    b.HasKey("Id");
+
+                    b.ToTable("WordAndAddressWrapper");
                 });
 #pragma warning restore 612, 618
         }
