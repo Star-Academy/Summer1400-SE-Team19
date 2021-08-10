@@ -35,7 +35,7 @@ namespace InvertedIndexSearcher
             return MergeResults(resultOfPositives, resultOfNeutrals, resultOfNegatives);
         }
 
-        private HashSet<int> MergeResults(IEnumerable<HashSet<int>> resultOfPositives,
+        private IEnumerable<int> MergeResults(IEnumerable<HashSet<int>> resultOfPositives,
             IEnumerable<HashSet<int>> resultOfNeutrals,
             IEnumerable<HashSet<int>> resultOfNegatives)
         {

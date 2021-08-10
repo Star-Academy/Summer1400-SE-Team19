@@ -2,19 +2,17 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace InvertedIndexSearcher.database
+namespace InvertedIndexSearcher.database.dataproviders
 {
-    public class DataProvider : IDataProvider
+    public class DefaultDataProvider : IDataProvider
     {
         private const string Directory = "../../../../InvertedIndexSearcher/resources/SampleEnglishData";
         private readonly IFileReader _fileReader;
-        //private int _totalNumberOfReadWords;
         private readonly Database _database;
 
-        public DataProvider(IFileReader fileReader, Database database)
+        public DefaultDataProvider(IFileReader fileReader, Database database)
         {
             _fileReader = fileReader;
-            //_totalNumberOfReadWords = 0;
             _database = database;
         }
 
@@ -34,8 +32,7 @@ namespace InvertedIndexSearcher.database
                 .Select(w => Regex.Replace(w, "[^a-zA-Z0-9]", "")).Distinct();
             foreach (var word in words)
             {
-                AddWordToDataBase(word, fileName);
-                //_totalNumberOfReadWords++;
+                AddWordToDataBase(word, fileName); ;
             }
         }
 
