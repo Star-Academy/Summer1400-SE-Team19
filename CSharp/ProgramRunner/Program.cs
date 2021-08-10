@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using InvertedIndexSearcher;
 using InvertedIndexSearcher.database;
 using InvertedIndexSearcher.modifiers;
@@ -33,7 +34,7 @@ namespace ProgramRunner
                 services.AddSingleton<IDataCollector, DataCollector>();
                 services.AddSingleton<ISearcher, Searcher>();
                 services.AddSingleton<IFileReader, FileReader>();
-                services.AddSingleton<IDataContainer<string, HashSet<int>>, DataContainer>();
+                services.AddSingleton<Database>();
                 services.AddSingleton<DataProvider>();
             }).Build();
             _serviceProvider = host.Services;

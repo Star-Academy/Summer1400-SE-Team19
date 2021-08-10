@@ -1,21 +1,21 @@
-﻿
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace InvertedIndexSearcher.database 
+namespace InvertedIndexSearcher.database
 {
-    public class DataProvider
+    public class DataProvider : IDataProvider
     {
-        private readonly IDataContainer<string, HashSet<int>> _dataContainer;
-        private const string Directory = "../../../../resources/SampleEnglishData";
+        private const string Directory = "../../../../InvertedIndexSearcher/resources/SampleEnglishData";
         private readonly IFileReader _fileReader;
+        //private int _totalNumberOfReadWords;
+        private readonly Database _database;
 
-        public DataProvider(IDataContainer<string, HashSet<int>> dataContainer, IFileReader fileReader)
+        public DataProvider(IFileReader fileReader, Database database)
         {
-            _dataContainer = dataContainer;
             _fileReader = fileReader;
+            //_totalNumberOfReadWords = 0;
+            _database = database;
         }
 
         public void Initialize()
@@ -25,28 +25,28 @@ namespace InvertedIndexSearcher.database
                 var content = _fileReader.ReadFile(fileName);
                 Process(content, new DirectoryInfo(fileName).Name);
             }
+            _database.SaveChanges();
         }
 
         private void Process(string content, string fileName)
         {
             var words = Regex.Split(content, "\\s+").Select(w => w.ToLower())
-                .Select(w => Regex.Replace(w, "[^a-zA-Z0-9]", ""));
+                .Select(w => Regex.Replace(w, "[^a-zA-Z0-9]", "")).Distinct();
             foreach (var word in words)
             {
                 AddWordToDataBase(word, fileName);
+                //_totalNumberOfReadWords++;
             }
         }
 
         private void AddWordToDataBase(string word, string fileName)
         {
-            if (_dataContainer.GetAllData().TryGetValue(word, out var hashSet))
+            var wordAndAddressWrapper = new WordAndAddressWrapper()
             {
-                hashSet.Add(int.Parse(fileName));
-            }
-            else
-            {
-                _dataContainer.GetAllData().Add(word, new HashSet<int>() {int.Parse(fileName)});
-            }
+                Word = word,
+                Address = int.Parse(fileName)
+            };
+            _database.WordAndAddressWrappers.Add(wordAndAddressWrapper);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace InvertedIndexSearcher
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=WordsDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=localhost;Database=Phase8;Trusted_Connection=True;");
         }
     }
 }

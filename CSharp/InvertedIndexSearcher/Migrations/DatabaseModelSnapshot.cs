@@ -20,13 +20,18 @@ namespace InvertedIndexSearcher.Migrations
 
             modelBuilder.Entity("InvertedIndexSearcher.WordAndAddressWrapper", b =>
                 {
-                    b.Property<string>("Word")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Address")
                         .HasColumnType("int");
 
-                    b.HasKey("Word");
+                    b.Property<string>("Word")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("WordAndAddressWrappers");
                 });
