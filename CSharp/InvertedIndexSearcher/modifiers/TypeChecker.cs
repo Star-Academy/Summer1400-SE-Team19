@@ -20,9 +20,9 @@ namespace InvertedIndexSearcher.modifiers
         {
             foreach (var word in words)
             {
-                if (word.StartsWith("+")) PositiveWords.Add(new PositiveWord(word));
-                else if (word.StartsWith("-")) NegativeWords.Add(new NegativeWord(word));
-                else NeutralWords.Add(new NeutralWord(word));
+                if (word.StartsWith("+")) PositiveWords.Add(new Word(word[1..]));
+                else if (word.StartsWith("-")) NegativeWords.Add(new Word(word[1..]));
+                else NeutralWords.Add(new Word(word));
             }
         }
     }
