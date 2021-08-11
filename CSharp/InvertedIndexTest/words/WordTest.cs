@@ -3,9 +3,9 @@ using Xunit;
 
 namespace InvertedIndexTest.words
 {
-    public class PositiveWordTest
+    public class WordTest
     {
-        private readonly IWord _positiveWord = new PositiveWord("+positive");
+        private readonly IWord _positiveWord = new Word("+positive");
         
         [Fact]
         public void PositiveWordAsStringTest()
