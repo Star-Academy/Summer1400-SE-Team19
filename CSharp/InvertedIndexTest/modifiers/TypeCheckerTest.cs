@@ -12,7 +12,7 @@ namespace InvertedIndexTest.modifiers
             const string positiveWordAsString = "+positive";
             var checker = new TypeChecker();
             checker.CheckWordsType(new[] {positiveWordAsString});
-            Assert.True(checker.PositiveWords[0].GetType() == typeof(PositiveWord));
+            Assert.Equal("positive", checker.PositiveWords[0].WordAsString);
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace InvertedIndexTest.modifiers
             const string negativeWordAsString = "-negative";
             var checker = new TypeChecker();
             checker.CheckWordsType(new[] {negativeWordAsString});
-            Assert.True(checker.NegativeWords[0].GetType() == typeof(NegativeWord));
+            Assert.Equal("negative",checker.NegativeWords[0].WordAsString);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace InvertedIndexTest.modifiers
             const string neutralWordAsString = "neutral";
             var checker = new TypeChecker();
             checker.CheckWordsType(new[] {neutralWordAsString});
-            Assert.True(checker.NeutralWords[0].GetType() == typeof(NeutralWord));
+            Assert.True(checker.NeutralWords[0].GetType() == typeof(Word));
         }
     }
 }

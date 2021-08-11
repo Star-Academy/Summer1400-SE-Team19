@@ -3,9 +3,9 @@ using Xunit;
 
 namespace InvertedIndexTest.words
 {
-    public class NeutralWordTest
+    public class WordTest
     {
-        private readonly IWord _neutralWord = new NeutralWord("neutral");
+        private readonly IWord _neutralWord = new Word("neutral");
 
         [Fact]
         public void NeutralWordAsStringTest()
