@@ -1,9 +1,9 @@
 ﻿namespace InvertedIndexSearcher.words
 {
-    public class NeutralWord : IWord
+    public class Word : IWord
     {
         public string WordAsString { get; }
-        public NeutralWord(string wordAsString)
+        public Word(string wordAsString)
         {
             WordAsString = wordAsString;
         }
