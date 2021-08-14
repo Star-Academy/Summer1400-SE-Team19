@@ -1,10 +1,10 @@
 package parameterholders;
 
-import parameterholders.abstraction.DataContainerParametersInterface;
+import parameterholders.abstraction.DataContainerParametersHolder;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class DataContainerParameters implements DataContainerParametersInterface {
+public class DataContainerParameters implements DataContainerParametersHolder {
     private HashMap<String, HashSet<Integer>> allData;
 
     @Override

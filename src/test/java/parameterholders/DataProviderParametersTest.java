@@ -3,17 +3,16 @@ package parameterholders;
 import database.DataContainer;
 import database.FileReader;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import parameterholders.abstraction.DataProviderParametersInterface;
+import parameterholders.abstraction.DataProviderParametersHolder;
 
 import java.io.File;
 
 public class DataProviderParametersTest {
 
-    private final DataProviderParametersInterface
-            dataProviderParametersInterface = new DataProviderParameters();
+    private final DataProviderParametersHolder
+            dataProviderParametersHolder = new DataProviderParameters();
     @Mock
     private DataContainer dataContainer;
     @Mock
@@ -24,22 +23,22 @@ public class DataProviderParametersTest {
 
     @Test
     public void getDataContainerTest() {
-        dataProviderParametersInterface.setDataContainer(dataContainer);
-        Assertions.assertNull(dataProviderParametersInterface.getDataContainer());
-        Assertions.assertEquals(dataContainer, dataProviderParametersInterface.getDataContainer());
+        dataProviderParametersHolder.setDataContainer(dataContainer);
+        Assertions.assertNull(dataProviderParametersHolder.getDataContainer());
+        Assertions.assertEquals(dataContainer, dataProviderParametersHolder.getDataContainer());
     }
 
     @Test
     public void getFileDirectoryTest() {
-        dataProviderParametersInterface.setFileDirectory(fileDirectory);
-        Assertions.assertNull(dataProviderParametersInterface.getFileDirectory());
-        Assertions.assertEquals(fileDirectory, dataProviderParametersInterface.getFileDirectory());
+        dataProviderParametersHolder.setFileDirectory(fileDirectory);
+        Assertions.assertNull(dataProviderParametersHolder.getFileDirectory());
+        Assertions.assertEquals(fileDirectory, dataProviderParametersHolder.getFileDirectory());
     }
 
     @Test
     public void getFileReaderTest() {
-        dataProviderParametersInterface.setReader(reader);
-        Assertions.assertNull(dataProviderParametersInterface.getReader());
-        Assertions.assertEquals(reader, dataProviderParametersInterface.getReader());
+        dataProviderParametersHolder.setReader(reader);
+        Assertions.assertNull(dataProviderParametersHolder.getReader());
+        Assertions.assertEquals(reader, dataProviderParametersHolder.getReader());
     }
 }

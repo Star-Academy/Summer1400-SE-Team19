@@ -5,7 +5,7 @@ import database.FileReader;
 
 import java.io.File;
 
-public interface DataProviderParametersInterface {
+public interface DataProviderParametersHolder {
     DataContainer getDataContainer();
 
     void setDataContainer(DataContainer dataContainer);

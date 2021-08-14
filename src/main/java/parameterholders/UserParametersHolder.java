@@ -2,13 +2,13 @@ package parameterholders;
 
 import modifiers.Searcher;
 import modifiers.TypeChecker;
-import parameterholders.abstraction.UserInterfaceParametersInterface;
+import parameterholders.abstraction.UserInterfaceParametersHolder;
 import modifiers.abstraction.Filter;
 
 import java.util.HashSet;
 import java.util.Scanner;
 
-public class UserInterfaceParameters implements UserInterfaceParametersInterface {
+public class UserParametersHolder implements UserInterfaceParametersHolder {
     private TypeChecker typeChecker;
     private Scanner scanner;
     private modifiers.abstraction.Filter filter;

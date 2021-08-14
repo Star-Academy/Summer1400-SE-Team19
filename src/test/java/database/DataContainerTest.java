@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import parameterholders.abstraction.DataContainerParametersInterface;
+import parameterholders.abstraction.DataContainerParametersHolder;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 public class DataContainerTest {
 
     @Mock
-    private DataContainerParametersInterface dataContainerParametersInterface;
+    private DataContainerParametersHolder dataContainerParametersHolder;
 
     private DataContainer dataContainer;
     HashSet<Integer> hashSet;
@@ -30,8 +30,8 @@ public class DataContainerTest {
         hashSet.add(2);
         allData = new HashMap<>();
         allData.put("test", hashSet);
-        when(dataContainerParametersInterface.getAllData()).thenReturn(allData);
-        dataContainer = new DataContainer(dataContainerParametersInterface);
+        when(dataContainerParametersHolder.getAllData()).thenReturn(allData);
+        dataContainer = new DataContainer(dataContainerParametersHolder);
     }
 
     @Test

@@ -4,7 +4,7 @@ import words.Word;
 
 import java.util.ArrayList;
 
-public interface TypeCheckerParametersInterface {
+public interface TypeCheckerParametersHolder {
     ArrayList<Word> getWordsInObject();
 
     void setWordsInObject(ArrayList<Word> wordsInObject);

@@ -23,13 +23,7 @@ public class FileReaderTest {
     public void addAddressForExistingWordTest() {
         FileReader fileReader = new FileReader(dataContainer);
         fileReader.setCustomScanner(customScanner);
-        when(customScanner.hasNext()).thenReturn(true).thenReturn(false);
-        HashSet<Integer> demoResult = new HashSet<>(Arrays.asList(1, 2, 3));
-        HashMap<String, HashSet<Integer>> demoAllData = new HashMap<>();
-        demoAllData.put("test", demoResult);
-        when(customScanner.getFileName()).thenReturn("7");
-        when(dataContainer.getAllData()).thenReturn(demoAllData);
-        when(customScanner.getNext()).thenReturn("test");
+        setMockingActionsForExistingWord();
         try {
             fileReader.read();
         } catch (FileNotFoundException e) {
@@ -38,15 +32,22 @@ public class FileReaderTest {
         verify(dataContainer, times(1)).getFilesNameWithSearchedWord(any());
     }
 
+    private void setMockingActionsForExistingWord() {
+        when(customScanner.hasNext()).thenReturn(true).thenReturn(false);
+        HashSet<Integer> demoResult = new HashSet<>(Arrays.asList(1, 2, 3));
+        HashMap<String, HashSet<Integer>> demoAllData = new HashMap<>();
+        demoAllData.put("test", demoResult);
+        when(customScanner.getFileName()).thenReturn("7");
+        when(dataContainer.getAllData()).thenReturn(demoAllData);
+        when(customScanner.getNext()).thenReturn("test");
+    }
+
     @Test
     public void addAddressForNonExistingWordTest() {
         FileReader fileReader = new FileReader(dataContainer);
         fileReader.setCustomScanner(customScanner);
-        when(customScanner.hasNext()).thenReturn(true).thenReturn(false);
         HashMap<String, HashSet<Integer>> demoAllData = new HashMap<>();
-        when(customScanner.getFileName()).thenReturn("7");
-        when(dataContainer.getAllData()).thenReturn(demoAllData);
-        when(customScanner.getNext()).thenReturn("test");
+        setMockingActionsForNonExistingWord(demoAllData);
         try {
             fileReader.read();
         } catch (FileNotFoundException e) {
@@ -54,5 +55,12 @@ public class FileReaderTest {
         }
         verify(dataContainer, times(1)).getFilesNameWithSearchedWord(any());
         Assertions.assertEquals(0, demoAllData.get("test").size());
+    }
+
+    private void setMockingActionsForNonExistingWord(HashMap<String, HashSet<Integer>> demoAllData) {
+        when(customScanner.hasNext()).thenReturn(true).thenReturn(false);
+        when(customScanner.getFileName()).thenReturn("7");
+        when(dataContainer.getAllData()).thenReturn(demoAllData);
+        when(customScanner.getNext()).thenReturn("test");
     }
 }

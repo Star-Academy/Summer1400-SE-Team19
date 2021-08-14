@@ -12,34 +12,66 @@ import java.util.HashSet;
 public class WordTest {
 
     private final HashSet<Integer> demoSearchResult = new HashSet<>();
+    private final String positiveWordAsString = "+chair";
+    private final String negativeWordAsString = "-negative";
+    private final String neutralWordAsString = "rider";
 
     @Test
-    public void positiveWordTest() {
-        String wordAsString = "+chair";
-        PositiveWord positiveWord = new PositiveWord(wordAsString);
+    public void positiveWordPriorityTest() {
+        PositiveWord positiveWord = new PositiveWord(positiveWordAsString);
         Assertions.assertEquals(1, positiveWord.getPriority());
+    }
+
+    @Test
+    public void positiveWordStringTest() {
+        PositiveWord positiveWord = new PositiveWord(positiveWordAsString);
         Assertions.assertEquals("chair", positiveWord.getWordAsString());
+    }
+
+    @Test
+    public void positiveWordSearchResultTest() {
+        PositiveWord positiveWord = new PositiveWord(positiveWordAsString);
         positiveWord.setSearchResult(demoSearchResult);
         Assertions.assertEquals(demoSearchResult, positiveWord.getSearchResult());
     }
 
+
     @Test
-    public void neutralWordTest() {
-        String wordAsString = "rider";
-        NeutralWord neutralWord = new NeutralWord(wordAsString);
-        Assertions.assertEquals(2, neutralWord.getPriority());
-        Assertions.assertEquals("rider", neutralWord.getWordAsString());
-        neutralWord.setSearchResult(demoSearchResult);
-        Assertions.assertEquals(demoSearchResult, neutralWord.getSearchResult());
+    public void negativeWordPriorityTest() {
+        NegativeWord negativeWord = new NegativeWord(negativeWordAsString);
+        Assertions.assertEquals(3, negativeWord.getPriority());
     }
 
     @Test
-    public void negativeWordTest() {
-        String wordAsString = "-negative";
-        NegativeWord negativeWord = new NegativeWord(wordAsString);
-        Assertions.assertEquals(3, negativeWord.getPriority());
+    public void negativeWordStringTest() {
+        NegativeWord negativeWord = new NegativeWord(negativeWordAsString);
         Assertions.assertEquals("negative", negativeWord.getWordAsString());
+    }
+
+    @Test
+    public void negativeWordSearchResultTest() {
+        NegativeWord negativeWord = new NegativeWord(negativeWordAsString);
         negativeWord.setSearchResult(demoSearchResult);
         Assertions.assertEquals(demoSearchResult, negativeWord.getSearchResult());
+    }
+
+
+    @Test
+    public void neutralWordPriorityTest() {
+        NeutralWord neutralWord = new NeutralWord(neutralWordAsString);
+        Assertions.assertEquals(2, neutralWord.getPriority());
+    }
+
+    @Test
+    public void neutralWordStringTest() {
+        NeutralWord neutralWord = new NeutralWord(neutralWordAsString);
+        Assertions.assertEquals("rider", neutralWord.getWordAsString());
+    }
+
+    @Test
+    public void neutralWordSearchResultTest() {
+        NeutralWord neutralWord = new NeutralWord(neutralWordAsString);
+        neutralWord.setSearchResult(demoSearchResult);
+        Assertions.assertEquals(demoSearchResult, neutralWord.getSearchResult());
     }
 }

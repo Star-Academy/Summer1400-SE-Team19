@@ -2,11 +2,11 @@ package parameterholders;
 
 import database.DataContainer;
 import database.FileReader;
-import parameterholders.abstraction.DataProviderParametersInterface;
+import parameterholders.abstraction.DataProviderParametersHolder;
 
 import java.io.File;
 
-public class DataProviderParameters implements DataProviderParametersInterface {
+public class DataProviderParameters implements DataProviderParametersHolder {
     private DataContainer dataContainer;
     private File fileDirectory;
     private FileReader reader;

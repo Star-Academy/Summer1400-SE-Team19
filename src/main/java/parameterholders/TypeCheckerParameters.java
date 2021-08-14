@@ -1,11 +1,11 @@
 package parameterholders;
 
-import parameterholders.abstraction.TypeCheckerParametersInterface;
+import parameterholders.abstraction.TypeCheckerParametersHolder;
 import words.Word;
 
 import java.util.ArrayList;
 
-public class TypeCheckerParameters implements TypeCheckerParametersInterface {
+public class TypeCheckerParameters implements TypeCheckerParametersHolder {
     private ArrayList<Word> wordsInObject;
 
     @Override

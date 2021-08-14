@@ -1,6 +1,6 @@
 package database;
 
-import parameterholders.abstraction.DataProviderParametersInterface;
+import parameterholders.abstraction.DataProviderParametersHolder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,10 +12,10 @@ public class DataProvider {
     private final File fileDirectory;
     private final FileReader reader;
 
-    public DataProvider(DataProviderParametersInterface dataProviderParametersInterface) {
-        dataContainer = dataProviderParametersInterface.getDataContainer();
-        fileDirectory = dataProviderParametersInterface.getFileDirectory();
-        reader = dataProviderParametersInterface.getReader();
+    public DataProvider(DataProviderParametersHolder dataProviderParametersHolder) {
+        dataContainer = dataProviderParametersHolder.getDataContainer();
+        fileDirectory = dataProviderParametersHolder.getFileDirectory();
+        reader = dataProviderParametersHolder.getReader();
     }
 
     public DataContainer getDataContainer() {
@@ -24,11 +24,15 @@ public class DataProvider {
 
     public void initialize() {
         for (File file : Objects.requireNonNull(fileDirectory.listFiles())) {
-            try {
-                callFileReader(initializeCustomScanner(file));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            processFileAndScanner(file);
+        }
+    }
+
+    private void processFileAndScanner(File file) {
+        try {
+            readFile(initializeCustomScanner(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -39,7 +43,7 @@ public class DataProvider {
         return customScanner;
     }
 
-    private void callFileReader(CustomScanner customScanner) throws FileNotFoundException {
+    private void readFile(CustomScanner customScanner) throws FileNotFoundException {
         reader.setCustomScanner(customScanner);
         reader.read();
     }

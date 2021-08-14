@@ -28,7 +28,7 @@ public class ParameterHolderInitializer {
     }
 
     private void initializeUserInterfaceParameters() {
-        parameterHolder.setUserInterfaceParameters(new UserInterfaceParameters());
+        parameterHolder.setUserInterfaceParameters(new UserParametersHolder());
         parameterHolder.getUserInterfaceParameters().setTypeChecker(new TypeChecker(parameterHolder.getTypeCheckerParameters()));
         parameterHolder.getUserInterfaceParameters().setScanner(new Scanner(System.in));
         parameterHolder.getUserInterfaceParameters().setFilter(new Filterer());

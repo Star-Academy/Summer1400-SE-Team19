@@ -2,7 +2,7 @@ package parameterholders.abstraction;
 
 import parameterholders.*;
 
-public interface ParameterHolderInterface {
+public interface ParameterHolder {
     DataContainerParameters getDataContainerParametersInterface();
 
     void setDataContainerParameters(DataContainerParameters dataContainerParametersInterface);
@@ -19,7 +19,7 @@ public interface ParameterHolderInterface {
 
     void setTypeCheckerParameters(TypeCheckerParameters typeCheckerParametersInterface);
 
-    UserInterfaceParameters getUserInterfaceParameters();
+    UserParametersHolder getUserInterfaceParameters();
 
-    void setUserInterfaceParameters(UserInterfaceParameters userInterfaceParametersInterface);
+    void setUserInterfaceParameters(UserParametersHolder userInterfaceParametersInterface);
 }

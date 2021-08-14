@@ -7,7 +7,7 @@ import modifiers.abstraction.Filter;
 import java.util.HashSet;
 import java.util.Scanner;
 
-public interface UserInterfaceParametersInterface {
+public interface UserInterfaceParametersHolder {
     Filter getFilter();
 
     void setFilter(Filter filter);

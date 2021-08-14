@@ -6,27 +6,27 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import parameterholders.abstraction.MergerParametersInterface;
+import parameterholders.abstraction.MergerParametersHolder;
 
 import java.util.HashSet;
 
 @ExtendWith(MockitoExtension.class)
 public class MergerParametersTest {
 
-    private static final MergerParametersInterface mergerParametersInterface = new MergerParameters();
+    private static final MergerParametersHolder MERGER_PARAMETERS_HOLDER = new MergerParameters();
     @Mock
     private static HashSet<Integer> integerHashSet;
 
 
     @BeforeAll
     public static void init() {
-        mergerParametersInterface.setHashSet(integerHashSet);
+        MERGER_PARAMETERS_HOLDER.setHashSet(integerHashSet);
     }
 
     @Test
     public void getHashSetTest() {
-        mergerParametersInterface.setHashSet(integerHashSet);
-        Assertions.assertNotNull(mergerParametersInterface.getHashSet());
-        Assertions.assertEquals(mergerParametersInterface.getHashSet(), integerHashSet);
+        MERGER_PARAMETERS_HOLDER.setHashSet(integerHashSet);
+        Assertions.assertNotNull(MERGER_PARAMETERS_HOLDER.getHashSet());
+        Assertions.assertEquals(MERGER_PARAMETERS_HOLDER.getHashSet(), integerHashSet);
     }
 }

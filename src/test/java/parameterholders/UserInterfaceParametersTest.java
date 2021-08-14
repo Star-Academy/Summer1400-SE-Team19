@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import parameterholders.abstraction.UserInterfaceParametersInterface;
+import parameterholders.abstraction.UserInterfaceParametersHolder;
 
 import java.util.HashSet;
 import java.util.Scanner;
@@ -15,7 +15,7 @@ import java.util.Scanner;
 @ExtendWith(MockitoExtension.class)
 public class UserInterfaceParametersTest {
 
-    private final UserInterfaceParametersInterface userInterfaceParametersInterface = new UserInterfaceParameters();
+    private final UserInterfaceParametersHolder userInterfaceParametersHolder = new UserParametersHolder();
     @Mock
     private TypeChecker typeChecker;
     @Mock
@@ -27,34 +27,34 @@ public class UserInterfaceParametersTest {
 
     @BeforeEach
     public void init() {
-        userInterfaceParametersInterface.setTypeChecker(typeChecker);
-        userInterfaceParametersInterface.setScanner(scanner);
-        userInterfaceParametersInterface.setFilter(filter);
-        userInterfaceParametersInterface.setResult(result);
+        userInterfaceParametersHolder.setTypeChecker(typeChecker);
+        userInterfaceParametersHolder.setScanner(scanner);
+        userInterfaceParametersHolder.setFilter(filter);
+        userInterfaceParametersHolder.setResult(result);
     }
 
 
     @Test
     public void getTypeCheckerTest() {
-        Assertions.assertNotNull(userInterfaceParametersInterface.getTypeChecker());
-        Assertions.assertEquals(userInterfaceParametersInterface.getTypeChecker(), typeChecker);
+        Assertions.assertNotNull(userInterfaceParametersHolder.getTypeChecker());
+        Assertions.assertEquals(userInterfaceParametersHolder.getTypeChecker(), typeChecker);
     }
 
     @Test
     public void getScannerTest() {
-        Assertions.assertNotNull(userInterfaceParametersInterface.getScanner());
-        Assertions.assertEquals(userInterfaceParametersInterface.getScanner(), scanner);
+        Assertions.assertNotNull(userInterfaceParametersHolder.getScanner());
+        Assertions.assertEquals(userInterfaceParametersHolder.getScanner(), scanner);
     }
 
     @Test
     public void getFilterTest() {
-        Assertions.assertNotNull(userInterfaceParametersInterface.getFilter());
-        Assertions.assertEquals(userInterfaceParametersInterface.getFilter(), filter);
+        Assertions.assertNotNull(userInterfaceParametersHolder.getFilter());
+        Assertions.assertEquals(userInterfaceParametersHolder.getFilter(), filter);
     }
 
     @Test
     public void getResultTest() {
-        Assertions.assertNotNull(userInterfaceParametersInterface.getResult());
-        Assertions.assertEquals(userInterfaceParametersInterface.getResult(), result);
+        Assertions.assertNotNull(userInterfaceParametersHolder.getResult());
+        Assertions.assertEquals(userInterfaceParametersHolder.getResult(), result);
     }
 }
