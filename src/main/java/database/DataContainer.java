@@ -1,0 +1,23 @@
+package database;
+
+import parameterholders.abstraction.DataContainerParametersHolder;
+
+import java.util.HashMap;
+import java.util.HashSet;
+
+public class DataContainer {
+    private final HashMap<String, HashSet<Integer>> allData;
+
+    public DataContainer(DataContainerParametersHolder dataContainerParameters) {
+        allData = dataContainerParameters.getAllData();
+    }
+
+    public HashSet<Integer> getFilesNameWithSearchedWord(String searchedWord) {
+        return allData.get(searchedWord);
+    }
+
+    public HashMap<String, HashSet<Integer>> getAllData() {
+        return allData;
+    }
+
+}
