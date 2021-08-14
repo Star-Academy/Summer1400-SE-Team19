@@ -6,8 +6,7 @@ namespace Csharp.controller
 {
     public class TopStudentsAnalyser : IDataAnalyser<Student, double>
     {
-        public Dictionary<Student, List<Grade>> StudentGradesDictionary { get; set; }
-        public Dictionary<Student, double> StudentGpaDictionary;
+        private Dictionary<Student, List<Grade>> StudentGradesDictionary { get; set; }
 
         public Dictionary<Student, double> Analyse()
         {
@@ -16,32 +15,24 @@ namespace Csharp.controller
                 studentsAndGradesProvider.Provide(DataBasesManagement.GetInstance().AllStudents.AllPropertiesOfThisType,
                     DataBasesManagement.GetInstance().AllGrades.AllPropertiesOfThisType);
 
-            CalculateGpaForEachStudent();
-            return SelectTopStudents(3);
+            var studentAndGradeDictionary = CalculateGpaForEachStudent();
+            return SelectTopStudents(studentAndGradeDictionary , 3);
         }
 
-        private Dictionary<Student, double> SelectTopStudents(int numberOfStudents)
+        private Dictionary<Student, double> SelectTopStudents(Dictionary<Student  , double> studentAndGradeDictionary , int numberOfStudents)
         {
-            Dictionary<Student, double> topStudents = new Dictionary<Student, double>();
-            for (int i = 0; i < numberOfStudents; i++)
-            {
-                var topStudent = StudentGpaDictionary.OrderByDescending(x => x.Value).Skip(i).First();
-                topStudents.Add(topStudent.Key, topStudent.Value);
-            }
-
-            return topStudents;
+            var result = studentAndGradeDictionary.
+                OrderByDescending(x => x.Value).Take(numberOfStudents)
+                .ToDictionary(x => x.Key, x => x.Value);
+            return result;
         }
 
-        private void CalculateGpaForEachStudent()
+        private Dictionary<Student, double> CalculateGpaForEachStudent()
         {
-            StudentGpaDictionary = new Dictionary<Student, double>();
-            foreach (var iterator in StudentGradesDictionary)
-            {
-                var student = iterator.Key;
-                var grades = iterator.Value;
-                double gpa = grades.Average(g => g.Score);
-                StudentGpaDictionary.Add(student, gpa);
-            }
+            var studentAndGradeDictionary = StudentGradesDictionary.ToDictionary(
+                x => x.Key,
+                v => v.Value.Average(g => g.Score));
+            return studentAndGradeDictionary; 
         }
     }
 }
