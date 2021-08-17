@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "G:\\phase11\\ASP\\WebApplication6\\WebAPI\\WebAPI.csproj": {}
+    "E:\\barname_nevisi\\c#\\phase11\\ASP\\WebApplication6\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "G:\\phase11\\ASP\\WebApplication6\\WebAPI\\WebAPI.csproj": {
+    "E:\\barname_nevisi\\c#\\phase11\\ASP\\WebApplication6\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\phase11\\ASP\\WebApplication6\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "E:\\barname_nevisi\\c#\\phase11\\ASP\\WebApplication6\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "G:\\phase11\\ASP\\WebApplication6\\WebAPI\\WebAPI.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "G:\\phase11\\ASP\\WebApplication6\\WebAPI\\obj\\",
+        "projectPath": "E:\\barname_nevisi\\c#\\phase11\\ASP\\WebApplication6\\WebAPI\\WebAPI.csproj",
+        "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
+        "outputPath": "E:\\barname_nevisi\\c#\\phase11\\ASP\\WebApplication6\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -38,6 +38,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "StarAcademyTeam19.InvertedIndexSearcher": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
