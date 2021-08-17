@@ -16,7 +16,7 @@ namespace ProgramRunner
         static void Main()
         {
             CreateHost();
-            /*var dataProvider = (DefaultDataProvider) _serviceProvider.GetService(typeof(DefaultDataProvider));
+            /*var dataProvider = (DefaultDataProvider) _serviceProvider.GetService(typeof(IDataProvider));
             dataProvider?.Initialize();*/
             var userInterface = (UserInterface) _serviceProvider.GetService(typeof(UserInterface));
             userInterface?.Run();
