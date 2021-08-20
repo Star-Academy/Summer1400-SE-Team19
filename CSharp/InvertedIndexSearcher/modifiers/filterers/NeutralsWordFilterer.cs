@@ -2,7 +2,7 @@
 
 namespace InvertedIndexSearcher.modifiers.filterers
 {
-    public class NeutralsWordFilterer : INeutralsWordFilterer
+    public class NeutralsWordFilterer :  IFilterer<string>
     {
         public HashSet<string> FilterSearchResult(IEnumerable<string> searchResultOfWord,
             IEnumerable<string> preResult)
