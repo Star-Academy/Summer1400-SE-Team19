@@ -5,27 +5,27 @@ using InvertedIndexSearcher.DataProviders.Readers;
 
 namespace InvertedIndexSearcher.DataProviders.Aggregators
 {
-    public class TextFileDataProvider : IDataProvider<string>
+    public class TextFileDataProvider : IDataProvider
     {
-        public TextFileDataProvider(IReader<string> reader, IFileProcessor<string> processor,
+        public TextFileDataProvider(IReader reader, IFileProcessor<string> processor,
             IDataBaseUpdater<string> updater)
         {
-            Reader = reader;
-            Processor = processor;
-            Updater = updater;
+            _reader = reader;
+            _processor = processor;
+            _updater = updater;
         }
 
-        public IReader<string> Reader { get; }
-        public IFileProcessor<string> Processor { get; }
-        public IDataBaseUpdater<string> Updater { get; }
+        private readonly IReader _reader;
+        private readonly IFileProcessor<string> _processor;
+        private readonly IDataBaseUpdater<string> _updater;
 
         public void IndexFile(string path)
         {
             var fileName = Path.GetFileName(path);
             
-            var content = Reader.Read(path);
-            var tokens = Processor.Process(content);
-            Updater.AddData(fileName, tokens);
+            var content = _reader.Read(path);
+            var tokens = _processor.Process(content);
+            _updater.AddData(fileName, tokens);
         }
     }
 }
