@@ -4,10 +4,10 @@ namespace InvertedIndexSearcher.modifiers.filterers
 {
     public class NegativesWordFilterer : INegativesWordFilterer
     {
-        public HashSet<int> FilterSearchResult(IEnumerable<int> searchResultOfWord,
-            IEnumerable<int> preResult)
+        public HashSet<string> FilterSearchResult(HashSet<string> searchResultOfWord,
+            IEnumerable<string> preResult)
         {
-            var result = new HashSet<int>(preResult);
+            var result = new HashSet<string>(preResult);
             result.ExceptWith(searchResultOfWord);
             return result;
         }

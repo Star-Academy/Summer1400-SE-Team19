@@ -1,6 +1,6 @@
 namespace InvertedIndexSearcher.modifiers.filterers
 {
-    public interface INeutralsWordFilterer : IFilterer<int>
+    public interface INeutralsWordFilterer : IFilterer<string>
     {
     }
 }
