@@ -1,6 +1,6 @@
 ﻿namespace InvertedIndexSearcher.DataProviders.Readers
 {
-    public interface IReader<in T>
+    public interface IReader
     {
         string Read(string path);
     }
