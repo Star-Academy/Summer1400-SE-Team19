@@ -3,7 +3,7 @@ using System.Linq;
 using InvertedIndexSearcher.modifiers;
 using InvertedIndexSearcher.modifiers.filterers;
 
-namespace InvertedIndexSearcher
+namespace InvertedIndexSearcher.Searcher
 {
     public class Searcher : ISearcher
     {
@@ -25,7 +25,7 @@ namespace InvertedIndexSearcher
             _collector = collector;
         }
 
-        public IEnumerable<int> Search(string searchedNote)
+        public IEnumerable<string> Search(string searchedNote)
         {
             var separatedWords = searchedNote.Split(" ");
             _typeChecker.CheckWordsType(separatedWords);
@@ -36,11 +36,11 @@ namespace InvertedIndexSearcher
             return MergeResults(resultOfPositives, resultOfNeutrals, resultOfNegatives);
         }
 
-        private IEnumerable<int> MergeResults(IEnumerable<HashSet<int>> resultOfPositives,
-            IEnumerable<HashSet<int>> resultOfNeutrals,
-            IEnumerable<HashSet<int>> resultOfNegatives)
+        private IEnumerable<string> MergeResults(IEnumerable<HashSet<string>> resultOfPositives,
+            IEnumerable<HashSet<string>> resultOfNeutrals,
+            IEnumerable<HashSet<string>> resultOfNegatives)
         {
-            var searchResult = new HashSet<int>();
+            var searchResult = new HashSet<string>();
             searchResult = resultOfPositives.Aggregate(searchResult, (current, resultOfPositive)
                 => _positiveFilterer.FilterSearchResult(resultOfPositive, current));
 
