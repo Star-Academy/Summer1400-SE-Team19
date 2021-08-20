@@ -1,11 +1,16 @@
 ﻿using System;
+using System.IO;
 using InvertedIndexSearcher;
-using InvertedIndexSearcher.database;
-using InvertedIndexSearcher.database.dataproviders;
+using InvertedIndexSearcher.DataProviders.Aggregators;
+using InvertedIndexSearcher.DataProviders.DatabaseUpdater;
+using InvertedIndexSearcher.DataProviders.FileProcessor;
+using InvertedIndexSearcher.DataProviders.Readers;
 using InvertedIndexSearcher.modifiers;
 using InvertedIndexSearcher.modifiers.filterers;
+using InvertedIndexSearcher.Searcher;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Database = InvertedIndexSearcher.database.Database;
 
 namespace ProgramRunner
 {
@@ -16,8 +21,6 @@ namespace ProgramRunner
         static void Main()
         {
             CreateHost();
-            /*var dataProvider = (DefaultDataProvider) _serviceProvider.GetService(typeof(IDataProvider));
-            dataProvider?.Initialize();*/
             var userInterface = (UserInterface) _serviceProvider.GetService(typeof(UserInterface));
             userInterface?.Run();
         }
@@ -33,9 +36,11 @@ namespace ProgramRunner
                 services.AddSingleton<ITypeChecker, TypeChecker>();
                 services.AddSingleton<IDataCollector, DataCollector>();
                 services.AddSingleton<ISearcher, Searcher>();
-                services.AddSingleton<IFileReader, FileReader>();
+                services.AddSingleton<IReader<string>, TextFileReader>();
+                services.AddSingleton<IFileProcessor<string>, TextFileProcessor>();
+                services.AddSingleton<IDataBaseUpdater<string>, DataBaseWordDataUpdater>();
+                services.AddSingleton<IDataProvider<string>, TextFileDataProvider>();
                 services.AddSingleton<Database>();
-                services.AddSingleton<IDataProvider, DefaultDataProvider>();
             }).Build();
             _serviceProvider = host.Services;
         }
