@@ -4,7 +4,7 @@ namespace InvertedIndexSearcher.modifiers.filterers
 {
     public class NegativesWordFilterer : INegativesWordFilterer
     {
-        public HashSet<string> FilterSearchResult(HashSet<string> searchResultOfWord,
+        public HashSet<string> FilterSearchResult(IEnumerable<string> searchResultOfWord,
             IEnumerable<string> preResult)
         {
             var result = new HashSet<string>(preResult);
