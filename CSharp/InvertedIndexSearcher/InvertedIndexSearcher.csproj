@@ -2,6 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Searcher</Title>
+        <Description>ef core base searcher and indexer</Description>
+        <Copyright>MIT</Copyright>
+        <RepositoryUrl>https://github.com/Star-Academy/Summer1400-SE-Team19.git</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
