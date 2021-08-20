@@ -7,24 +7,18 @@ namespace InvertedIndexSearcher.modifiers
 {
     public class DataCollector : IDataCollector
     {
-        private readonly Database _database;
+        private readonly ILibraryDatabase _database;
 
-        public DataCollector(Database database)
+        public DataCollector(ILibraryDatabase database)
         {
             _database = database;
         }
         public IEnumerable<HashSet<string>> Collect(IEnumerable<IWord> words)
         {
-            var listOfSearchedResultOfWords = new List<HashSet<string>>();
-            foreach (var word in words)
-            {
-                var resultOfSearch = _database.WordAndAddressWrapper
-                    .Where(x => x.Word == word.WordAsString)
-                    .Select(x => x.Address).ToHashSet();
-                listOfSearchedResultOfWords.Add(resultOfSearch);
-            }
-
-            return listOfSearchedResultOfWords;
+            return words.Select(word => _database.WordAndAddressWrapper.Where(x => x.Word == word.WordAsString)
+                    .Select(x => x.Address)
+                    .ToHashSet())
+                .ToList();
         }
     }
 }
