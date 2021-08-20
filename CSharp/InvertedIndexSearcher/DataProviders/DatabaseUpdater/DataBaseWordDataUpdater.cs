@@ -6,9 +6,9 @@ namespace InvertedIndexSearcher.DataProviders.DatabaseUpdater
 {
     public class DataBaseWordDataUpdater : IDataBaseUpdater<string>
     {
-        private readonly Database _database;
+        private readonly ILibraryDatabase _database;
 
-        public DataBaseWordDataUpdater(Database database)
+        public DataBaseWordDataUpdater(ILibraryDatabase database)
         {
             _database = database;
         }
@@ -25,7 +25,9 @@ namespace InvertedIndexSearcher.DataProviders.DatabaseUpdater
                 _database.WordAndAddressWrapper.Add(wordAndAddressWrapper);
             }
 
-            _database.SaveChanges();
+            var unused = _database.SaveChanges();
+            // this method will be overwrite by EF core classes//
+            // => the return value is the number of entity 
         }
     }
 }
