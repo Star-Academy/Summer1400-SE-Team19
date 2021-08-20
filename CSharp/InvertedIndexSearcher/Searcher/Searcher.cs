@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using InvertedIndexSearcher.LibraryConfig;
 using InvertedIndexSearcher.modifiers;
 using InvertedIndexSearcher.modifiers.filterers;
 
@@ -8,19 +9,17 @@ namespace InvertedIndexSearcher.Searcher
     public class Searcher : ISearcher
     {
         private readonly ITypeChecker _typeChecker;
-        private readonly IPositivesWordFilterer _positiveFilterer;
-        private readonly INeutralsWordFilterer _neutralsFilterer;
-        private readonly INegativesWordFilterer _negativeFilterer;
+        private readonly IFilterer<string> _positiveFilterer;
+        private readonly IFilterer<string> _neutralsFilterer;
+        private readonly IFilterer<string> _negativeFilterer;
         private readonly IDataCollector _collector;
 
-        public Searcher(IPositivesWordFilterer positiveFilterer, 
-            INeutralsWordFilterer neutralsFilterer,
-            INegativesWordFilterer negativeFilterer,
+        public Searcher(ServiceResolver serviceResolver,
             ITypeChecker typeChecker, IDataCollector collector)
         {
-            _positiveFilterer =positiveFilterer;
-            _neutralsFilterer = neutralsFilterer;
-            _negativeFilterer = negativeFilterer;
+            _positiveFilterer =serviceResolver("positive");
+            _neutralsFilterer = serviceResolver("neutral");
+            _negativeFilterer = serviceResolver("negative");
             _typeChecker = typeChecker;
             _collector = collector;
         }
