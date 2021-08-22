@@ -5,13 +5,15 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Searcher</Title>
         <Description>ef core base searcher and indexer</Description>
-        <Copyright>MIT</Copyright>
+        <Copyright>StarAcademy</Copyright>
         <RepositoryUrl>https://github.com/Star-Academy/Summer1400-SE-Team19.git</RepositoryUrl>
+        <PackageId>StarAcademy.team19.invertedIndex</PackageId>
+        <Authors>Arash Yadegari - Arad Maleki</Authors>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
-      <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0-preview.6.21352.12" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     </ItemGroup>
 
 </Project>

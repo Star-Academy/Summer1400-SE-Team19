@@ -6,5 +6,6 @@ namespace InvertedIndexSearcher.modifiers
     public interface IDataCollector
     {
         IEnumerable<HashSet<string>> Collect(IEnumerable<IWord> words);
+        
     }
 }

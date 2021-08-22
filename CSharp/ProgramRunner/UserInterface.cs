@@ -1,5 +1,5 @@
 ﻿using System;
-using InvertedIndexSearcher;
+using InvertedIndexSearcher.Searcher;
 
 namespace ProgramRunner
 {
