@@ -7,7 +7,7 @@
         <Description>ef core base searcher and indexer</Description>
         <Copyright>StarAcademy</Copyright>
         <RepositoryUrl>https://github.com/Star-Academy/Summer1400-SE-Team19.git</RepositoryUrl>
-        <PackageId>StarAcademy.team19.invertedIndex</PackageId>
+        <PackageId>StarAcademy.team19.InvertedIndex</PackageId>
         <Authors>Arash Yadegari - Arad Maleki</Authors>
     </PropertyGroup>
 

@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace InvertedIndexSearcher.DataProviders.FileProcessor
 {
-    public class TextFileProcessor : IFileProcessor<string>
+    internal class TextFileProcessor : IFileProcessor<string>
     {
         public IEnumerable<string> Process(string content)
         {

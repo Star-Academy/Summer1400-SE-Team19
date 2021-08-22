@@ -2,7 +2,7 @@
 
 namespace InvertedIndexSearcher.DataProviders.Readers
 {
-    public class TextFileReader : IReader
+    internal class TextFileReader : IReader
     {
         public string Read(string path)
         {

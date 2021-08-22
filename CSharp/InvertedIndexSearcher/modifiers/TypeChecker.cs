@@ -3,7 +3,7 @@ using InvertedIndexSearcher.words;
 
 namespace InvertedIndexSearcher.modifiers
 {
-    public class TypeChecker : ITypeChecker
+    internal class TypeChecker : ITypeChecker
     {
         public List<IWord> PositiveWords { get; }
         public List<IWord> NeutralWords { get; }

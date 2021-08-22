@@ -1,6 +1,6 @@
 ﻿namespace InvertedIndexSearcher.words
 {
-    public class Word : IWord
+    internal class Word : IWord
     {
         public string WordAsString { get; }
 

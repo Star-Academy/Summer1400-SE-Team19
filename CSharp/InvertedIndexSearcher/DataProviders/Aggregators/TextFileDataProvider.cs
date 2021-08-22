@@ -5,7 +5,7 @@ using InvertedIndexSearcher.DataProviders.Readers;
 
 namespace InvertedIndexSearcher.DataProviders.Aggregators
 {
-    public class TextFileDataProvider : IDataProvider
+    internal class TextFileDataProvider : IDataProvider
     {
         public TextFileDataProvider(IReader reader, IFileProcessor<string> processor,
             IDataBaseUpdater<string> updater)

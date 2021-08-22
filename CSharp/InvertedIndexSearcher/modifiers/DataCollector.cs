@@ -5,7 +5,7 @@ using InvertedIndexSearcher.words;
 
 namespace InvertedIndexSearcher.modifiers
 {
-    public class DataCollector : IDataCollector
+    internal class DataCollector : IDataCollector
     {
         private readonly ILibraryDatabase _database;
 

@@ -4,7 +4,7 @@ using InvertedIndexSearcher.words;
 
 namespace InvertedIndexSearcher.DataProviders.DatabaseUpdater
 {
-    public class DataBaseWordDataUpdater : IDataBaseUpdater<string>
+    internal class DataBaseWordDataUpdater : IDataBaseUpdater<string>
     {
         private readonly ILibraryDatabase _database;
 

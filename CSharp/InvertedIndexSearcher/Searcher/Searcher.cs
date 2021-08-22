@@ -6,7 +6,7 @@ using InvertedIndexSearcher.modifiers.filterers;
 
 namespace InvertedIndexSearcher.Searcher
 {
-    public class Searcher : ISearcher
+    internal class Searcher : ISearcher
     {
         private readonly ITypeChecker _typeChecker;
         private readonly IFilterer<string> _positiveFilterer;
