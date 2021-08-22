@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using InvertedIndexSearcher;
+using InvertedIndexSearcher.Searcher;
 
 namespace WebApplication.Services
 {
@@ -12,7 +12,7 @@ namespace WebApplication.Services
             _searcher = searcher;
         }
 
-        public IEnumerable<int> GetSearchResult(string text)
+        public IEnumerable<string> GetSearchResult(string text)
         {
             var result = _searcher.Search(text);
             return result;

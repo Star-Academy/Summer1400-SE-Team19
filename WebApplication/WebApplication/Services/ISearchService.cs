@@ -4,6 +4,6 @@ namespace WebApplication.Services
 {
     public interface ISearchService
     {
-        IEnumerable<int> GetSearchResult(string text);
+        IEnumerable<string> GetSearchResult(string text);
     }
 }

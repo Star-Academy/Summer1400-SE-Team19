@@ -22,7 +22,6 @@ namespace WebApplication.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<int>))]
         public IActionResult SearchText([FromHeader] string input)
         {
-            Console.WriteLine($"the string is : {input}");
             return Ok(_service.GetSearchResult(input));
         }
     }
