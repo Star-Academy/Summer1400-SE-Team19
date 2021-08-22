@@ -14,7 +14,6 @@ namespace InvertedIndexSearcher.LibraryConfig
 {
     public static class LibraryInjection
     {
-
         public static void ConfigDependencies(this IServiceCollection serviceProvider, Type databaseContextType)
         {
             serviceProvider.AddTransient<PositivesWordFilterer>();
