@@ -9,6 +9,7 @@
         <RepositoryUrl>https://github.com/Star-Academy/Summer1400-SE-Team19.git</RepositoryUrl>
         <PackageId>StarAcademy.team19.InvertedIndex</PackageId>
         <Authors>Arash Yadegari - Arad Maleki</Authors>
+        <PackageVersion>1.1.0</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
