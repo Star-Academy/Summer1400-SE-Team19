@@ -1,3 +1,4 @@
+using InvertedIndexSearcher.LibraryConfig;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,7 @@ namespace WebApplication
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebAPI", Version = "v1"});
             });
+            services.ConfigDependencies(typeof(Database));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
