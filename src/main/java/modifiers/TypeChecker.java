@@ -1,41 +1,43 @@
 package modifiers;
 
 import parameterholders.TypeCheckerParameters;
-import words.NegativeWord;
-import words.NeutralWord;
-import words.PositiveWord;
+import words.IWord;
 import words.Word;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class TypeChecker {
-    private final ArrayList<Word> wordsInObject;
+    private final ArrayList<IWord> positiveWords;
+    private final ArrayList<IWord> negativeWords;
+    private final ArrayList<IWord> neutralWords;
 
     public TypeChecker(TypeCheckerParameters typeCheckerParameters) {
-        wordsInObject = typeCheckerParameters.getWordsInObject();
+        positiveWords = typeCheckerParameters.getPositiveWords();
+        negativeWords = typeCheckerParameters.getNegativeWords();
+        neutralWords = typeCheckerParameters.getNeutralWords();
     }
 
-    public ArrayList<Word> separateWords(ArrayList<String> words) {
+    public void separateWords(ArrayList<String> words) {
         for (String word : words) {
-            Word wordInObject;
-            wordInObject = checkWordCondition(word);
-            wordsInObject.add(wordInObject);
+            checkWordCondition(word);
         }
-        return sortResult(wordsInObject);
     }
 
-    private Word checkWordCondition(String word) {
-        Word wordInObject;
-        if (word.charAt(0) == '+') wordInObject = new PositiveWord(word);
-        else if (word.charAt(0) == '-') wordInObject = new NegativeWord(word);
-        else wordInObject = new NeutralWord(word);
-        return wordInObject;
+    private void checkWordCondition(String word) {
+        if (word.charAt(0) == '+') positiveWords.add(new Word(word.substring(1)));
+        else if (word.charAt(0) == '-') negativeWords.add(new Word(word.substring(1)));
+        else neutralWords.add(new Word(word));
     }
 
-    private ArrayList<Word> sortResult(ArrayList<Word> wordsInObject) {
-        Comparator<Word> comparator = Comparator.comparing(Word::getPriority).reversed();
-        wordsInObject.sort(comparator);
-        return wordsInObject;
+    public ArrayList<IWord> getPositiveWords() {
+        return positiveWords;
+    }
+
+    public ArrayList<IWord> getNeutralWords() {
+        return neutralWords;
+    }
+
+    public ArrayList<IWord> getNegativeWords() {
+        return negativeWords;
     }
 }

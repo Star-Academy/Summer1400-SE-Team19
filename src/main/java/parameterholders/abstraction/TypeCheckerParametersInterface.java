@@ -1,11 +1,13 @@
 package parameterholders.abstraction;
 
-import words.Word;
+import words.IWord;
 
 import java.util.ArrayList;
 
 public interface TypeCheckerParametersInterface {
-    ArrayList<Word> getWordsInObject();
+    ArrayList<IWord> getPositiveWords();
 
-    void setWordsInObject(ArrayList<Word> wordsInObject);
+    ArrayList<IWord> getNegativeWords();
+
+    ArrayList<IWord> getNeutralWords();
 }

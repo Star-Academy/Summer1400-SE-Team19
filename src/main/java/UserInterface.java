@@ -1,8 +1,7 @@
-import modifiers.Searcher;
+import modifiers.DataCollector;
 import modifiers.TypeChecker;
 import modifiers.abstraction.FilterInterface;
 import parameterholders.UserInterfaceParameters;
-import words.Word;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,16 +10,18 @@ import java.util.Scanner;
 
 public class UserInterface {
     private final TypeChecker typeChecker;
-    private final Searcher searcher;
-    private final FilterInterface filter;
+    private final DataCollector dataCollector;
+    private final FilterInterface positiveWordsFilter;
+    private final FilterInterface negativeWordsFilter;
+    private final FilterInterface neutralWordsFilter;
     private final Scanner scanner;
-    private final HashSet<Integer> result;
 
     public UserInterface(UserInterfaceParameters userInterfaceParametersInterface) {
-        searcher = userInterfaceParametersInterface.getSearcher();
+        dataCollector = userInterfaceParametersInterface.getSearcher();
         typeChecker = userInterfaceParametersInterface.getTypeChecker();
-        filter = userInterfaceParametersInterface.getFilter();
-        result = userInterfaceParametersInterface.getResult();
+        positiveWordsFilter = userInterfaceParametersInterface.getPositiveFilter();
+        neutralWordsFilter = userInterfaceParametersInterface.getPositiveFilter();
+        negativeWordsFilter = userInterfaceParametersInterface.getPositiveFilter();
         scanner = userInterfaceParametersInterface.getScanner();
     }
 
@@ -42,14 +43,27 @@ public class UserInterface {
 
     private HashSet<Integer> getResult(String[] words) {
         ArrayList<String> wordsAsArrayList = new ArrayList<>(Arrays.asList(words));
-        ArrayList<Word> wordsInObject = typeChecker.separateWords(wordsAsArrayList);
-        searcher.search(wordsInObject);
-        return mergeSearchResult(wordsInObject);
+        typeChecker.separateWords(wordsAsArrayList);
+        var positiveWordsSearchResult = dataCollector.collectData(typeChecker.getPositiveWords());
+        var neutralWordsSearchResult = dataCollector.collectData(typeChecker.getNeutralWords());
+        var negativeWordsSearchResult = dataCollector.collectData(typeChecker.getNegativeWords());
+        return mergeSearchResult(positiveWordsSearchResult,
+                neutralWordsSearchResult,
+                negativeWordsSearchResult);
     }
 
-    private HashSet<Integer> mergeSearchResult(ArrayList<Word> words) {
-        for (Word word : words) {
-            filter.filter(word, result);
+    private HashSet<Integer> mergeSearchResult(ArrayList<HashSet<Integer>> positiveWordsSearchResult,
+                                               ArrayList<HashSet<Integer>> neutralWordsSearchResult,
+                                               ArrayList<HashSet<Integer>> negativeWordsSearchResult) {
+        var result = new HashSet<Integer>();
+        for (HashSet<Integer> searchResult : positiveWordsSearchResult) {
+            positiveWordsFilter.filter(searchResult, result);
+        }
+        for (HashSet<Integer> searchResult : neutralWordsSearchResult) {
+            neutralWordsFilter.filter(searchResult, result);
+        }
+        for (HashSet<Integer> searchResult : negativeWordsSearchResult) {
+            negativeWordsFilter.filter(searchResult, result);
         }
         return result;
     }

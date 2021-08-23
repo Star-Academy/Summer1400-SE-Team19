@@ -1,6 +1,6 @@
 package parameterholders.abstraction;
 
-import modifiers.Searcher;
+import modifiers.DataCollector;
 import modifiers.TypeChecker;
 import modifiers.abstraction.FilterInterface;
 
@@ -8,9 +8,17 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public interface UserInterfaceParametersInterface {
-    FilterInterface getFilter();
+    FilterInterface getPositiveFilter();
 
-    void setFilter(FilterInterface filter);
+    FilterInterface getNegativeFilter();
+
+    FilterInterface getNeutralFilter();
+
+    void setPositiveWordFilter(FilterInterface positiveWordFilter);
+
+    void setNeutralWordFilter(FilterInterface positiveWordFilter);
+
+    void setNegativeWordFilter(FilterInterface positiveWordFilter);
 
     HashSet<Integer> getResult();
 
@@ -24,7 +32,7 @@ public interface UserInterfaceParametersInterface {
 
     void setScanner(Scanner scanner);
 
-    Searcher getSearcher();
+    DataCollector getSearcher();
 
-    void setSearcher(Searcher searcher);
+    void setSearcher(DataCollector dataCollector);
 }

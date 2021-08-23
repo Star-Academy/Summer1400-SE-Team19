@@ -1,9 +1,10 @@
 package modifiers.abstraction;
 
-import words.Word;
+import words.IWord;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public interface FilterInterface {
-    void filter(Word word, HashSet<Integer> result);
+    public Set<Integer> filter(HashSet<Integer> searchResultOfWord, HashSet<Integer> preResult);
 }

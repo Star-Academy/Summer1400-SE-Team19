@@ -1,6 +1,6 @@
 package parameterholders;
 
-import modifiers.Searcher;
+import modifiers.DataCollector;
 import modifiers.TypeChecker;
 import modifiers.abstraction.FilterInterface;
 import parameterholders.abstraction.UserInterfaceParametersInterface;
@@ -11,18 +11,41 @@ import java.util.Scanner;
 public class UserInterfaceParameters implements UserInterfaceParametersInterface {
     private TypeChecker typeChecker;
     private Scanner scanner;
-    private FilterInterface filter;
+    private FilterInterface positiveWordFilter;
+    private FilterInterface neutralWordFilter;
+    private FilterInterface negativeWordFilter;
+
     private HashSet<Integer> result;
-    private Searcher searcher;
+    private DataCollector dataCollector;
 
     @Override
-    public FilterInterface getFilter() {
-        return filter;
+    public FilterInterface getPositiveFilter() {
+        return positiveWordFilter;
     }
 
     @Override
-    public void setFilter(FilterInterface filter) {
-        this.filter = filter;
+    public FilterInterface getNegativeFilter() {
+        return  negativeWordFilter;
+    }
+
+    @Override
+    public FilterInterface getNeutralFilter() {
+        return neutralWordFilter;
+    }
+
+    @Override
+    public void setPositiveWordFilter(FilterInterface positiveWordFilter) {
+        this.positiveWordFilter = positiveWordFilter;
+    }
+
+    @Override
+    public void setNeutralWordFilter(FilterInterface neutralWordFilter) {
+        this.neutralWordFilter = neutralWordFilter;
+    }
+
+    @Override
+    public void setNegativeWordFilter(FilterInterface negativeWordFilter) {
+        this.negativeWordFilter = negativeWordFilter;
     }
 
     @Override
@@ -52,12 +75,12 @@ public class UserInterfaceParameters implements UserInterfaceParametersInterface
     }
 
     @Override
-    public Searcher getSearcher() {
-        return searcher;
+    public DataCollector getSearcher() {
+        return dataCollector;
     }
 
     @Override
-    public void setSearcher(Searcher searcher) {
-        this.searcher = searcher;
+    public void setSearcher(DataCollector dataCollector) {
+        this.dataCollector = dataCollector;
     }
 }

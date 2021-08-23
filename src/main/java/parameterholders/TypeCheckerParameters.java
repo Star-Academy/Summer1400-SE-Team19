@@ -1,18 +1,25 @@
 package parameterholders;
 
 import parameterholders.abstraction.TypeCheckerParametersInterface;
-import words.Word;
+import words.IWord;
 
 import java.util.ArrayList;
 
 public class TypeCheckerParameters implements TypeCheckerParametersInterface {
-    private ArrayList<Word> wordsInObject;
+    private final ArrayList<IWord> positiveWords = new ArrayList<>();
+    private final ArrayList<IWord> negativeWords = new ArrayList<>();
+    private final ArrayList<IWord> neutralWords = new ArrayList<>();
 
-    public ArrayList<Word> getWordsInObject() {
-        return wordsInObject;
+    public ArrayList<IWord> getPositiveWords() {
+        return positiveWords;
     }
 
-    public void setWordsInObject(ArrayList<Word> wordsInObject) {
-        this.wordsInObject = wordsInObject;
+    public ArrayList<IWord> getNegativeWords() {
+        return negativeWords;
     }
+
+    public ArrayList<IWord> getNeutralWords() {
+        return neutralWords;
+    }
+
 }
