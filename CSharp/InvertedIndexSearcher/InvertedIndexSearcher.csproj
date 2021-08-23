@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Searcher</Title>
+        <Description>ef core base searcher and indexer</Description>
+        <Copyright>StarAcademy</Copyright>
+        <RepositoryUrl>https://github.com/Star-Academy/Summer1400-SE-Team19.git</RepositoryUrl>
+        <PackageId>StarAcademy.team19.InvertedIndex</PackageId>
+        <Authors>Arash Yadegari - Arad Maleki</Authors>
+        <PackageVersion>1.1.2</PackageVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    </ItemGroup>
+
+</Project>

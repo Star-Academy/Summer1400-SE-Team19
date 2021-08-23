@@ -1,0 +1,27 @@
+﻿using System;
+using InvertedIndexSearcher.Searcher;
+
+namespace ProgramRunner
+{
+
+    public class UserInterface
+    {
+        private readonly ISearcher _searcher;
+
+        public UserInterface(ISearcher searcher)
+        {
+            _searcher = searcher;
+        }
+        
+        public void Run()
+        {
+            var input = Console.ReadLine();
+            var result = _searcher.Search(input);
+            foreach (var i in result)
+            {
+                Console.WriteLine(i);
+            }
+        }
+        
+    }
+}
