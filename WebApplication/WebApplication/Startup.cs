@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using WebApplication.Services;
 
 namespace WebApplication
 {
@@ -21,11 +22,9 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebAPI", Version = "v1"});
-            });
-            services.ConfigDependencies(typeof(Database));
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebAPI", Version = "v1"}); });
+            services.AddSingleton<ISearchService, SearchService>();
+            services.ConfigDependencies(typeof(Database.Database));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -15,8 +15,12 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="StarAcademy.team19.InvertedIndex" Version="1.1.2" />
+        <PackageReference Include="StarAcademy.team19.InvertedIndex" Version="1.1.3" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Search\Search.csproj" />
     </ItemGroup>
 
 </Project>

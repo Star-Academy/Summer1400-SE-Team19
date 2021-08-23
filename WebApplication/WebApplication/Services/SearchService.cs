@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using InvertedIndexSearcher.Searcher;
 
+
 namespace WebApplication.Services
 {
     public class SearchService : ISearchService
