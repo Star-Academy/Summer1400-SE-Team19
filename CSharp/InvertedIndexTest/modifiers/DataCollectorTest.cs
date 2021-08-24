@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using InvertedIndexSearcher.database;
-using InvertedIndexSearcher.modifiers;
+using InvertedIndexSearcher.modifiers.dataCollector;
 using InvertedIndexSearcher.words;
 using NSubstitute;
 using Xunit;

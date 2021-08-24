@@ -2,7 +2,7 @@
 using InvertedIndexSearcher.database;
 using InvertedIndexSearcher.words;
 
-namespace InvertedIndexSearcher.modifiers
+namespace InvertedIndexSearcher.modifiers.dataCollector
 {
     public class DataCollector : IDataCollector
     {

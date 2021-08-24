@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using InvertedIndexSearcher.modifiers;
+using InvertedIndexSearcher.modifiers.dataCollector;
 using InvertedIndexSearcher.modifiers.filterer;
+using InvertedIndexSearcher.modifiers.typeChecker;
 
 namespace InvertedIndexSearcher
 {
