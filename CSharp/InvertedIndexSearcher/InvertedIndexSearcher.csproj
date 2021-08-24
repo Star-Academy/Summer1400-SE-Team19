@@ -2,6 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <PackageId>StarAcademy.Team19.Searcher</PackageId>
+        <Title>Inverted Index Searcher</Title>
+        <Authors>Arad Maleki, Arash Yadegari</Authors>
     </PropertyGroup>
 
     <ItemGroup>
